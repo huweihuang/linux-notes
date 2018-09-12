@@ -1,6 +1,3 @@
-# linux-notes
-Linux 学习笔记
-
 # Summary
 
 * [前言](README.md)
