@@ -8,7 +8,10 @@
 <url> <loc>https://www.huweihuang.com/linux-notes/tools/supervisor-usage.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/tools/confd-usage.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/tools/nfs-usage.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://www.huweihuang.com/linux-notes/tools/keepalived/keepalived-introduction.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://www.huweihuang.com/linux-notes/tools/keepalived/install-keepalived.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://www.huweihuang.com/linux-notes/tools/keepalived/keepalived-conf.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/nginx/install-nginx.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/nginx/nginx-proxy.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/nginx/nginx-http.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/keepalived/keepalived-introduction.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/keepalived/install-keepalived.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/keepalived/keepalived-conf.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>
