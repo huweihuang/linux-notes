@@ -15,6 +15,10 @@ Linux 学习笔记
     * [Supervisor的使用](tools/supervisor-usage.md)
     * [Confd的使用](tools/confd-usage.md)
     * [NFS的使用](tools/nfs-usage.md)
+* [Git]()
+    * [Git 介绍](git/git.md) 
+    * [Git 常用命令](git/git-common-cmd.md) 
+    * [Git 命令分类](git/git-commands.md) 
 * [Nginx]()
     * [Nginx安装与配置](nginx/install-nginx.md) 
     * [Nginx作为反向代理](nginx/nginx-proxy.md) 
@@ -23,4 +27,3 @@ Linux 学习笔记
     * [Keepalived简介](keepalived/keepalived-introduction.md) 
     * [Keepalived的安装与配置](keepalived/install-keepalived.md) 
     * [Keepalived的配置详解](keepalived/keepalived-conf.md) 
-

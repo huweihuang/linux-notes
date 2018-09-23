@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Shell简介 · Linux 学习笔记</title>
+        <title>Git 介绍 · Linux 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -86,6 +86,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
+    
+    <link rel="next" href="git-common-cmd.html" />
     
     
 
@@ -234,9 +236,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.3.1" data-path="shell-introduction.html">
+        <li class="chapter " data-level="1.3.1" data-path="../shell/shell-introduction.html">
             
-                <a href="shell-introduction.html">
+                <a href="../shell/shell-introduction.html">
             
                     
                         <b>1.3.1.</b>
@@ -351,9 +353,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../git/git.html">
+        <li class="chapter active" data-level="1.5.1" data-path="git.html">
             
-                <a href="../git/git.html">
+                <a href="git.html">
             
                     
                         <b>1.5.1.</b>
@@ -366,9 +368,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../git/git-common-cmd.html">
+        <li class="chapter " data-level="1.5.2" data-path="git-common-cmd.html">
             
-                <a href="../git/git-common-cmd.html">
+                <a href="git-common-cmd.html">
             
                     
                         <b>1.5.2.</b>
@@ -381,9 +383,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../git/git-commands.html">
+        <li class="chapter " data-level="1.5.3" data-path="git-commands.html">
             
-                <a href="../git/git-commands.html">
+                <a href="git-commands.html">
             
                     
                         <b>1.5.3.</b>
@@ -563,7 +565,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Shell简介</a>
+        <a href=".." >Git 介绍</a>
     </h1>
 </div>
 
@@ -578,77 +580,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="1-shell&#x7B80;&#x4ECB;">1. Shell&#x7B80;&#x4ECB;</h1>
-<p><code>shell</code>&#x662F;&#x7528;&#x6237;&#x548C;Linux&#x5185;&#x6838;&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x5C42;&#x4EE3;&#x7406;&#xFF0C;&#x89E3;&#x91CA;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x4F20;&#x9012;&#x7ED9;&#x5185;&#x6838;&#x3002;</p>
-<p>shell&#x662F;&#x4E00;&#x79CD;&#x811A;&#x672C;&#x8BED;&#x8A00;&#xFF08;&#x89E3;&#x91CA;&#x6027;&#x8BED;&#x8A00;&#xFF09;&#x3002;</p>
-<h2 id="11-&#x7F16;&#x8BD1;&#x578B;&#x8BED;&#x8A00;">1.1. &#x7F16;&#x8BD1;&#x578B;&#x8BED;&#x8A00;</h2>
-<p>&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x6700;&#x7EC8;&#x90FD;&#x9700;&#x8981;&#x88AB;&#x7FFB;&#x8BD1;&#x6210;<code>&#x4E8C;&#x8FDB;&#x5236;</code>&#x7684;&#x5F62;&#x5F0F;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x4E2D;&#x6267;&#x884C;&#x3002;C/C++&#x3001;Go&#x8BED;&#x8A00;&#x7B49;&#x8BED;&#x8A00;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x4E4B;&#x524D;&#x5C06;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#x5F62;&#x5F0F;&#xFF0C;&#x751F;&#x6210;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x6237;&#x6267;&#x884C;&#x7684;&#x662F;<code>&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</code>&#xFF0C;&#x770B;&#x4E0D;&#x5230;&#x6E90;&#x7801;&#x3002;</p>
-<p>&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EB;<code>&#x7F16;&#x8BD1;</code>&#xFF0C;&#x8FD9;&#x7C7B;&#x8BED;&#x8A00;&#x53EB;<code>&#x7F16;&#x8BD1;&#x578B;&#x8BED;&#x8A00;</code>&#xFF0C;&#x5B8C;&#x6210;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x7684;&#x8F6F;&#x4EF6;&#x53EB;<code>&#x7F16;&#x8BD1;&#x5668;</code>&#x3002;</p>
-<h2 id="12-&#x811A;&#x672C;&#x578B;&#x8BED;&#x8A00;">1.2. &#x811A;&#x672C;&#x578B;&#x8BED;&#x8A00;</h2>
-<p>&#x6709;&#x7684;&#x8BED;&#x8A00;&#xFF08;&#x4F8B;&#x5982;&#xFF1A; Shell&#x3001;JavaScript&#x3001;Python&#x3001;PHP&#x7B49;&#xFF09;&#x9700;&#x8981;&#x4E00;&#x8FB9;&#x6267;&#x884C;&#x4E00;&#x8FB9;&#x7FFB;&#x8BD1;&#xFF0C;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x6237;&#x9700;&#x8981;&#x62FF;&#x5230;&#x6E90;&#x7801;&#x624D;&#x80FD;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#x3002;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x540E;&#x4F1A;&#x5373;&#x65F6;&#x7FFB;&#x8BD1;&#xFF0C;&#x7FFB;&#x8BD1;&#x4E00;&#x90E8;&#x5206;&#x6267;&#x884C;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5E76;&#x4E0D;&#x7528;&#x7B49;&#x6240;&#x6709;&#x4EE3;&#x7801;&#x7FFB;&#x8BD1;&#x5B8C;&#x3002;</p>
-<p>&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EB;<code>&#x89E3;&#x91CA;</code>&#xFF0C;&#x8FD9;&#x7C7B;&#x8BED;&#x8A00;&#x53EB;<code>&#x89E3;&#x91CA;&#x578B;&#x8BED;&#x8A00;</code>&#x6216;<code>&#x811A;&#x672C;&#x8BED;&#x8A00;</code>&#xFF0C;&#x5B8C;&#x6210;&#x89E3;&#x91CA;&#x8FC7;&#x7A0B;&#x7684;&#x8F6F;&#x4EF6;&#x53EB;<code>&#x89E3;&#x91CA;&#x5668;</code>&#x3002;</p>
-<h1 id="2-&#x5E38;&#x89C1;&#x7684;shell&#x7C7B;&#x578B;">2. &#x5E38;&#x89C1;&#x7684;Shell&#x7C7B;&#x578B;</h1>
-<table>
-<thead>
-<tr>
-<th>shell&#x7C7B;&#x578B;</th>
-<th>&#x8BF4;&#x660E;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sh</td>
-<td>sh &#x662F; UNIX &#x4E0A;&#x7684;&#x6807;&#x51C6; shell&#xFF0C;&#x5F88;&#x591A; UNIX &#x7248;&#x672C;&#x90FD;&#x914D;&#x6709; sh&#x3002;</td>
-</tr>
-<tr>
-<td>bash</td>
-<td>bash shell &#x662F; Linux &#x7684;&#x9ED8;&#x8BA4; shell&#xFF0C;bash &#x517C;&#x5BB9; sh&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x3002;</td>
-</tr>
-<tr>
-<td>csh</td>
-<td>&#x8BED;&#x6CD5;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;C&#x8BED;&#x8A00;&#x3002;</td>
-</tr>
-<tr>
-<td>...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="21-&#x67E5;&#x770B;shell">2.1. &#x67E5;&#x770B;shell</h2>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">cat</span> /etc/shells
-/bin/sh
-/bin/bash
-/sbin/nologin
-/usr/bin/sh
-/usr/bin/bash
-/usr/sbin/nologin
-/bin/tcsh
-/bin/csh
-</code></pre>
-<p>&#x67E5;&#x770B;&#x9ED8;&#x8BA4;shell</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token keyword">echo</span> <span class="token variable">$SHELL</span>
-/bin/bash
-</code></pre>
-<p>sh &#x4E00;&#x822C;&#x88AB; bash &#x4EE3;&#x66FF;&#xFF0C;<code>/bin/sh</code>&#x5F80;&#x5F80;&#x662F;&#x6307;&#x5411;<code>/bin/bash</code>&#x7684;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#x3002;</p>
-<pre class="language-"><code class="lang-bash">$ <span class="token function">ls</span> -l /bin/sh
-lrwxrwxrwx. 1 root root 4 Mar  8  2018 /bin/sh -<span class="token operator">&gt;</span> <span class="token function">bash</span>
-</code></pre>
-<h1 id="3-&#x6267;&#x884C;shell">3. &#x6267;&#x884C;shell</h1>
-<pre class="language-"><code class="lang-bash"><span class="token shebang important">#!/bin/bash</span>
-<span class="token keyword">echo</span> <span class="token string">&quot;Hello World !&quot;</span>
-</code></pre>
-<p><code>#!/bin/bash</code>&#x8868;&#x793A;&#x4F7F;&#x7528;&#x7684;&#x89E3;&#x91CA;&#x5668;&#x662F;&#x4EC0;&#x4E48;&#x3002;</p>
-<h2 id="31-&#x4F5C;&#x4E3A;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;">3.1. &#x4F5C;&#x4E3A;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;</h2>
-<pre class="language-"><code class="lang-bash"><span class="token function">chmod</span> +x ./test.sh  <span class="token comment">#&#x4F7F;&#x811A;&#x672C;&#x5177;&#x6709;&#x6267;&#x884C;&#x6743;&#x9650;</span>
-./test.sh  <span class="token comment">#&#x6267;&#x884C;&#x811A;&#x672C;</span>
-</code></pre>
-<h2 id="32-&#x4F5C;&#x4E3A;&#x89E3;&#x91CA;&#x5668;&#x53C2;&#x6570;&#x8FD0;&#x884C;">3.2. &#x4F5C;&#x4E3A;&#x89E3;&#x91CA;&#x5668;&#x53C2;&#x6570;&#x8FD0;&#x884C;</h2>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x4F7F;&#x7528; sh &#x89E3;&#x91CA;&#x5668;</span>
-sh test.sh
-<span class="token comment"># &#x4F7F;&#x7528; bash &#x89E3;&#x91CA;&#x5668;</span>
-<span class="token function">bash</span> test.sh
-</code></pre>
+                                <h1 id="1-git&#x662F;&#x4EC0;&#x4E48;">1. Git&#x662F;&#x4EC0;&#x4E48;</h1>
+<h2 id="11-&#x6982;&#x8FF0;">1.1. &#x6982;&#x8FF0;</h2>
+<p>Git&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#xFF0C;&#x4E0E;SVN&#x7C7B;&#x4F3C;&#x7684;&#x96C6;&#x4E2D;&#x5316;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#x76F8;&#x6BD4;&#xFF0C;&#x96C6;&#x4E2D;&#x5316;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#x5982;&#x679C;&#x4E2D;&#x592E;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#x5219;&#x4F1A;&#x5F71;&#x54CD;&#x6570;&#x636E;&#x548C;&#x534F;&#x540C;&#x5F00;&#x53D1;&#x3002;</p>
+<p>Git&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x53EA;&#x662F;&#x63D0;&#x53D6;&#x6700;&#x65B0;&#x7248;&#x672C;&#x7684;&#x5FEB;&#x7167;&#xFF0C;&#x800C;&#x4E14;&#x5C06;&#x6574;&#x4E2A;&#x4EE3;&#x7801;&#x4ED3;&#x5E93;&#x955C;&#x50CF;&#x590D;&#x5236;&#x4E0B;&#x6765;&#x3002;&#x5982;&#x679C;&#x4EFB;&#x4F55;&#x534F;&#x540C;&#x5DE5;&#x4F5C;&#x7528;&#x7684;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x751F;&#x6545;&#x969C;&#x4E86;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x4EE3;&#x7801;&#x4ED3;&#x5E93;&#x6765;&#x6062;&#x590D;&#x3002;&#x800C;&#x4E14;&#x5728;&#x534F;&#x4F5C;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#x671F;&#x95F4;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x5230;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#xFF0C;&#x5F53;&#x534F;&#x4F5C;&#x670D;&#x52A1;&#x5668;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x540E;&#xFF0C;&#x4F60;&#x518D;&#x5C06;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x3002;</p>
+<h2 id="12-&#x7279;&#x6027;">1.2. &#x7279;&#x6027;</h2>
+<ul>
+<li>&#x80FD;&#x591F;&#x5BF9;&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;&#x548C;&#x591A;&#x4EBA;&#x534F;&#x4F5C;&#x5F00;&#x53D1;</li>
+<li>&#x62E5;&#x6709;&#x5F3A;&#x5927;&#x7684;&#x5206;&#x652F;&#x7279;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x80FD;&#x591F;&#x7075;&#x6D3B;&#x5730;&#x4EE5;&#x4E0D;&#x540C;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x534F;&#x540C;&#x5F00;&#x53D1;</li>
+<li>&#x5206;&#x5E03;&#x5F0F;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#xFF0C;&#x5373;&#x4F7F;&#x534F;&#x4F5C;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#xFF0C;&#x4E5F;&#x80FD;&#x7EE7;&#x7EED;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x6216;&#x6587;&#x4EF6;&#x5230;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#xFF0C;&#x5F53;&#x534F;&#x4F5C;&#x670D;&#x52A1;&#x5668;&#x6062;&#x590D;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x65F6;&#xFF0C;&#x518D;&#x5C06;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x3002;</li>
+<li>&#x5F53;&#x56E2;&#x961F;&#x4E2D;&#x67D0;&#x4E2A;&#x6210;&#x5458;&#x5B8C;&#x6210;&#x67D0;&#x4E2A;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;pull request&#x64CD;&#x4F5C;&#x6765;&#x901A;&#x77E5;&#x5176;&#x4ED6;&#x56E2;&#x961F;&#x6210;&#x5458;&#xFF0C;&#x5176;&#x4ED6;&#x56E2;&#x961F;&#x6210;&#x5458;&#x80FD;&#x591F;review code&#x540E;&#x518D;&#x5408;&#x5E76;&#x4EE3;&#x7801;&#x3002;</li>
+</ul>
+<h1 id="2-&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;git">2. &#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;Git</h1>
+<ul>
+<li>&#x80FD;&#x591F;&#x5BF9;&#x6587;&#x4EF6;&#x7248;&#x672C;&#x63A7;&#x5236;&#x548C;&#x591A;&#x4EBA;&#x534F;&#x4F5C;&#x5F00;&#x53D1;</li>
+<li>&#x62E5;&#x6709;&#x5F3A;&#x5927;&#x7684;&#x5206;&#x652F;&#x7279;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x80FD;&#x591F;&#x7075;&#x6D3B;&#x5730;&#x4EE5;&#x4E0D;&#x540C;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x534F;&#x540C;&#x5F00;&#x53D1;</li>
+<li>&#x5206;&#x5E03;&#x5F0F;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#xFF0C;&#x5373;&#x4F7F;&#x534F;&#x4F5C;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#xFF0C;&#x4E5F;&#x80FD;&#x7EE7;&#x7EED;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x6216;&#x6587;&#x4EF6;&#x5230;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#xFF0C;&#x5F53;&#x534F;&#x4F5C;&#x670D;&#x52A1;&#x5668;&#x6062;&#x590D;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x65F6;&#xFF0C;&#x518D;&#x5C06;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x3002;</li>
+<li>&#x5F53;&#x56E2;&#x961F;&#x4E2D;&#x67D0;&#x4E2A;&#x6210;&#x5458;&#x5B8C;&#x6210;&#x67D0;&#x4E2A;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;pull request&#x64CD;&#x4F5C;&#x6765;&#x901A;&#x77E5;&#x5176;&#x4ED6;&#x56E2;&#x961F;&#x6210;&#x5458;&#xFF0C;&#x5176;&#x4ED6;&#x56E2;&#x961F;&#x6210;&#x5458;&#x80FD;&#x591F;review code&#x540E;&#x518D;&#x5408;&#x5E76;&#x4EE3;&#x7801;&#x3002;</li>
+</ul>
+<h1 id="3-git-&#x547D;&#x4EE4;&#x601D;&#x7EF4;&#x5BFC;&#x56FE;">3. Git &#x547D;&#x4EE4;&#x601D;&#x7EF4;&#x5BFC;&#x56FE;</h1>
+<figure id="fig1.5.1.1"><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png" alt="git-map"><figcaption>&#x56FE;&#x7247; - git-map</figcaption></figure>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
-2018-09-23 17:44:10
+2018-09-23 20:27:01
 </span></footer>
                                 
                                 </section>
@@ -677,6 +630,10 @@ sh test.sh
             
                 
                 
+                <a href="git-common-cmd.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Git 常用命令">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -684,7 +641,7 @@ sh test.sh
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Shell简介","level":"1.3.1","depth":2,"next":{"title":"运维工具","level":"1.4","depth":1,"ref":"","articles":[{"title":"Ansible的使用","level":"1.4.1","depth":2,"path":"tools/ansible-usage.md","ref":"tools/ansible-usage.md","articles":[]},{"title":"Supervisor的使用","level":"1.4.2","depth":2,"path":"tools/supervisor-usage.md","ref":"tools/supervisor-usage.md","articles":[]},{"title":"Confd的使用","level":"1.4.3","depth":2,"path":"tools/confd-usage.md","ref":"tools/confd-usage.md","articles":[]},{"title":"NFS的使用","level":"1.4.4","depth":2,"path":"tools/nfs-usage.md","ref":"tools/nfs-usage.md","articles":[]}]},"previous":{"title":"Shell 脚本","level":"1.3","depth":1,"ref":"","articles":[{"title":"Shell简介","level":"1.3.1","depth":2,"path":"shell/shell-introduction.md","ref":"shell/shell-introduction.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"shell/shell-introduction.md","mtime":"2018-09-23T09:44:10.806Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-23T13:01:20.988Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git 介绍","level":"1.5.1","depth":2,"next":{"title":"Git 常用命令","level":"1.5.2","depth":2,"path":"git/git-common-cmd.md","ref":"git/git-common-cmd.md","articles":[]},"previous":{"title":"Git","level":"1.5","depth":1,"ref":"","articles":[{"title":"Git 介绍","level":"1.5.1","depth":2,"path":"git/git.md","ref":"git/git.md","articles":[]},{"title":"Git 常用命令","level":"1.5.2","depth":2,"path":"git/git-common-cmd.md","ref":"git/git-common-cmd.md","articles":[]},{"title":"Git 命令分类","level":"1.5.3","depth":2,"path":"git/git-commands.md","ref":"git/git-commands.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"git/git.md","mtime":"2018-09-23T12:27:01.887Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-23T13:01:20.988Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
