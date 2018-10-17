@@ -597,7 +597,19 @@ confd --help
 </code></pre>
 <h1 id="2-confd&#x7684;&#x914D;&#x7F6E;">2. confd&#x7684;&#x914D;&#x7F6E;</h1>
 <p><code>Confd</code>&#x901A;&#x8FC7;&#x8BFB;&#x53D6;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x6765;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x5BF9;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x53EF;&#x4EE5;&#x662F;<code>etcd</code>&#xFF0C;<code>redis</code>&#x7B49;&#xFF0C;&#x5176;&#x4E2D;etcd&#x7684;v3&#x7248;&#x672C;&#x5BF9;&#x5E94;&#x7684;&#x5B58;&#x50A8;&#x540E;&#x7AEF;&#x4E3A;<code>etcdv3</code>&#x3002;</p>
-<h2 id="21-&#x521B;&#x5EFA;confdir">2.1. &#x521B;&#x5EFA;confdir</h2>
+<h2 id="21-confdtoml">2.1. confd.toml</h2>
+<p><code>confd.toml</code>&#x4E3A;confd&#x670D;&#x52A1;&#x672C;&#x8EAB;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x4E3B;&#x8981;&#x8BB0;&#x5F55;&#x4E86;&#x4F7F;&#x7528;&#x7684;&#x5B58;&#x50A8;&#x540E;&#x7AEF;&#x3001;&#x534F;&#x8BAE;&#x3001;confdir&#x7B49;&#x53C2;&#x6570;&#x3002;</p>
+<pre class="language-"><code>backend = &quot;etcdv3&quot;
+confdir = &quot;/etc/confd&quot;
+log-level = &quot;debug&quot;
+interval = 5
+nodes = [
+  &quot;http://192.168.10.4:12379&quot;,
+]
+scheme = &quot;http&quot;
+watch = true
+</code></pre><p>&#x5176;&#x4E2D;<code>watch</code>&#x53C2;&#x6570;&#x8868;&#x793A;&#x5B9E;&#x65F6;&#x76D1;&#x542C;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x5982;&#x6709;&#x53D8;&#x5316;&#x5219;&#x66F4;&#x65B0;confd&#x7BA1;&#x7406;&#x7684;&#x914D;&#x7F6E;&#x3002;</p>
+<h2 id="22-&#x521B;&#x5EFA;confdir">2.2. &#x521B;&#x5EFA;confdir</h2>
 <p>confdir&#x5E95;&#x4E0B;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x76EE;&#x5F55;:</p>
 <ul>
 <li><code>conf.d</code>:confd&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x914D;&#x7F6E;&#x7684;&#x751F;&#x6210;&#x903B;&#x8F91;&#xFF0C;&#x4F8B;&#x5982;&#x6A21;&#x677F;&#x6E90;&#xFF0C;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x5BF9;&#x5E94;&#x7684;keys&#xFF0C;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x7B49;&#x3002;</li>
@@ -605,7 +617,7 @@ confd --help
 </ul>
 <pre class="language-"><code class="lang-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> -p /etc/confd/<span class="token punctuation">{</span>conf.d,templates<span class="token punctuation">}</span>
 </code></pre>
-<h2 id="22-template-resources">2.2. Template Resources</h2>
+<h3 id="221-template-resources">2.2.1. Template Resources</h3>
 <p>&#x6A21;&#x677F;&#x6E90;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F;<code>TOML</code>&#x683C;&#x5F0F;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x914D;&#x7F6E;&#x7684;&#x751F;&#x6210;&#x903B;&#x8F91;&#xFF0C;&#x4F8B;&#x5982;&#x6A21;&#x677F;&#x6E90;&#xFF0C;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x5BF9;&#x5E94;&#x7684;keys&#xFF0C;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x7B49;&#x3002;&#x9ED8;&#x8BA4;&#x76EE;&#x5F55;&#x5728;<code>/etc/confd/conf.d</code>&#x3002;</p>
 <p>&#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;</p>
 <p><strong>&#x5FC5;&#x8981;&#x53C2;&#x6570;</strong></p>
@@ -636,7 +648,7 @@ keys = [
 ]
 check_cmd = &quot;/usr/sbin/nginx -t -c {{.src}}&quot;
 reload_cmd = &quot;/usr/sbin/service nginx reload&quot;
-</code></pre><h2 id="23-template">2.3. Template</h2>
+</code></pre><h3 id="222-template">2.2.2. Template</h3>
 <p><code>Template</code>&#x5B9A;&#x4E49;&#x4E86;&#x5355;&#x4E00;&#x5E94;&#x7528;&#x914D;&#x7F6E;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x9ED8;&#x8BA4;&#x5B58;&#x50A8;&#x5728;<code>/etc/confd/templates</code>&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x7B26;&#x5408;Go&#x7684;<a href="http://golang.org/pkg/text/template/" target="_blank"><code>text/template</code></a>&#x683C;&#x5F0F;&#x3002;</p>
 <p>&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x5E38;&#x7528;&#x51FD;&#x6570;&#x6709;<code>base</code>&#xFF0C;<code>get</code>&#xFF0C;<code>gets</code>&#xFF0C;<code>lsdir</code>&#xFF0C;<code>json</code>&#x7B49;&#x3002;&#x5177;&#x4F53;&#x53EF;&#x53C2;&#x8003;<a href="https://github.com/kelseyhightower/confd/blob/master/docs/templates.md&#x3002;" target="_blank">https://github.com/kelseyhightower/confd/blob/master/docs/templates.md&#x3002;</a></p>
 <p>&#x4F8B;&#x5B50;&#xFF1A;</p>
@@ -664,7 +676,10 @@ etcdctl --endpoints<span class="token operator">=</span><span class="token varia
 </code></pre>
 <h1 id="4-&#x542F;&#x52A8;confd&#x7684;&#x670D;&#x52A1;">4. &#x542F;&#x52A8;confd&#x7684;&#x670D;&#x52A1;</h1>
 <p>confd&#x652F;&#x6301;&#x4EE5;<code>daemon</code>&#x6216;&#x8005;<code>onetime</code>&#x4E24;&#x79CD;&#x6A21;&#x5F0F;&#x8FD0;&#x884C;&#xFF0C;&#x5F53;&#x4EE5;<code>daemon</code>&#x6A21;&#x5F0F;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;confd&#x4F1A;&#x76D1;&#x542C;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x7684;&#x914D;&#x7F6E;&#x53D8;&#x5316;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x914D;&#x7F6E;&#x6A21;&#x677F;&#x52A8;&#x6001;&#x751F;&#x6210;&#x76EE;&#x6807;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x4EE5;<code>daemon</code>&#x6A21;&#x5F0F;&#x8FD0;&#x884C;&#xFF0C;&#x5219;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<p>confd&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>-config-file</code>&#x53C2;&#x6570;&#x6765;&#x6307;&#x5B9A;confd&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x5C06;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#x5199;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<pre class="language-"><code class="lang-bash">/usr/local/bin/confd -config-file /etc/confd/conf/confd.toml
+</code></pre>
+<p>&#x5982;&#x679C;&#x4EE5;<code>daemon</code>&#x6A21;&#x5F0F;&#x8FD0;&#x884C;&#xFF0C;&#x5728;&#x547D;&#x4EE4;&#x540E;&#x9762;&#x6DFB;&#x52A0;<code>&amp;</code>&#x7B26;&#x53F7;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre class="language-"><code class="lang-bash">confd -watch -backend etcdv3 -node http://172.16.5.4:12379 <span class="token operator">&amp;</span>
 </code></pre>
 <p>&#x4EE5;&#x4E0B;&#x4EE5;<code>onetime</code>&#x6A21;&#x5F0F;&#x8FD0;&#x884C;&#x4E3A;&#x4F8B;&#x3002;&#x5176;&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x540E;&#x7AEF;&#x5B58;&#x50A8;&#x7C7B;&#x578B;&#x662F;<code>etcdv3</code>&#x3002;</p>
@@ -828,13 +843,85 @@ pools:
 
      - 10.233.111.21:6379:1
 </code></pre>
+<h1 id="7-confd&#x7684;&#x547D;&#x4EE4;">7. confd&#x7684;&#x547D;&#x4EE4;</h1>
+<pre class="language-"><code class="lang-bash">$ confd --help
+Usage of confd:
+  -app-id string
+        Vault app-id to use with the app-id backend <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>vault and auth-type<span class="token operator">=</span>app-id<span class="token punctuation">)</span>
+  -auth-token string
+        Auth bearer token to use
+  -auth-type string
+        Vault auth backend <span class="token function">type</span> to use <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>vault<span class="token punctuation">)</span>
+  -backend string
+        backend to use <span class="token punctuation">(</span>default <span class="token string">&quot;etcd&quot;</span><span class="token punctuation">)</span>
+  -basic-auth
+        Use Basic Auth to authenticate <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>consul and -backend<span class="token operator">=</span>etcd<span class="token punctuation">)</span>
+  -client-ca-keys string
+        client ca keys
+  -client-cert string
+        the client cert
+  -client-key string
+        the client key
+  -confdir string
+        confd conf directory <span class="token punctuation">(</span>default <span class="token string">&quot;/etc/confd&quot;</span><span class="token punctuation">)</span>
+  -config-file string
+        the confd config <span class="token function">file</span> <span class="token punctuation">(</span>default <span class="token string">&quot;/etc/confd/confd.toml&quot;</span><span class="token punctuation">)</span>
+  -file value
+        the YAML <span class="token function">file</span> to <span class="token function">watch</span> <span class="token keyword">for</span> changes <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>file<span class="token punctuation">)</span>
+  -filter string
+        files filter <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>file<span class="token punctuation">)</span> <span class="token punctuation">(</span>default <span class="token string">&quot;*&quot;</span><span class="token punctuation">)</span>
+  -interval int
+        backend polling interval <span class="token punctuation">(</span>default 600<span class="token punctuation">)</span>
+  -keep-stage-file
+        keep staged files
+  -log-level string
+        level <span class="token function">which</span> confd should log messages
+  -node value
+        list of backend nodes
+  -noop
+        only show pending changes
+  -onetime
+        run once and <span class="token keyword">exit</span>
+  -password string
+        the password to authenticate with <span class="token punctuation">(</span>only used with vault and etcd backends<span class="token punctuation">)</span>
+  -path string
+        Vault <span class="token function">mount</span> path of the auth method <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>vault<span class="token punctuation">)</span>
+  -prefix string
+        key path prefix
+  -role-id string
+        Vault role-id to use with the AppRole, Kubernetes backends <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>vault and either auth-type<span class="token operator">=</span>app-role or auth-type<span class="token operator">=</span>kubernetes<span class="token punctuation">)</span>
+  -scheme string
+        the backend URI scheme <span class="token keyword">for</span> nodes retrieved from DNS SRV records <span class="token punctuation">(</span>http or https<span class="token punctuation">)</span> <span class="token punctuation">(</span>default <span class="token string">&quot;http&quot;</span><span class="token punctuation">)</span>
+  -secret-id string
+        Vault secret-id to use with the AppRole backend <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>vault and auth-type<span class="token operator">=</span>app-role<span class="token punctuation">)</span>
+  -secret-keyring string
+        path to armored PGP secret keyring <span class="token punctuation">(</span>for use with crypt functions<span class="token punctuation">)</span>
+  -separator string
+        the separator to replace <span class="token string">&apos;/&apos;</span> with when looking up keys <span class="token keyword">in</span> the backend, prefixed <span class="token string">&apos;/&apos;</span> will also be removed <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>redis<span class="token punctuation">)</span>
+  -srv-domain string
+        the name of the resource record
+  -srv-record string
+        the SRV record to search <span class="token keyword">for</span> backends nodes. Example: _etcd-client._tcp.example.com
+  -sync-only
+        <span class="token function">sync</span> without check_cmd and reload_cmd
+  -table string
+        the name of the DynamoDB table <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>dynamodb<span class="token punctuation">)</span>
+  -user-id string
+        Vault user-id to use with the app-id backend <span class="token punctuation">(</span>only used with -backend<span class="token operator">=</span>value and auth-type<span class="token operator">=</span>app-id<span class="token punctuation">)</span>
+  -username string
+        the username to authenticate as <span class="token punctuation">(</span>only used with vault and etcd backends<span class="token punctuation">)</span>
+  -version
+        print version and <span class="token keyword">exit</span>
+  -watch
+        <span class="token function">enable</span> <span class="token function">watch</span> support
+</code></pre>
 <p>&#x53C2;&#x8003;&#x6587;&#x7AE0;&#xFF1A;</p>
 <p><a href="https://github.com/kelseyhightower/confd/blob/master/docs/installation.md" target="_blank">https://github.com/kelseyhightower/confd/blob/master/docs/installation.md</a></p>
 <p><a href="https://github.com/kelseyhightower/confd/blob/master/docs/quick-start-guide.md" target="_blank">https://github.com/kelseyhightower/confd/blob/master/docs/quick-start-guide.md</a></p>
 <p><a href="https://github.com/kelseyhightower/confd/blob/master/docs/template-resources.md" target="_blank">https://github.com/kelseyhightower/confd/blob/master/docs/template-resources.md</a></p>
 <p><a href="https://github.com/kelseyhightower/confd/blob/master/docs/templates.md" target="_blank">https://github.com/kelseyhightower/confd/blob/master/docs/templates.md</a></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
-2018-09-23 17:44:10
+2018-10-17 19:56:11
 </span></footer>
                                 
                                 </section>
@@ -878,7 +965,7 @@ pools:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Confd的使用","level":"1.4.3","depth":2,"next":{"title":"NFS的使用","level":"1.4.4","depth":2,"path":"tools/nfs-usage.md","ref":"tools/nfs-usage.md","articles":[]},"previous":{"title":"Supervisor的使用","level":"1.4.2","depth":2,"path":"tools/supervisor-usage.md","ref":"tools/supervisor-usage.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"tools/confd-usage.md","mtime":"2018-09-23T09:44:10.807Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-23T13:19:52.039Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Confd的使用","level":"1.4.3","depth":2,"next":{"title":"NFS的使用","level":"1.4.4","depth":2,"path":"tools/nfs-usage.md","ref":"tools/nfs-usage.md","articles":[]},"previous":{"title":"Supervisor的使用","level":"1.4.2","depth":2,"path":"tools/supervisor-usage.md","ref":"tools/supervisor-usage.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"tools/confd-usage.md","mtime":"2018-10-17T11:56:11.086Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-17T11:57:28.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
