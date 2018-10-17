@@ -20,7 +20,25 @@ confd --help
 
 `Confd`通过读取后端存储的配置信息来动态更新对应的配置文件，对应的后端存储可以是`etcd`，`redis`等，其中etcd的v3版本对应的存储后端为`etcdv3`。
 
-## 2.1. 创建confdir
+## 2.1. confd.toml
+
+`confd.toml`为confd服务本身的配置文件，主要记录了使用的存储后端、协议、confdir等参数。
+
+```
+backend = "etcdv3"
+confdir = "/etc/confd"
+log-level = "debug"
+interval = 5
+nodes = [
+  "http://192.168.10.4:12379",
+]
+scheme = "http"
+watch = true
+```
+
+其中`watch`参数表示实时监听后端存储的变化，如有变化则更新confd管理的配置。
+
+## 2.2. 创建confdir
 
 confdir底下包含两个目录:
 
@@ -31,7 +49,7 @@ confdir底下包含两个目录:
 sudo mkdir -p /etc/confd/{conf.d,templates}
 ```
 
-## 2.2. Template Resources
+### 2.2.1. Template Resources
 
 模板源配置文件是`TOML`格式的文件，主要包含配置的生成逻辑，例如模板源，后端存储对应的keys，命令执行等。默认目录在`/etc/confd/conf.d`。
 
@@ -70,7 +88,7 @@ check_cmd = "/usr/sbin/nginx -t -c {{.src}}"
 reload_cmd = "/usr/sbin/service nginx reload"
 ```
 
-## 2.3. Template
+### 2.2.2. Template
 
 `Template`定义了单一应用配置的模板，默认存储在`/etc/confd/templates`目录下，模板文件符合Go的[`text/template`](http://golang.org/pkg/text/template/)格式。
 
@@ -112,7 +130,13 @@ etcdctl --endpoints=$endpoints put /services/web/cust1/1 '{"IP": "10.0.0.1"}'
 
 confd支持以`daemon`或者`onetime`两种模式运行，当以`daemon`模式运行时，confd会监听后端存储的配置变化，并根据配置模板动态生成目标配置文件。
 
-如果以`daemon`模式运行，则执行以下命令：
+confd可以使用`-config-file`参数来指定confd的配置文件，而将其他参数写在配置文件中。
+
+```bash
+/usr/local/bin/confd -config-file /etc/confd/conf/confd.toml
+```
+
+如果以`daemon`模式运行，在命令后面添加`&`符号，例如：
 
 ```bash
 confd -watch -backend etcdv3 -node http://172.16.5.4:12379 &
@@ -306,6 +330,83 @@ pools:
 
      - 10.233.111.21:6379:1
 ```
+
+# 7. confd的命令
+
+```bash
+$ confd --help
+Usage of confd:
+  -app-id string
+    	Vault app-id to use with the app-id backend (only used with -backend=vault and auth-type=app-id)
+  -auth-token string
+    	Auth bearer token to use
+  -auth-type string
+    	Vault auth backend type to use (only used with -backend=vault)
+  -backend string
+    	backend to use (default "etcd")
+  -basic-auth
+    	Use Basic Auth to authenticate (only used with -backend=consul and -backend=etcd)
+  -client-ca-keys string
+    	client ca keys
+  -client-cert string
+    	the client cert
+  -client-key string
+    	the client key
+  -confdir string
+    	confd conf directory (default "/etc/confd")
+  -config-file string
+    	the confd config file (default "/etc/confd/confd.toml")
+  -file value
+    	the YAML file to watch for changes (only used with -backend=file)
+  -filter string
+    	files filter (only used with -backend=file) (default "*")
+  -interval int
+    	backend polling interval (default 600)
+  -keep-stage-file
+    	keep staged files
+  -log-level string
+    	level which confd should log messages
+  -node value
+    	list of backend nodes
+  -noop
+    	only show pending changes
+  -onetime
+    	run once and exit
+  -password string
+    	the password to authenticate with (only used with vault and etcd backends)
+  -path string
+    	Vault mount path of the auth method (only used with -backend=vault)
+  -prefix string
+    	key path prefix
+  -role-id string
+    	Vault role-id to use with the AppRole, Kubernetes backends (only used with -backend=vault and either auth-type=app-role or auth-type=kubernetes)
+  -scheme string
+    	the backend URI scheme for nodes retrieved from DNS SRV records (http or https) (default "http")
+  -secret-id string
+    	Vault secret-id to use with the AppRole backend (only used with -backend=vault and auth-type=app-role)
+  -secret-keyring string
+    	path to armored PGP secret keyring (for use with crypt functions)
+  -separator string
+    	the separator to replace '/' with when looking up keys in the backend, prefixed '/' will also be removed (only used with -backend=redis)
+  -srv-domain string
+    	the name of the resource record
+  -srv-record string
+    	the SRV record to search for backends nodes. Example: _etcd-client._tcp.example.com
+  -sync-only
+    	sync without check_cmd and reload_cmd
+  -table string
+    	the name of the DynamoDB table (only used with -backend=dynamodb)
+  -user-id string
+    	Vault user-id to use with the app-id backend (only used with -backend=value and auth-type=app-id)
+  -username string
+    	the username to authenticate as (only used with vault and etcd backends)
+  -version
+    	print version and exit
+  -watch
+    	enable watch support
+```
+
+
 
 
 
