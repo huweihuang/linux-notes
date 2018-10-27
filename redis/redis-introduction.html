@@ -1,0 +1,942 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redis介绍 · Linux 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="胡伟煌">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="redis-cluster.html" />
+    
+    
+
+    
+        <link rel="shortcut icon" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../images/favicon.ico'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/favicon.ico">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon.ico">
+        
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"huweihuang/linux-notes","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com" target="_blank" class="custom-link">胡伟煌的博客</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Linux 文件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../file/linux-introduction.html">
+            
+                <a href="../file/linux-introduction.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    Linux 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../file/linux-file-permission.html">
+            
+                <a href="../file/linux-file-permission.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    Linux 文件权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Shell 脚本
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../shell/shell-introduction.html">
+            
+                <a href="../shell/shell-introduction.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    Shell简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    运维工具
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../tools/ansible-usage.html">
+            
+                <a href="../tools/ansible-usage.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    Ansible的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../tools/supervisor-usage.html">
+            
+                <a href="../tools/supervisor-usage.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Supervisor的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../tools/confd-usage.html">
+            
+                <a href="../tools/confd-usage.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Confd的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../tools/nfs-usage.html">
+            
+                <a href="../tools/nfs-usage.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    NFS的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../git/git.html">
+            
+                <a href="../git/git.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Git 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../git/git-common-cmd.html">
+            
+                <a href="../git/git-common-cmd.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Git 常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../git/git-commands.html">
+            
+                <a href="../git/git-commands.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Git 命令分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Nginx
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../nginx/install-nginx.html">
+            
+                <a href="../nginx/install-nginx.html">
+            
+                    
+                        <b>1.6.1.</b>
+                    
+                    Nginx安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../nginx/nginx-proxy.html">
+            
+                <a href="../nginx/nginx-proxy.html">
+            
+                    
+                        <b>1.6.2.</b>
+                    
+                    Nginx作为反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../nginx/nginx-http.html">
+            
+                <a href="../nginx/nginx-http.html">
+            
+                    
+                        <b>1.6.3.</b>
+                    
+                    Nginx http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Keepalived
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../keepalived/keepalived-introduction.html">
+            
+                <a href="../keepalived/keepalived-introduction.html">
+            
+                    
+                        <b>1.7.1.</b>
+                    
+                    Keepalived简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../keepalived/install-keepalived.html">
+            
+                <a href="../keepalived/install-keepalived.html">
+            
+                    
+                        <b>1.7.2.</b>
+                    
+                    Keepalived的安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../keepalived/keepalived-conf.html">
+            
+                <a href="../keepalived/keepalived-conf.html">
+            
+                    
+                        <b>1.7.3.</b>
+                    
+                    Keepalived的配置详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                        <b>1.8.</b>
+                    
+                    TCP/IP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../tcpip/tcpip-basics.html">
+            
+                <a href="../tcpip/tcpip-basics.html">
+            
+                    
+                        <b>1.8.1.</b>
+                    
+                    TCP/IP基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../tcpip/ip.html">
+            
+                <a href="../tcpip/ip.html">
+            
+                    
+                        <b>1.8.2.</b>
+                    
+                    IP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../tcpip/tcp-udp.html">
+            
+                <a href="../tcpip/tcp-udp.html">
+            
+                    
+                        <b>1.8.3.</b>
+                    
+                    TCP与UDP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../tcpip/http-basics.html">
+            
+                <a href="../tcpip/http-basics.html">
+            
+                    
+                        <b>1.8.4.</b>
+                    
+                    Http基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                        <b>1.9.</b>
+                    
+                    Redis
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.9.1" data-path="redis-introduction.html">
+            
+                <a href="redis-introduction.html">
+            
+                    
+                        <b>1.9.1.</b>
+                    
+                    Redis介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="redis-cluster.html">
+            
+                <a href="redis-cluster.html">
+            
+                    
+                        <b>1.9.2.</b>
+                    
+                    Redis集群模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="redis-sentinel.html">
+            
+                <a href="redis-sentinel.html">
+            
+                    
+                        <b>1.9.3.</b>
+                    
+                    Redis主从及哨兵模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                        <b>1.10.</b>
+                    
+                    Mysql
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../mysql/mysql-commands.html">
+            
+                <a href="../mysql/mysql-commands.html">
+            
+                    
+                        <b>1.10.1.</b>
+                    
+                    Mysql常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Redis介绍</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="1-redis&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF08;what&#xFF09;">1. redis&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#xFF08;what&#xFF09;</h1>
+<p>Redis&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#xFF08;BSD&#x8BB8;&#x53EF;&#xFF09;&#xFF0C;&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x53EF;&#x7528;&#x4F5C;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x548C;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4EE3;&#x7406;&#x3002;&#x5B83;&#x652F;&#x6301;&#x5B57;&#x7B26;&#x4E32;&#x3001;&#x54C8;&#x5E0C;&#x8868;&#x3001;&#x5217;&#x8868;&#x3001;&#x96C6;&#x5408;&#x3001;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF0C;&#x4F4D;&#x56FE;&#xFF0C;hyperloglogs&#x7B49;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;&#x5185;&#x7F6E;&#x590D;&#x5236;&#x3001;Lua&#x811A;&#x672C;&#x3001;LRU&#x6536;&#x56DE;&#x3001;&#x4E8B;&#x52A1;&#x4EE5;&#x53CA;&#x4E0D;&#x540C;&#x7EA7;&#x522B;&#x78C1;&#x76D8;&#x6301;&#x4E45;&#x5316;&#x529F;&#x80FD;&#xFF0C;&#x540C;&#x65F6;&#x901A;&#x8FC7;Redis Sentinel&#x63D0;&#x4F9B;&#x9AD8;&#x53EF;&#x7528;&#xFF0C;&#x901A;&#x8FC7;Redis Cluster&#x63D0;&#x4F9B;&#x81EA;&#x52A8;&#x5206;&#x533A;&#x3002;</p>
+<p>Redis&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7684;&#x4F7F;&#x7528;ANSI C&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x3001;&#x9075;&#x5B88;BSD&#x534F;&#x8BAE;&#x3001;&#x652F;&#x6301;&#x7F51;&#x7EDC;&#x3001;&#x53EF;&#x57FA;&#x4E8E;&#x5185;&#x5B58;&#x4EA6;&#x53EF;&#x6301;&#x4E45;&#x5316;&#x7684;&#x65E5;&#x5FD7;&#x578B;&#x3001;Key-Value&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x591A;&#x79CD;&#x8BED;&#x8A00;&#x7684;API&#x3002;</p>
+<h1 id="2-&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;redis&#xFF1F;&#xFF08;why&#xFF09;">2. &#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;redis&#xFF1F;&#xFF08;why&#xFF09;</h1>
+<h2 id="21-redis&#x7684;&#x7279;&#x70B9;">2.1. redis&#x7684;&#x7279;&#x70B9;</h2>
+<ol>
+<li>Redis&#x652F;&#x6301;&#x6570;&#x636E;&#x7684;&#x6301;&#x4E45;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x4FDD;&#x6301;&#x5728;&#x78C1;&#x76D8;&#x4E2D;&#xFF0C;&#x91CD;&#x542F;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x518D;&#x6B21;&#x52A0;&#x8F7D;&#x8FDB;&#x884C;&#x4F7F;&#x7528;&#x3002;</li>
+<li>Redis&#x4E0D;&#x4EC5;&#x4EC5;&#x652F;&#x6301;&#x7B80;&#x5355;&#x7684;key-value&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x63D0;&#x4F9B;list&#xFF0C;set&#xFF0C;zset&#xFF0C;hash&#x7B49;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x5B58;&#x50A8;&#x3002;</li>
+<li>Redis&#x652F;&#x6301;&#x6570;&#x636E;&#x7684;&#x5907;&#x4EFD;&#xFF0C;&#x5373;master-slave&#x6A21;&#x5F0F;&#x7684;&#x6570;&#x636E;&#x5907;&#x4EFD;&#x3002;</li>
+</ol>
+<h2 id="22-redis&#x7684;&#x4F18;&#x52BF;">2.2. redis&#x7684;&#x4F18;&#x52BF;</h2>
+<ol>
+<li>&#x6027;&#x80FD;&#x6781;&#x9AD8; &#x2013; Redis&#x80FD;&#x8BFB;&#x7684;&#x901F;&#x5EA6;&#x662F;110000&#x6B21;/s,&#x5199;&#x7684;&#x901F;&#x5EA6;&#x662F;81000&#x6B21;/s &#x3002;</li>
+<li>&#x4E30;&#x5BCC;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B; &#x2013; Redis&#x652F;&#x6301;&#x4E8C;&#x8FDB;&#x5236;&#x6848;&#x4F8B;&#x7684; Strings, Lists, Hashes, Sets &#x53CA; Ordered Sets &#x6570;&#x636E;&#x7C7B;&#x578B;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x539F;&#x5B50; &#x2013; Redis&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x539F;&#x5B50;&#x6027;&#x7684;&#xFF0C;&#x540C;&#x65F6;Redis&#x8FD8;&#x652F;&#x6301;&#x5BF9;&#x51E0;&#x4E2A;&#x64CD;&#x4F5C;&#x5168;&#x5E76;&#x540E;&#x7684;&#x539F;&#x5B50;&#x6027;&#x6267;&#x884C;&#x3002;</li>
+<li>&#x4E30;&#x5BCC;&#x7684;&#x7279;&#x6027; &#x2013; Redis&#x8FD8;&#x652F;&#x6301; publish/subscribe, &#x901A;&#x77E5;, key &#x8FC7;&#x671F;&#x7B49;&#x7B49;&#x7279;&#x6027;&#x3002;</li>
+</ol>
+<h2 id="23-redis&#x4E0E;&#x5176;&#x4ED6;key-value&#x5B58;&#x50A8;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;">2.3. redis&#x4E0E;&#x5176;&#x4ED6;key-value&#x5B58;&#x50A8;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;</h2>
+<ol>
+<li>Redis&#x6709;&#x7740;&#x66F4;&#x4E3A;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5E76;&#x4E14;&#x63D0;&#x4F9B;&#x5BF9;&#x4ED6;&#x4EEC;&#x7684;&#x539F;&#x5B50;&#x6027;&#x64CD;&#x4F5C;&#xFF0C;Redis&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x540C;&#x65F6;&#x5BF9;&#x7A0B;&#x5E8F;&#x5458;&#x900F;&#x660E;&#xFF0C;&#x65E0;&#x9700;&#x8FDB;&#x884C;&#x989D;&#x5916;&#x7684;&#x62BD;&#x8C61;&#x3002;</li>
+<li>Redis&#x8FD0;&#x884C;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x6301;&#x4E45;&#x5316;&#x5230;&#x78C1;&#x76D8;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5BF9;&#x4E0D;&#x540C;&#x6570;&#x636E;&#x96C6;&#x8FDB;&#x884C;&#x9AD8;&#x901F;&#x8BFB;&#x5199;&#x65F6;&#x9700;&#x8981;&#x6743;&#x8861;&#x5185;&#x5B58;&#xFF0C;&#x5E94;&#x4E3A;&#x6570;&#x636E;&#x91CF;&#x4E0D;&#x80FD;&#x5927;&#x4E8E;&#x786C;&#x4EF6;&#x5185;&#x5B58;&#x3002;</li>
+<li>&#x76F8;&#x6BD4;&#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x76F8;&#x540C;&#x7684;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x64CD;&#x4F5C;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x8FD9;&#x6837;Redis&#x53EF;&#x4EE5;&#x505A;&#x5F88;&#x591A;&#x5185;&#x90E8;&#x590D;&#x6742;&#x6027;&#x5F88;&#x5F3A;&#x7684;&#x4E8B;&#x60C5;&#x3002;</li>
+<li>&#x5728;&#x78C1;&#x76D8;&#x683C;&#x5F0F;&#x65B9;&#x9762;&#x4ED6;&#x4EEC;&#x662F;&#x7D27;&#x51D1;&#x7684;&#x4EE5;&#x8FFD;&#x52A0;&#x7684;&#x65B9;&#x5F0F;&#x4EA7;&#x751F;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x3002;</li>
+</ol>
+<h1 id="3-&#x5982;&#x4F55;&#x4F7F;&#x7528;redis&#xFF1F;&#xFF08;how&#xFF09;">3. &#x5982;&#x4F55;&#x4F7F;&#x7528;redis&#xFF1F;&#xFF08;how&#xFF09;</h1>
+<h2 id="31-redis&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;">3.1. redis&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x6570;&#x636E;&#x7C7B;&#x578B;</th>
+<th>&#x6982;&#x5FF5;</th>
+<th>&#x5E38;&#x7528;&#x547D;&#x4EE4;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String(&#x5B57;&#x7B26;&#x4E32;)</td>
+<td>key-value&#x578B;</td>
+<td>SET &#xFF0C;GET</td>
+</tr>
+<tr>
+<td>Hash(&#x54C8;&#x5E0C;)</td>
+<td>field-value,&#x9002;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF08;&#x5BF9;&#x8C61;&#x540D;-&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x503C;&#xFF09;</td>
+<td>HMSET&#xFF0C;HEGTALL</td>
+</tr>
+<tr>
+<td>List(&#x5217;&#x8868;)</td>
+<td>string&#x7C7B;&#x578B;&#x7684;&#x6709;&#x5E8F;&#x5217;&#x8868;&#xFF0C;&#x6309;&#x7167;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x6392;&#x5E8F;</td>
+<td>lpush&#xFF0C;lrange</td>
+</tr>
+<tr>
+<td>Set(&#x96C6;&#x5408;)</td>
+<td>string&#x7C7B;&#x578B;&#x7684;&#x65E0;&#x5E8F;&#x96C6;&#x5408;</td>
+<td>sadd&#xFF0C;smembers</td>
+</tr>
+<tr>
+<td>zset(sorted set&#xFF1A;&#x6709;&#x5E8F;&#x96C6;&#x5408;)</td>
+<td>string&#x7C7B;&#x578B;&#x5143;&#x7D20;&#x7684;&#x96C6;&#x5408;,&#x4E14;&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x7684;&#x6210;&#x5458;&#x3002;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x5173;&#x8054;&#x4E00;&#x4E2A;double&#x503C;&#x6765;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;double&#x503C;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x4F46;&#x5143;&#x7D20;&#x4E0D;&#x80FD;&#x91CD;&#x590D;&#x3002;</td>
+<td>zadd&#xFF0C;ZRANGEBYSCORE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="32-redis&#x5E38;&#x7528;&#x547D;&#x4EE4;">3.2. redis&#x5E38;&#x7528;&#x547D;&#x4EE4;</h2>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
+2018-10-27 17:58:38
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="redis-cluster.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Redis集群模式部署">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Redis介绍","level":"1.9.1","depth":2,"next":{"title":"Redis集群模式部署","level":"1.9.2","depth":2,"path":"redis/redis-cluster.md","ref":"redis/redis-cluster.md","articles":[]},"previous":{"title":"Redis","level":"1.9","depth":1,"ref":"","articles":[{"title":"Redis介绍","level":"1.9.1","depth":2,"path":"redis/redis-introduction.md","ref":"redis/redis-introduction.md","articles":[]},{"title":"Redis集群模式部署","level":"1.9.2","depth":2,"path":"redis/redis-cluster.md","ref":"redis/redis-cluster.md","articles":[]},{"title":"Redis主从及哨兵模式部署","level":"1.9.3","depth":2,"path":"redis/redis-sentinel.md","ref":"redis/redis-sentinel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.1","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":5,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.2","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":6,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.2"},{"backlink":"tcpip/ip.html#fig1.8.2.3","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":7,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.3"},{"backlink":"tcpip/ip.html#fig1.8.2.4","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":8,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.0.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.4"},{"backlink":"tcpip/ip.html#fig1.8.2.5","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":9,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.5"},{"backlink":"tcpip/ip.html#fig1.8.2.6","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":10,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.6"},{"backlink":"tcpip/ip.html#fig1.8.2.7","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":11,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/2.2.1.png","index":7,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.7"},{"backlink":"tcpip/ip.html#fig1.8.2.8","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":12,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.3.png","index":8,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.8"},{"backlink":"tcpip/ip.html#fig1.8.2.9","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":13,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.4.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.9"},{"backlink":"tcpip/ip.html#fig1.8.2.10","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":14,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/3.1.png","index":10,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.10"},{"backlink":"tcpip/ip.html#fig1.8.2.11","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":15,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/3.2.png","index":11,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.11"},{"backlink":"tcpip/ip.html#fig1.8.2.12","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":16,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.12"},{"backlink":"tcpip/ip.html#fig1.8.2.13","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":17,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.13"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.1","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":18,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.1"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.2","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":19,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.2"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.3","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":20,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.3.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.3"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.4","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":21,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.4"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.5","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":22,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.5"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.6","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":23,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/2.3.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.6"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"redis/redis-introduction.md","mtime":"2018-10-27T09:58:38.564Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-27T10:03:57.958Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
