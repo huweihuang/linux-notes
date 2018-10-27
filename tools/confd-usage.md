@@ -1,3 +1,5 @@
+> confd的源码参考：https://github.com/kelseyhightower/confd
+
 # 1. confd的部署
 
 以下Linux系统为例。
@@ -24,6 +26,10 @@ confd --help
 
 `confd.toml`为confd服务本身的配置文件，主要记录了使用的存储后端、协议、confdir等参数。
 
+**示例：**
+
+- 存储后端`etcdv3`：
+
 ```
 backend = "etcdv3"
 confdir = "/etc/confd"
@@ -37,6 +43,30 @@ watch = true
 ```
 
 其中`watch`参数表示实时监听后端存储的变化，如有变化则更新confd管理的配置。
+
+- 存储后端为`redis`
+
+```
+backend = "redis"
+confdir = "/etc/confd"
+log-level = "debug"
+interval = 1  # 间隔 1 秒同步一次配置文件
+nodes = [
+  "127.0.0.1:6379",
+]
+scheme = "http"
+client_key = "123456"  # redis的密码，不是 password 参数
+#watch = true
+```
+
+如果没有启动`watch`参数，则会依据`interval`参数定期去redis存储后端拿取数据，并比较与当前配置数据是否有变化（主要比较`md5`值），如果有变化则更新配置，没有变化则定期再去拿取数据，以此循环。
+
+如果启动了`watch`参数，则修改redis存储数据的同时，还要执行`publish`的操作，促使`confd`去触发比较配置并更新配置的操作。
+
+publish的命令格式如下:
+```bash
+publish __keyspace@0__:{prefix}/{key} set(or del)
+```
 
 ## 2.2. 创建confdir
 
