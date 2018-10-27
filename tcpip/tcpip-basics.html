@@ -1,0 +1,951 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TCP/IP基础 · Linux 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="胡伟煌">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ip.html" />
+    
+    
+
+    
+        <link rel="shortcut icon" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../images/favicon.ico'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/favicon.ico">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon.ico">
+        
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"huweihuang/linux-notes","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com" target="_blank" class="custom-link">胡伟煌的博客</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Linux 文件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../file/linux-introduction.html">
+            
+                <a href="../file/linux-introduction.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    Linux 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../file/linux-file-permission.html">
+            
+                <a href="../file/linux-file-permission.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    Linux 文件权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Shell 脚本
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../shell/shell-introduction.html">
+            
+                <a href="../shell/shell-introduction.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    Shell简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    运维工具
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../tools/ansible-usage.html">
+            
+                <a href="../tools/ansible-usage.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    Ansible的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../tools/supervisor-usage.html">
+            
+                <a href="../tools/supervisor-usage.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Supervisor的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../tools/confd-usage.html">
+            
+                <a href="../tools/confd-usage.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Confd的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../tools/nfs-usage.html">
+            
+                <a href="../tools/nfs-usage.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    NFS的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../git/git.html">
+            
+                <a href="../git/git.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Git 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../git/git-common-cmd.html">
+            
+                <a href="../git/git-common-cmd.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Git 常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../git/git-commands.html">
+            
+                <a href="../git/git-commands.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Git 命令分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Nginx
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../nginx/install-nginx.html">
+            
+                <a href="../nginx/install-nginx.html">
+            
+                    
+                        <b>1.6.1.</b>
+                    
+                    Nginx安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../nginx/nginx-proxy.html">
+            
+                <a href="../nginx/nginx-proxy.html">
+            
+                    
+                        <b>1.6.2.</b>
+                    
+                    Nginx作为反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../nginx/nginx-http.html">
+            
+                <a href="../nginx/nginx-http.html">
+            
+                    
+                        <b>1.6.3.</b>
+                    
+                    Nginx http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Keepalived
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../keepalived/keepalived-introduction.html">
+            
+                <a href="../keepalived/keepalived-introduction.html">
+            
+                    
+                        <b>1.7.1.</b>
+                    
+                    Keepalived简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../keepalived/install-keepalived.html">
+            
+                <a href="../keepalived/install-keepalived.html">
+            
+                    
+                        <b>1.7.2.</b>
+                    
+                    Keepalived的安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../keepalived/keepalived-conf.html">
+            
+                <a href="../keepalived/keepalived-conf.html">
+            
+                    
+                        <b>1.7.3.</b>
+                    
+                    Keepalived的配置详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                        <b>1.8.</b>
+                    
+                    TCP/IP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.8.1" data-path="tcpip-basics.html">
+            
+                <a href="tcpip-basics.html">
+            
+                    
+                        <b>1.8.1.</b>
+                    
+                    TCP/IP基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="ip.html">
+            
+                <a href="ip.html">
+            
+                    
+                        <b>1.8.2.</b>
+                    
+                    IP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="tcp-udp.html">
+            
+                <a href="tcp-udp.html">
+            
+                    
+                        <b>1.8.3.</b>
+                    
+                    TCP与UDP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="http-basics.html">
+            
+                <a href="http-basics.html">
+            
+                    
+                        <b>1.8.4.</b>
+                    
+                    Http基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >TCP/IP基础</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="1-&#x57FA;&#x7840;&#x77E5;&#x8BC6;">1. &#x57FA;&#x7840;&#x77E5;&#x8BC6;</h1>
+<h2 id="11-&#x534F;&#x8BAE;">1.1. &#x534F;&#x8BAE;</h2>
+<p>&#x8BA1;&#x7B97;&#x673A;&#x4E0E;&#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#x8981;&#x76F8;&#x4E92;&#x901A;&#x4FE1;&#xFF0C;&#x5FC5;&#x987B;&#x57FA;&#x4E8E;&#x76F8;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x5982;&#x4F55;&#x63A2;&#x6D4B;&#x5230;&#x901A;&#x4FE1;&#x76EE;&#x6807;&#xFF0C;&#x4F7F;&#x7528;&#x54EA;&#x79CD;&#x8BED;&#x8A00;&#x901A;&#x4FE1;&#xFF0C;&#x5982;&#x4F55;&#x7ED3;&#x675F;&#x901A;&#x4FE1;&#x7B49;&#x89C4;&#x5219;&#x8981;&#x4E8B;&#x5148;&#x786E;&#x5B9A;&#x3002;</p>
+<p>&#x4E0D;&#x540C;&#x786C;&#x4EF6;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x90FD;&#x9700;&#x8981;&#x4E00;&#x79CD;&#x89C4;&#x5219;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x79CD;<code>&#x4E8B;&#x5148;&#x7EA6;&#x5B9A;&#x597D;&#x7684;&#x89C4;&#x5219;&#x79F0;&#x4E4B;&#x4E3A;&#x534F;&#x8BAE;</code>&#x3002;</p>
+<h2 id="12-&#x5730;&#x5740;">1.2. &#x5730;&#x5740;</h2>
+<p>&#x5730;&#x5740;&#xFF1A;&#x5728;&#x67D0;&#x4E00;&#x8303;&#x56F4;&#x5185;&#x786E;&#x8BA4;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5373;&#x6570;&#x636E;&#x5305;&#x4F20;&#x5230;&#x67D0;&#x4E00;&#x4E2A;&#x8303;&#x56F4;&#xFF0C;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x660E;&#x786E;&#x552F;&#x4E00;&#x7684;&#x76EE;&#x6807;&#x5730;&#x5740;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x5C42;</th>
+<th>&#x5730;&#x5740;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x7AEF;&#x53E3;&#x53F7;</td>
+<td>&#x4F20;&#x8F93;&#x5C42;</td>
+<td>&#x7A0B;&#x5E8F;&#x5730;&#x5740;</td>
+<td>&#x540C;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;&#x673A;&#x4E2D;&#x4E0D;&#x540C;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;</td>
+</tr>
+<tr>
+<td>IP&#x5730;&#x5740;</td>
+<td>&#x7F51;&#x7EDC;&#x5C42;</td>
+<td>&#x4E3B;&#x673A;&#x5730;&#x5740;</td>
+<td>&#x8BC6;&#x522B;TCP/IP&#x7F51;&#x7EDC;&#x4E2D;&#x4E0D;&#x540C;&#x7684;&#x4E3B;&#x673A;&#x6216;&#x8DEF;&#x7531;&#x5668;</td>
+</tr>
+<tr>
+<td>MAC&#x5730;&#x5740;</td>
+<td>&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;</td>
+<td>&#x7269;&#x7406;&#x5730;&#x5740;</td>
+<td>&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x4E2D;&#x8BC6;&#x522B;&#x4E0D;&#x540C;&#x7684;&#x8BA1;&#x7B97;&#x673A;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="13-&#x7F51;&#x7EDC;&#x6784;&#x6210;">1.3. &#x7F51;&#x7EDC;&#x6784;&#x6210;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/network.png" width="80%"></p>
+<table>
+<thead>
+<tr>
+<th>&#x6784;&#x6210;&#x8981;&#x7D20;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x7F51;&#x5361;</td>
+<td>&#x8FDE;&#x5165;&#x7F51;&#x7EDC;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x7F51;&#x5361;&#xFF0C;&#x53C8;&#x79F0;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#x5361;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x4E2D;&#x7EE7;&#x5668;</td>
+<td>OSI&#x7B2C;1&#x5C42;&#xFF0C;&#x7269;&#x7406;&#x5C42;&#x4E0A;&#x5EF6;&#x957F;&#x7F51;&#x7EDC;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x5C06;&#x7535;&#x7F06;&#x7684;&#x4FE1;&#x53F7;&#x653E;&#x5927;&#x4F20;&#x7ED9;&#x53E6;&#x4E00;&#x4E2A;&#x7535;&#x7F06;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x7F51;&#x6865;/2&#x5C42;&#x4EA4;&#x6362;&#x673A;</td>
+<td>OSI&#x7B2C;2&#x5C42;&#xFF0C;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;&#x9762;&#x4E0A;&#x8FDE;&#x63A5;&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x8BC6;&#x522B;&#x6570;&#x636E;&#x5E27;&#x7684;&#x5185;&#x5BB9;&#x5E76;&#x8F6C;&#x53D1;&#x7ED9;&#x76F8;&#x90BB;&#x7684;&#x7F51;&#x6BB5;&#xFF0C;&#x6839;&#x636E;MAC&#x5730;&#x5740;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x8DEF;&#x7531;&#x5668;/3&#x5C42;&#x4EA4;&#x6362;&#x673A;</td>
+<td>OSI&#x7B2C;3&#x5C42;&#xFF0C;&#x7F51;&#x7EDC;&#x5C42;&#x9762;&#x8FDE;&#x63A5;&#x4E24;&#x4E2A;&#x7F51;&#x7EDC;&#x5E76;&#x5BF9;&#x5206;&#x7EC4;&#x62A5;&#x6587;&#x8FDB;&#x884C;&#x8F6C;&#x53D1;&#xFF0C;&#x6839;&#x636E;IP&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</td>
+</tr>
+<tr>
+<td>4-7&#x5C42;&#x4EA4;&#x6362;&#x673A;</td>
+<td>&#x4F20;&#x8F93;&#x5C42;&#x5230;&#x5E94;&#x7528;&#x5C42;&#xFF0C;&#x4EE5;TCP&#x7B49;&#x534F;&#x8BAE;&#x5206;&#x6790;&#x6536;&#x53D1;&#x6570;&#x636E;&#xFF0C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#x5C31;&#x662F;&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x7F51;&#x5173;</td>
+<td>&#x5BF9;&#x4F20;&#x8F93;&#x5C42;&#x5230;&#x5E94;&#x7528;&#x5C42;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x548C;&#x8F6C;&#x53D1;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x4F7F;&#x7528;&#x8868;&#x793A;&#x5C42;&#x6216;&#x5E94;&#x7528;&#x5C42;&#x7684;&#x7F51;&#x5173;&#x6765;&#x5904;&#x7406;&#x4E0D;&#x540C;&#x534F;&#x8BAE;&#x4E4B;&#x95F4;&#x7684;&#x7FFB;&#x8BD1;&#x548C;&#x901A;&#x4FE1;&#xFF0C;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#xFF08;proxy&#xFF09;&#x5C31;&#x662F;&#x5E94;&#x7528;&#x7F51;&#x5173;&#x7684;&#x4E00;&#x79CD;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-osi&#x4E0E;tcpip&#x53C2;&#x8003;&#x6A21;&#x578B;">2. OSI&#x4E0E;TCP/IP&#x53C2;&#x8003;&#x6A21;&#x578B;</h1>
+<h2 id="21-osi&#x4E0E;tcpip&#x53C2;&#x8003;&#x6A21;&#x578B;&#x56FE;">2.1. OSI&#x4E0E;TCP/IP&#x53C2;&#x8003;&#x6A21;&#x578B;&#x56FE;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/TCPIP-OSI.png" width="80%"></p>
+<h2 id="22-osi&#x53C2;&#x8003;&#x6A21;&#x578B;&#x5206;&#x5C42;&#x8BF4;&#x660E;">2.2. OSI&#x53C2;&#x8003;&#x6A21;&#x578B;&#x5206;&#x5C42;&#x8BF4;&#x660E;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/osi-function.png" width="80%"></p>
+<h2 id="23-osi&#x53C2;&#x8003;&#x6A21;&#x578B;&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;">2.3. OSI&#x53C2;&#x8003;&#x6A21;&#x578B;&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/OSI.png" width="80%"></p>
+<p>1&#x3001;&#x6253;&#x5305;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x6BCF;&#x4E00;&#x5C42;&#x5728;&#x5904;&#x7406;&#x4E0A;&#x4E00;&#x5C42;&#x4F20;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x4F1A;&#x5728;&#x6570;&#x636E;&#x4E0A;&#x9644;&#x4E0A;&#x5F53;&#x524D;&#x5C42;&#x7684;&#x9996;&#x90E8;&#x4FE1;&#x606F;&#x540E;&#x4F20;&#x7ED9;&#x4E0B;&#x4E00;&#x5C42;&#xFF1B;</p>
+<p>2&#x3001;&#x89E3;&#x5305;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x6BCF;&#x4E00;&#x5C42;&#x5728;&#x5904;&#x7406;&#x4E0B;&#x4E00;&#x5C42;&#x4F20;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x5C42;&#x7684;&#x9996;&#x90E8;&#x4FE1;&#x606F;&#x4E0E;&#x6570;&#x636E;&#x5206;&#x5F00;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x7ED9;&#x4E0A;&#x4E00;&#x5C42;&#x3002;</p>
+<p>3&#x3001;&#x6570;&#x636E;&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;</p>
+<table>
+<thead>
+<tr>
+<th>&#x5206;&#x5C42;</th>
+<th>&#x6BCF;&#x5C42;&#x7684;&#x64CD;&#x4F5C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5E94;&#x7528;&#x5C42;</td>
+<td>&#x5728;&#x6570;&#x636E;&#x524D;&#x9762;&#x52A0;&#x9996;&#x90E8;&#xFF0C;&#x9996;&#x90E8;&#x5305;&#x62EC;&#x6570;&#x636E;&#x5185;&#x5BB9;&#x3001;&#x6E90;&#x5730;&#x5740;&#x548C;&#x76EE;&#x6807;&#x5730;&#x5740;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x5904;&#x7406;&#x5F02;&#x5E38;&#x7684;&#x53CD;&#x9988;&#x4FE1;&#x606F;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x8868;&#x793A;&#x5C42;</td>
+<td>&#x5C06;&#x7279;&#x6709;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#x4E3A;&#x901A;&#x7528;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x52A0;&#x4E0A;&#x8868;&#x793A;&#x5C42;&#x7684;&#x9996;&#x90E8;&#x4FE1;&#x606F;&#x4EE5;&#x4F9B;&#x89E3;&#x6790;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x4F1A;&#x8BDD;&#x5C42;</td>
+<td>&#x5BF9;&#x4F55;&#x65F6;&#x8FDE;&#x63A5;&#xFF0C;&#x4EE5;&#x4F55;&#x79CD;&#x65B9;&#x5F0F;&#x8FDE;&#x63A5;&#xFF0C;&#x8FDE;&#x63A5;&#x591A;&#x4E45;&#xFF0C;&#x4F55;&#x65F6;&#x65AD;&#x5F00;&#x7B49;&#x505A;&#x8BB0;&#x5F55;&#x3002;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x52A0;&#x4F1A;&#x8BDD;&#x5C42;&#x7684;&#x9996;&#x90E8;&#x4FE1;&#x606F;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x4F20;&#x8F93;&#x5C42;</td>
+<td>&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#xFF0C;&#x786E;&#x8BA4;&#x6570;&#x636E;&#x662F;&#x5426;&#x53D1;&#x9001;&#x6210;&#x529F;&#x548C;&#x6267;&#x884C;&#x5931;&#x8D25;&#x91CD;&#x53D1;&#x4EFB;&#x52A1;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x7F51;&#x7EDC;&#x5C42;</td>
+<td>&#x8D1F;&#x8D23;&#x5C06;&#x6570;&#x636E;&#x53D1;&#x5230;&#x76EE;&#x6807;&#x5730;&#x5740;&#xFF0C;&#x4E5F;&#x5305;&#x542B;&#x9996;&#x90E8;&#x4FE1;&#x606F;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;</td>
+<td>&#x901A;&#x8FC7;&#x7269;&#x7406;&#x7684;&#x4F20;&#x8F93;&#x4ECB;&#x8D28;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7684;&#x4F20;&#x8F93;&#x3002;</td>
+</tr>
+<tr>
+<td>&#x7269;&#x7406;&#x5C42;</td>
+<td>&#x5C06;0/1&#x8F6C;&#x6362;&#x6210;&#x7269;&#x7406;&#x7684;&#x4F20;&#x8F93;&#x4ECB;&#x8D28;&#xFF0C;&#x901A;&#x8FC7;MAC&#x5730;&#x5740;&#x8FDB;&#x884C;&#x4F20;&#x8F93;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="24-tcpip&#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;">2.4. TCP/IP&#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;</h2>
+<h3 id="241-&#x901A;&#x4FE1;&#x6A21;&#x578B;">2.4.1. &#x901A;&#x4FE1;&#x6A21;&#x578B;</h3>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/TrafficModel.png" width="100%"></p>
+<h3 id="242-&#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;&#x8BF4;&#x660E;">2.4.2. &#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;&#x8BF4;&#x660E;</h3>
+<table>
+<thead>
+<tr>
+<th>&#x5E94;&#x7528;&#x7C7B;&#x578B;</th>
+<th>&#x534F;&#x8BAE;</th>
+<th>&#x534F;&#x8BAE;&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WWW</td>
+<td>HTTP,HTML</td>
+<td><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/www.png" width="100%"></td>
+</tr>
+<tr>
+<td>&#x7535;&#x5B50;&#x90AE;&#x4EF6;</td>
+<td>SMTP&#xFF0C;MIME</td>
+<td><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579691/article/tcpip/basics/email.png" width="100%"></td>
+</tr>
+<tr>
+<td>&#x6587;&#x4EF6;&#x4F20;&#x8F93;</td>
+<td>FTP</td>
+<td><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579691/article/tcpip/basics/ftp.png" width="100%"></td>
+</tr>
+<tr>
+<td>&#x8FDC;&#x7A0B;&#x767B;&#x5F55;</td>
+<td>TELNET,SSH</td>
+<td><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/telnet.png" width="100%"></td>
+</tr>
+<tr>
+<td>&#x7F51;&#x7EDC;&#x7BA1;&#x7406;</td>
+<td>SNMP,MIB</td>
+<td><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/snmp.png" width="100%"></td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-tcpip&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;">3. TCP/IP&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;</h1>
+<h2 id="31-&#x6570;&#x636E;&#x5305;&#x7ED3;&#x6784;">3.1. &#x6570;&#x636E;&#x5305;&#x7ED3;&#x6784;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579691/article/tcpip/basics/data-package.png" width="100%"></p>
+<h2 id="32-&#x6570;&#x636E;&#x6253;&#x5305;&#x548C;&#x89E3;&#x5305;&#x8FC7;&#x7A0B;">3.2. &#x6570;&#x636E;&#x6253;&#x5305;&#x548C;&#x89E3;&#x5305;&#x8FC7;&#x7A0B;</h2>
+<h3 id="321-&#x5305;&#x7684;&#x5C01;&#x88C5;">3.2.1. &#x5305;&#x7684;&#x5C01;&#x88C5;</h3>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/package.png" width="80%"> </p>
+<h3 id="322-&#x53D1;&#x9001;&#x4E0E;&#x63A5;&#x6536;">3.2.2. &#x53D1;&#x9001;&#x4E0E;&#x63A5;&#x6536;</h3>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/send-receive.png" width="70%"></p>
+<h2 id="33-&#x6570;&#x636E;&#x5305;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;">3.3. &#x6570;&#x636E;&#x5305;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/transmission.png" width="80%"></p>
+<p>&#x6587;&#x7AE0;&#xFF1A;</p>
+<ul>
+<li>&#x300A;&#x56FE;&#x89E3;TCP/IP&#x300B; </li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
+2018-10-27 16:30:09
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="ip.html" class="navigation navigation-next navigation-unique" aria-label="Next page: IP协议">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"TCP/IP基础","level":"1.8.1","depth":2,"next":{"title":"IP协议","level":"1.8.2","depth":2,"path":"tcpip/ip.md","ref":"tcpip/ip.md","articles":[]},"previous":{"title":"TCP/IP","level":"1.8","depth":1,"ref":"","articles":[{"title":"TCP/IP基础","level":"1.8.1","depth":2,"path":"tcpip/tcpip-basics.md","ref":"tcpip/tcpip-basics.md","articles":[]},{"title":"IP协议","level":"1.8.2","depth":2,"path":"tcpip/ip.md","ref":"tcpip/ip.md","articles":[]},{"title":"TCP与UDP协议","level":"1.8.3","depth":2,"path":"tcpip/tcp-udp.md","ref":"tcpip/tcp-udp.md","articles":[]},{"title":"Http基础","level":"1.8.4","depth":2,"path":"tcpip/http-basics.md","ref":"tcpip/http-basics.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.1","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":5,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.2","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":6,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.2"},{"backlink":"tcpip/ip.html#fig1.8.2.3","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":7,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.3"},{"backlink":"tcpip/ip.html#fig1.8.2.4","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":8,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.0.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.4"},{"backlink":"tcpip/ip.html#fig1.8.2.5","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":9,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.5"},{"backlink":"tcpip/ip.html#fig1.8.2.6","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":10,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.6"},{"backlink":"tcpip/ip.html#fig1.8.2.7","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":11,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/2.2.1.png","index":7,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.7"},{"backlink":"tcpip/ip.html#fig1.8.2.8","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":12,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.3.png","index":8,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.8"},{"backlink":"tcpip/ip.html#fig1.8.2.9","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":13,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.4.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.9"},{"backlink":"tcpip/ip.html#fig1.8.2.10","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":14,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/3.1.png","index":10,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.10"},{"backlink":"tcpip/ip.html#fig1.8.2.11","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":15,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/3.2.png","index":11,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.11"},{"backlink":"tcpip/ip.html#fig1.8.2.12","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":16,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.12"},{"backlink":"tcpip/ip.html#fig1.8.2.13","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":17,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.13"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.1","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":18,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.1"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.2","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":19,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.2"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.3","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":20,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.3.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.3"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.4","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":21,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.4"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.5","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":22,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.5"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.6","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":23,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/2.3.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.6"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"tcpip/tcpip-basics.md","mtime":"2018-10-27T08:30:09.015Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-27T09:25:39.660Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
