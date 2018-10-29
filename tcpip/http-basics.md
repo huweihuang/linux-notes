@@ -34,8 +34,8 @@
 
 ## 1.4. URI与URL
 
-URI(Uniform Resource Identifier):统一资源标识符
-URL(Uniform Resource Locator):统一资源定位符；URL是URI的子集
+- URI(Uniform Resource Identifier):统一资源标识符
+- URL(Uniform Resource Locator):统一资源定位符；URL是URI的子集
 
 ### 1.4.1. URI的格式
 
