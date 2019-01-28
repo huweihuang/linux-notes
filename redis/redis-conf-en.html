@@ -1,0 +1,2268 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redis配置详解(英文版) · Linux 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="胡伟煌">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="redis-conf-cn.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../images/favicon.ico'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/favicon.ico">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon.ico">
+        
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"huweihuang/linux-notes","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com" target="_blank" class="custom-link">胡伟煌的博客</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Linux 文件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../file/linux-introduction.html">
+            
+                <a href="../file/linux-introduction.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    Linux 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../file/linux-file-permission.html">
+            
+                <a href="../file/linux-file-permission.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    Linux 文件权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Shell 脚本
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../shell/shell-introduction.html">
+            
+                <a href="../shell/shell-introduction.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    Shell简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    运维工具
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../tools/ansible-usage.html">
+            
+                <a href="../tools/ansible-usage.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    Ansible的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../tools/supervisor-usage.html">
+            
+                <a href="../tools/supervisor-usage.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Supervisor的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../tools/confd-usage.html">
+            
+                <a href="../tools/confd-usage.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Confd的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../tools/nfs-usage.html">
+            
+                <a href="../tools/nfs-usage.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    NFS的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../git/git.html">
+            
+                <a href="../git/git.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Git 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../git/git-common-cmd.html">
+            
+                <a href="../git/git-common-cmd.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Git 常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../git/git-commands.html">
+            
+                <a href="../git/git-commands.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Git 命令分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Nginx
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../nginx/install-nginx.html">
+            
+                <a href="../nginx/install-nginx.html">
+            
+                    
+                        <b>1.6.1.</b>
+                    
+                    Nginx安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../nginx/nginx-proxy.html">
+            
+                <a href="../nginx/nginx-proxy.html">
+            
+                    
+                        <b>1.6.2.</b>
+                    
+                    Nginx作为反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../nginx/nginx-http.html">
+            
+                <a href="../nginx/nginx-http.html">
+            
+                    
+                        <b>1.6.3.</b>
+                    
+                    Nginx http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Keepalived
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../keepalived/keepalived-introduction.html">
+            
+                <a href="../keepalived/keepalived-introduction.html">
+            
+                    
+                        <b>1.7.1.</b>
+                    
+                    Keepalived简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../keepalived/install-keepalived.html">
+            
+                <a href="../keepalived/install-keepalived.html">
+            
+                    
+                        <b>1.7.2.</b>
+                    
+                    Keepalived的安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../keepalived/keepalived-conf.html">
+            
+                <a href="../keepalived/keepalived-conf.html">
+            
+                    
+                        <b>1.7.3.</b>
+                    
+                    Keepalived的配置详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                        <b>1.8.</b>
+                    
+                    TCP/IP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../tcpip/tcpip-basics.html">
+            
+                <a href="../tcpip/tcpip-basics.html">
+            
+                    
+                        <b>1.8.1.</b>
+                    
+                    TCP/IP基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../tcpip/ip.html">
+            
+                <a href="../tcpip/ip.html">
+            
+                    
+                        <b>1.8.2.</b>
+                    
+                    IP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../tcpip/tcp-udp.html">
+            
+                <a href="../tcpip/tcp-udp.html">
+            
+                    
+                        <b>1.8.3.</b>
+                    
+                    TCP与UDP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../tcpip/http-basics.html">
+            
+                <a href="../tcpip/http-basics.html">
+            
+                    
+                        <b>1.8.4.</b>
+                    
+                    Http基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../tcpip/http-message.html">
+            
+                <a href="../tcpip/http-message.html">
+            
+                    
+                        <b>1.8.5.</b>
+                    
+                    Http报文
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../tcpip/http-code.html">
+            
+                <a href="../tcpip/http-code.html">
+            
+                    
+                        <b>1.8.6.</b>
+                    
+                    Http状态码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                        <b>1.9.</b>
+                    
+                    Redis
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="redis-introduction.html">
+            
+                <a href="redis-introduction.html">
+            
+                    
+                        <b>1.9.1.</b>
+                    
+                    Redis介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="redis-cluster.html">
+            
+                <a href="redis-cluster.html">
+            
+                    
+                        <b>1.9.2.</b>
+                    
+                    Redis集群模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="redis-sentinel.html">
+            
+                <a href="redis-sentinel.html">
+            
+                    
+                        <b>1.9.3.</b>
+                    
+                    Redis主从及哨兵模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="redis-conf-cn.html">
+            
+                <a href="redis-conf-cn.html">
+            
+                    
+                        <b>1.9.4.</b>
+                    
+                    Redis配置详解(中文版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.5" data-path="redis-conf-en.html">
+            
+                <a href="redis-conf-en.html">
+            
+                    
+                        <b>1.9.5.</b>
+                    
+                    Redis配置详解(英文版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                        <b>1.10.</b>
+                    
+                    Mysql
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../mysql/mysql-commands.html">
+            
+                <a href="../mysql/mysql-commands.html">
+            
+                    
+                        <b>1.10.1.</b>
+                    
+                    Mysql常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Redis配置详解(英文版)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p>&#x672C;&#x6587;&#x6765;&#x81EA;redis &#x5B98;&#x65B9;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+</blockquote>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># Redis configuration file example.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that in order to read the configuration file, Redis must be</span>
+<span class="token comment"># started with the file path as first argument:</span>
+<span class="token comment">#</span>
+<span class="token comment"># ./redis-server /path/to/redis.conf</span>
+
+<span class="token comment"># Note on units: when memory size is needed, it is possible to specify</span>
+<span class="token comment"># it in the usual form of 1k 5GB 4M and so forth:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1k =&gt; 1000 bytes</span>
+<span class="token comment"># 1kb =&gt; 1024 bytes</span>
+<span class="token comment"># 1m =&gt; 1000000 bytes</span>
+<span class="token comment"># 1mb =&gt; 1024*1024 bytes</span>
+<span class="token comment"># 1g =&gt; 1000000000 bytes</span>
+<span class="token comment"># 1gb =&gt; 1024*1024*1024 bytes</span>
+<span class="token comment">#</span>
+<span class="token comment"># units are case insensitive so 1GB 1Gb 1gB are all the same.</span>
+</code></pre>
+<h1 id="includes">INCLUDES</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## INCLUDES ###################################</span>
+
+<span class="token comment"># Include one or more other config files here.  This is useful if you</span>
+<span class="token comment"># have a standard template that goes to all Redis servers but also need</span>
+<span class="token comment"># to customize a few per-server settings.  Include files can include</span>
+<span class="token comment"># other files, so use this wisely.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Notice option &quot;include&quot; won&apos;t be rewritten by command &quot;CONFIG REWRITE&quot;</span>
+<span class="token comment"># from admin or Redis Sentinel. Since Redis always uses the last processed</span>
+<span class="token comment"># line as value of a configuration directive, you&apos;d better put includes</span>
+<span class="token comment"># at the beginning of this file to avoid overwriting config change at runtime.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If instead you are interested in using includes to override configuration</span>
+<span class="token comment"># options, it is better to use include as the last line.</span>
+<span class="token comment">#</span>
+<span class="token comment"># include /path/to/local.conf</span>
+<span class="token comment"># include /path/to/other.conf</span>
+</code></pre>
+<h1 id="modules">MODULES</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## MODULES #####################################</span>
+
+<span class="token comment"># Load modules at startup. If the server is not able to load modules</span>
+<span class="token comment"># it will abort. It is possible to use multiple loadmodule directives.</span>
+<span class="token comment">#</span>
+<span class="token comment"># loadmodule /path/to/my_module.so</span>
+<span class="token comment"># loadmodule /path/to/other_module.so</span>
+</code></pre>
+<h1 id="network">NETWORK</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## NETWORK #####################################</span>
+
+<span class="token comment"># By default, if no &quot;bind&quot; configuration directive is specified, Redis listens</span>
+<span class="token comment"># for connections from all the network interfaces available on the server.</span>
+<span class="token comment"># It is possible to listen to just one or multiple selected interfaces using</span>
+<span class="token comment"># the &quot;bind&quot; configuration directive, followed by one or more IP addresses.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Examples:</span>
+<span class="token comment">#</span>
+<span class="token comment"># bind 192.168.1.100 10.0.0.1</span>
+<span class="token comment"># bind 127.0.0.1 ::1</span>
+<span class="token comment">#</span>
+<span class="token comment"># ~~~ WARNING ~~~ If the computer running Redis is directly exposed to the</span>
+<span class="token comment"># internet, binding to all the interfaces is dangerous and will expose the</span>
+<span class="token comment"># instance to everybody on the internet. So by default we uncomment the</span>
+<span class="token comment"># following bind directive, that will force Redis to listen only into</span>
+<span class="token comment"># the IPv4 lookback interface address (this means Redis will be able to</span>
+<span class="token comment"># accept connections only from clients running into the same computer it</span>
+<span class="token comment"># is running).</span>
+<span class="token comment">#</span>
+<span class="token comment"># IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES</span>
+<span class="token comment"># JUST COMMENT THE FOLLOWING LINE.</span>
+<span class="token comment"># ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+bind 127.0.0.1
+
+<span class="token comment"># Protected mode is a layer of security protection, in order to avoid that</span>
+<span class="token comment"># Redis instances left open on the internet are accessed and exploited.</span>
+<span class="token comment">#</span>
+<span class="token comment"># When protected mode is on and if:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) The server is not binding explicitly to a set of addresses using the</span>
+<span class="token comment">#    &quot;bind&quot; directive.</span>
+<span class="token comment"># 2) No password is configured.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The server only accepts connections from clients connecting from the</span>
+<span class="token comment"># IPv4 and IPv6 loopback addresses 127.0.0.1 and ::1, and from Unix domain</span>
+<span class="token comment"># sockets.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default protected mode is enabled. You should disable it only if</span>
+<span class="token comment"># you are sure you want clients from other hosts to connect to Redis</span>
+<span class="token comment"># even if no authentication is configured, nor a specific set of interfaces</span>
+<span class="token comment"># are explicitly listed using the &quot;bind&quot; directive.</span>
+protected-mode <span class="token function">yes</span>
+
+<span class="token comment"># Accept connections on the specified port, default is 6379 (IANA #815344).</span>
+<span class="token comment"># If port 0 is specified Redis will not listen on a TCP socket.</span>
+port 6379
+
+<span class="token comment"># TCP listen() backlog.</span>
+<span class="token comment">#</span>
+<span class="token comment"># In high requests-per-second environments you need an high backlog in order</span>
+<span class="token comment"># to avoid slow clients connections issues. Note that the Linux kernel</span>
+<span class="token comment"># will silently truncate it to the value of /proc/sys/net/core/somaxconn so</span>
+<span class="token comment"># make sure to raise both the value of somaxconn and tcp_max_syn_backlog</span>
+<span class="token comment"># in order to get the desired effect.</span>
+tcp-backlog 511
+
+<span class="token comment"># Unix socket.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Specify the path for the Unix socket that will be used to listen for</span>
+<span class="token comment"># incoming connections. There is no default, so Redis will not listen</span>
+<span class="token comment"># on a unix socket when not specified.</span>
+<span class="token comment">#</span>
+<span class="token comment"># unixsocket /tmp/redis.sock</span>
+<span class="token comment"># unixsocketperm 700</span>
+
+<span class="token comment"># Close the connection after a client is idle for N seconds (0 to disable)</span>
+<span class="token function">timeout</span> 0
+
+<span class="token comment"># TCP keepalive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If non-zero, use SO_KEEPALIVE to send TCP ACKs to clients in absence</span>
+<span class="token comment"># of communication. This is useful for two reasons:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) Detect dead peers.</span>
+<span class="token comment"># 2) Take the connection alive from the point of view of network</span>
+<span class="token comment">#    equipment in the middle.</span>
+<span class="token comment">#</span>
+<span class="token comment"># On Linux, the specified value (in seconds) is the period used to send ACKs.</span>
+<span class="token comment"># Note that to close the connection the double of the time is needed.</span>
+<span class="token comment"># On other kernels the period depends on the kernel configuration.</span>
+<span class="token comment">#</span>
+<span class="token comment"># A reasonable value for this option is 300 seconds, which is the new</span>
+<span class="token comment"># Redis default starting with Redis 3.2.1.</span>
+tcp-keepalive 300
+</code></pre>
+<h1 id="general">GENERAL</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################# GENERAL #####################################</span>
+
+<span class="token comment"># By default Redis does not run as a daemon. Use &apos;yes&apos; if you need it.</span>
+<span class="token comment"># Note that Redis will write a pid file in /var/run/redis.pid when daemonized.</span>
+daemonize <span class="token function">yes</span>
+
+<span class="token comment"># If you run Redis from upstart or systemd, Redis can interact with your</span>
+<span class="token comment"># supervision tree. Options:</span>
+<span class="token comment">#   supervised no      - no supervision interaction</span>
+<span class="token comment">#   supervised upstart - signal upstart by putting Redis into SIGSTOP mode</span>
+<span class="token comment">#   supervised systemd - signal systemd by writing READY=1 to $NOTIFY_SOCKET</span>
+<span class="token comment">#   supervised auto    - detect upstart or systemd method based on</span>
+<span class="token comment">#                        UPSTART_JOB or NOTIFY_SOCKET environment variables</span>
+<span class="token comment"># Note: these supervision methods only signal &quot;process is ready.&quot;</span>
+<span class="token comment">#       They do not enable continuous liveness pings back to your supervisor.</span>
+supervised no
+
+<span class="token comment"># If a pid file is specified, Redis writes it where specified at startup</span>
+<span class="token comment"># and removes it at exit.</span>
+<span class="token comment">#</span>
+<span class="token comment"># When the server runs non daemonized, no pid file is created if none is</span>
+<span class="token comment"># specified in the configuration. When the server is daemonized, the pid file</span>
+<span class="token comment"># is used even if not specified, defaulting to &quot;/var/run/redis.pid&quot;.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Creating a pid file is best effort: if Redis is not able to create it</span>
+<span class="token comment"># nothing bad happens, the server will start and run normally.</span>
+pidfile /var/run/redis_6379.pid
+
+<span class="token comment"># Specify the server verbosity level.</span>
+<span class="token comment"># This can be one of:</span>
+<span class="token comment"># debug (a lot of information, useful for development/testing)</span>
+<span class="token comment"># verbose (many rarely useful info, but not a mess like the debug level)</span>
+<span class="token comment"># notice (moderately verbose, what you want in production probably)</span>
+<span class="token comment"># warning (only very important / critical messages are logged)</span>
+loglevel notice
+
+<span class="token comment"># Specify the log file name. Also the empty string can be used to force</span>
+<span class="token comment"># Redis to log on the standard output. Note that if you use standard</span>
+<span class="token comment"># output for logging but daemonize, logs will be sent to /dev/null</span>
+logfile <span class="token string">&quot;&quot;</span>
+
+<span class="token comment"># To enable logging to the system logger, just set &apos;syslog-enabled&apos; to yes,</span>
+<span class="token comment"># and optionally update the other syslog parameters to suit your needs.</span>
+<span class="token comment"># syslog-enabled no</span>
+
+<span class="token comment"># Specify the syslog identity.</span>
+<span class="token comment"># syslog-ident redis</span>
+
+<span class="token comment"># Specify the syslog facility. Must be USER or between LOCAL0-LOCAL7.</span>
+<span class="token comment"># syslog-facility local0</span>
+
+<span class="token comment"># Set the number of databases. The default database is DB 0, you can select</span>
+<span class="token comment"># a different one on a per-connection basis using SELECT &lt;dbid&gt; where</span>
+<span class="token comment"># dbid is a number between 0 and &apos;databases&apos;-1</span>
+databases 16
+
+<span class="token comment"># By default Redis shows an ASCII art logo only when started to log to the</span>
+<span class="token comment"># standard output and if the standard output is a TTY. Basically this means</span>
+<span class="token comment"># that normally a logo is displayed only in interactive sessions.</span>
+<span class="token comment">#</span>
+<span class="token comment"># However it is possible to force the pre-4.0 behavior and always show a</span>
+<span class="token comment"># ASCII art logo in startup logs by setting the following option to yes.</span>
+always-show-logo <span class="token function">yes</span>
+</code></pre>
+<h1 id="snapshotting">SNAPSHOTTING</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################ SNAPSHOTTING  ################################</span>
+<span class="token comment">#</span>
+<span class="token comment"># Save the DB on disk:</span>
+<span class="token comment">#</span>
+<span class="token comment">#   save &lt;seconds&gt; &lt;changes&gt;</span>
+<span class="token comment">#</span>
+<span class="token comment">#   Will save the DB if both the given number of seconds and the given</span>
+<span class="token comment">#   number of write operations against the DB occurred.</span>
+<span class="token comment">#</span>
+<span class="token comment">#   In the example below the behaviour will be to save:</span>
+<span class="token comment">#   after 900 sec (15 min) if at least 1 key changed</span>
+<span class="token comment">#   after 300 sec (5 min) if at least 10 keys changed</span>
+<span class="token comment">#   after 60 sec if at least 10000 keys changed</span>
+<span class="token comment">#</span>
+<span class="token comment">#   Note: you can disable saving completely by commenting out all &quot;save&quot; lines.</span>
+<span class="token comment">#</span>
+<span class="token comment">#   It is also possible to remove all the previously configured save</span>
+<span class="token comment">#   points by adding a save directive with a single empty string argument</span>
+<span class="token comment">#   like in the following example:</span>
+<span class="token comment">#</span>
+<span class="token comment">#   save &quot;&quot;</span>
+
+save 900 1
+save 300 10
+save 60 10000
+
+<span class="token comment"># By default Redis will stop accepting writes if RDB snapshots are enabled</span>
+<span class="token comment"># (at least one save point) and the latest background save failed.</span>
+<span class="token comment"># This will make the user aware (in a hard way) that data is not persisting</span>
+<span class="token comment"># on disk properly, otherwise chances are that no one will notice and some</span>
+<span class="token comment"># disaster will happen.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If the background saving process will start working again Redis will</span>
+<span class="token comment"># automatically allow writes again.</span>
+<span class="token comment">#</span>
+<span class="token comment"># However if you have setup your proper monitoring of the Redis server</span>
+<span class="token comment"># and persistence, you may want to disable this feature so that Redis will</span>
+<span class="token comment"># continue to work as usual even if there are problems with disk,</span>
+<span class="token comment"># permissions, and so forth.</span>
+stop-writes-on-bgsave-error <span class="token function">yes</span>
+
+<span class="token comment"># Compress string objects using LZF when dump .rdb databases?</span>
+<span class="token comment"># For default that&apos;s set to &apos;yes&apos; as it&apos;s almost always a win.</span>
+<span class="token comment"># If you want to save some CPU in the saving child set it to &apos;no&apos; but</span>
+<span class="token comment"># the dataset will likely be bigger if you have compressible values or keys.</span>
+rdbcompression <span class="token function">yes</span>
+
+<span class="token comment"># Since version 5 of RDB a CRC64 checksum is placed at the end of the file.</span>
+<span class="token comment"># This makes the format more resistant to corruption but there is a performance</span>
+<span class="token comment"># hit to pay (around 10%) when saving and loading RDB files, so you can disable it</span>
+<span class="token comment"># for maximum performances.</span>
+<span class="token comment">#</span>
+<span class="token comment"># RDB files created with checksum disabled have a checksum of zero that will</span>
+<span class="token comment"># tell the loading code to skip the check.</span>
+rdbchecksum <span class="token function">yes</span>
+
+<span class="token comment"># The filename where to dump the DB</span>
+dbfilename dump.rdb
+
+<span class="token comment"># The working directory.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The DB will be written inside this directory, with the filename specified</span>
+<span class="token comment"># above using the &apos;dbfilename&apos; configuration directive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The Append Only File will also be created inside this directory.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that you must specify a directory here, not a file name.</span>
+<span class="token function">dir</span> ./
+</code></pre>
+<h1 id="replication">REPLICATION</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################# REPLICATION #################################</span>
+
+<span class="token comment"># Master-Slave replication. Use slaveof to make a Redis instance a copy of</span>
+<span class="token comment"># another Redis server. A few things to understand ASAP about Redis replication.</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) Redis replication is asynchronous, but you can configure a master to</span>
+<span class="token comment">#    stop accepting writes if it appears to be not connected with at least</span>
+<span class="token comment">#    a given number of slaves.</span>
+<span class="token comment"># 2) Redis slaves are able to perform a partial resynchronization with the</span>
+<span class="token comment">#    master if the replication link is lost for a relatively small amount of</span>
+<span class="token comment">#    time. You may want to configure the replication backlog size (see the next</span>
+<span class="token comment">#    sections of this file) with a sensible value depending on your needs.</span>
+<span class="token comment"># 3) Replication is automatic and does not need user intervention. After a</span>
+<span class="token comment">#    network partition slaves automatically try to reconnect to masters</span>
+<span class="token comment">#    and resynchronize with them.</span>
+<span class="token comment">#</span>
+<span class="token comment"># slaveof &lt;masterip&gt; &lt;masterport&gt;</span>
+
+<span class="token comment"># If the master is password protected (using the &quot;requirepass&quot; configuration</span>
+<span class="token comment"># directive below) it is possible to tell the slave to authenticate before</span>
+<span class="token comment"># starting the replication synchronization process, otherwise the master will</span>
+<span class="token comment"># refuse the slave request.</span>
+<span class="token comment">#</span>
+<span class="token comment"># masterauth &lt;master-password&gt;</span>
+
+<span class="token comment"># When a slave loses its connection with the master, or when the replication</span>
+<span class="token comment"># is still in progress, the slave can act in two different ways:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) if slave-serve-stale-data is set to &apos;yes&apos; (the default) the slave will</span>
+<span class="token comment">#    still reply to client requests, possibly with out of date data, or the</span>
+<span class="token comment">#    data set may just be empty if this is the first synchronization.</span>
+<span class="token comment">#</span>
+<span class="token comment"># 2) if slave-serve-stale-data is set to &apos;no&apos; the slave will reply with</span>
+<span class="token comment">#    an error &quot;SYNC with master in progress&quot; to all the kind of commands</span>
+<span class="token comment">#    but to INFO and SLAVEOF.</span>
+<span class="token comment">#</span>
+slave-serve-stale-data <span class="token function">yes</span>
+
+<span class="token comment"># You can configure a slave instance to accept writes or not. Writing against</span>
+<span class="token comment"># a slave instance may be useful to store some ephemeral data (because data</span>
+<span class="token comment"># written on a slave will be easily deleted after resync with the master) but</span>
+<span class="token comment"># may also cause problems if clients are writing to it because of a</span>
+<span class="token comment"># misconfiguration.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Since Redis 2.6 by default slaves are read-only.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note: read only slaves are not designed to be exposed to untrusted clients</span>
+<span class="token comment"># on the internet. It&apos;s just a protection layer against misuse of the instance.</span>
+<span class="token comment"># Still a read only slave exports by default all the administrative commands</span>
+<span class="token comment"># such as CONFIG, DEBUG, and so forth. To a limited extent you can improve</span>
+<span class="token comment"># security of read only slaves using &apos;rename-command&apos; to shadow all the</span>
+<span class="token comment"># administrative / dangerous commands.</span>
+slave-read-only <span class="token function">yes</span>
+
+<span class="token comment"># Replication SYNC strategy: disk or socket.</span>
+<span class="token comment">#</span>
+<span class="token comment"># -------------------------------------------------------</span>
+<span class="token comment"># WARNING: DISKLESS REPLICATION IS EXPERIMENTAL CURRENTLY</span>
+<span class="token comment"># -------------------------------------------------------</span>
+<span class="token comment">#</span>
+<span class="token comment"># New slaves and reconnecting slaves that are not able to continue the replication</span>
+<span class="token comment"># process just receiving differences, need to do what is called a &quot;full</span>
+<span class="token comment"># synchronization&quot;. An RDB file is transmitted from the master to the slaves.</span>
+<span class="token comment"># The transmission can happen in two different ways:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) Disk-backed: The Redis master creates a new process that writes the RDB</span>
+<span class="token comment">#                 file on disk. Later the file is transferred by the parent</span>
+<span class="token comment">#                 process to the slaves incrementally.</span>
+<span class="token comment"># 2) Diskless: The Redis master creates a new process that directly writes the</span>
+<span class="token comment">#              RDB file to slave sockets, without touching the disk at all.</span>
+<span class="token comment">#</span>
+<span class="token comment"># With disk-backed replication, while the RDB file is generated, more slaves</span>
+<span class="token comment"># can be queued and served with the RDB file as soon as the current child producing</span>
+<span class="token comment"># the RDB file finishes its work. With diskless replication instead once</span>
+<span class="token comment"># the transfer starts, new slaves arriving will be queued and a new transfer</span>
+<span class="token comment"># will start when the current one terminates.</span>
+<span class="token comment">#</span>
+<span class="token comment"># When diskless replication is used, the master waits a configurable amount of</span>
+<span class="token comment"># time (in seconds) before starting the transfer in the hope that multiple slaves</span>
+<span class="token comment"># will arrive and the transfer can be parallelized.</span>
+<span class="token comment">#</span>
+<span class="token comment"># With slow disks and fast (large bandwidth) networks, diskless replication</span>
+<span class="token comment"># works better.</span>
+repl-diskless-sync no
+
+<span class="token comment"># When diskless replication is enabled, it is possible to configure the delay</span>
+<span class="token comment"># the server waits in order to spawn the child that transfers the RDB via socket</span>
+<span class="token comment"># to the slaves.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This is important since once the transfer starts, it is not possible to serve</span>
+<span class="token comment"># new slaves arriving, that will be queued for the next RDB transfer, so the server</span>
+<span class="token comment"># waits a delay in order to let more slaves arrive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The delay is specified in seconds, and by default is 5 seconds. To disable</span>
+<span class="token comment"># it entirely just set it to 0 seconds and the transfer will start ASAP.</span>
+repl-diskless-sync-delay 5
+
+<span class="token comment"># Slaves send PINGs to server in a predefined interval. It&apos;s possible to change</span>
+<span class="token comment"># this interval with the repl_ping_slave_period option. The default value is 10</span>
+<span class="token comment"># seconds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-ping-slave-period 10</span>
+
+<span class="token comment"># The following option sets the replication timeout for:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) Bulk transfer I/O during SYNC, from the point of view of slave.</span>
+<span class="token comment"># 2) Master timeout from the point of view of slaves (data, pings).</span>
+<span class="token comment"># 3) Slave timeout from the point of view of masters (REPLCONF ACK pings).</span>
+<span class="token comment">#</span>
+<span class="token comment"># It is important to make sure that this value is greater than the value</span>
+<span class="token comment"># specified for repl-ping-slave-period otherwise a timeout will be detected</span>
+<span class="token comment"># every time there is low traffic between the master and the slave.</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-timeout 60</span>
+
+<span class="token comment"># Disable TCP_NODELAY on the slave socket after SYNC?</span>
+<span class="token comment">#</span>
+<span class="token comment"># If you select &quot;yes&quot; Redis will use a smaller number of TCP packets and</span>
+<span class="token comment"># less bandwidth to send data to slaves. But this can add a delay for</span>
+<span class="token comment"># the data to appear on the slave side, up to 40 milliseconds with</span>
+<span class="token comment"># Linux kernels using a default configuration.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If you select &quot;no&quot; the delay for data to appear on the slave side will</span>
+<span class="token comment"># be reduced but more bandwidth will be used for replication.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default we optimize for low latency, but in very high traffic conditions</span>
+<span class="token comment"># or when the master and slaves are many hops away, turning this to &quot;yes&quot; may</span>
+<span class="token comment"># be a good idea.</span>
+repl-disable-tcp-nodelay no
+
+<span class="token comment"># Set the replication backlog size. The backlog is a buffer that accumulates</span>
+<span class="token comment"># slave data when slaves are disconnected for some time, so that when a slave</span>
+<span class="token comment"># wants to reconnect again, often a full resync is not needed, but a partial</span>
+<span class="token comment"># resync is enough, just passing the portion of data the slave missed while</span>
+<span class="token comment"># disconnected.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The bigger the replication backlog, the longer the time the slave can be</span>
+<span class="token comment"># disconnected and later be able to perform a partial resynchronization.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The backlog is only allocated once there is at least a slave connected.</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-backlog-size 1mb</span>
+
+<span class="token comment"># After a master has no longer connected slaves for some time, the backlog</span>
+<span class="token comment"># will be freed. The following option configures the amount of seconds that</span>
+<span class="token comment"># need to elapse, starting from the time the last slave disconnected, for</span>
+<span class="token comment"># the backlog buffer to be freed.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that slaves never free the backlog for timeout, since they may be</span>
+<span class="token comment"># promoted to masters later, and should be able to correctly &quot;partially</span>
+<span class="token comment"># resynchronize&quot; with the slaves: hence they should always accumulate backlog.</span>
+<span class="token comment">#</span>
+<span class="token comment"># A value of 0 means to never release the backlog.</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-backlog-ttl 3600</span>
+
+<span class="token comment"># The slave priority is an integer number published by Redis in the INFO output.</span>
+<span class="token comment"># It is used by Redis Sentinel in order to select a slave to promote into a</span>
+<span class="token comment"># master if the master is no longer working correctly.</span>
+<span class="token comment">#</span>
+<span class="token comment"># A slave with a low priority number is considered better for promotion, so</span>
+<span class="token comment"># for instance if there are three slaves with priority 10, 100, 25 Sentinel will</span>
+<span class="token comment"># pick the one with priority 10, that is the lowest.</span>
+<span class="token comment">#</span>
+<span class="token comment"># However a special priority of 0 marks the slave as not able to perform the</span>
+<span class="token comment"># role of master, so a slave with priority of 0 will never be selected by</span>
+<span class="token comment"># Redis Sentinel for promotion.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default the priority is 100.</span>
+slave-priority 100
+
+<span class="token comment"># It is possible for a master to stop accepting writes if there are less than</span>
+<span class="token comment"># N slaves connected, having a lag less or equal than M seconds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The N slaves need to be in &quot;online&quot; state.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The lag in seconds, that must be &lt;= the specified value, is calculated from</span>
+<span class="token comment"># the last ping received from the slave, that is usually sent every second.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This option does not GUARANTEE that N replicas will accept the write, but</span>
+<span class="token comment"># will limit the window of exposure for lost writes in case not enough slaves</span>
+<span class="token comment"># are available, to the specified number of seconds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># For example to require at least 3 slaves with a lag &lt;= 10 seconds use:</span>
+<span class="token comment">#</span>
+<span class="token comment"># min-slaves-to-write 3</span>
+<span class="token comment"># min-slaves-max-lag 10</span>
+<span class="token comment">#</span>
+<span class="token comment"># Setting one or the other to 0 disables the feature.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default min-slaves-to-write is set to 0 (feature disabled) and</span>
+<span class="token comment"># min-slaves-max-lag is set to 10.</span>
+
+<span class="token comment"># A Redis master is able to list the address and port of the attached</span>
+<span class="token comment"># slaves in different ways. For example the &quot;INFO replication&quot; section</span>
+<span class="token comment"># offers this information, which is used, among other tools, by</span>
+<span class="token comment"># Redis Sentinel in order to discover slave instances.</span>
+<span class="token comment"># Another place where this info is available is in the output of the</span>
+<span class="token comment"># &quot;ROLE&quot; command of a master.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The listed IP and address normally reported by a slave is obtained</span>
+<span class="token comment"># in the following way:</span>
+<span class="token comment">#</span>
+<span class="token comment">#   IP: The address is auto detected by checking the peer address</span>
+<span class="token comment">#   of the socket used by the slave to connect with the master.</span>
+<span class="token comment">#</span>
+<span class="token comment">#   Port: The port is communicated by the slave during the replication</span>
+<span class="token comment">#   handshake, and is normally the port that the slave is using to</span>
+<span class="token comment">#   list for connections.</span>
+<span class="token comment">#</span>
+<span class="token comment"># However when port forwarding or Network Address Translation (NAT) is</span>
+<span class="token comment"># used, the slave may be actually reachable via different IP and port</span>
+<span class="token comment"># pairs. The following two options can be used by a slave in order to</span>
+<span class="token comment"># report to its master a specific set of IP and port, so that both INFO</span>
+<span class="token comment"># and ROLE will report those values.</span>
+<span class="token comment">#</span>
+<span class="token comment"># There is no need to use both the options if you need to override just</span>
+<span class="token comment"># the port or the IP address.</span>
+<span class="token comment">#</span>
+<span class="token comment"># slave-announce-ip 5.5.5.5</span>
+<span class="token comment"># slave-announce-port 1234</span>
+</code></pre>
+<h1 id="security">SECURITY</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## SECURITY ###################################</span>
+
+<span class="token comment"># Require clients to issue AUTH &lt;PASSWORD&gt; before processing any other</span>
+<span class="token comment"># commands.  This might be useful in environments in which you do not trust</span>
+<span class="token comment"># others with access to the host running redis-server.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This should stay commented out for backward compatibility and because most</span>
+<span class="token comment"># people do not need auth (e.g. they run their own servers).</span>
+<span class="token comment">#</span>
+<span class="token comment"># Warning: since Redis is pretty fast an outside user can try up to</span>
+<span class="token comment"># 150k passwords per second against a good box. This means that you should</span>
+<span class="token comment"># use a very strong password otherwise it will be very easy to break.</span>
+<span class="token comment">#</span>
+<span class="token comment"># requirepass foobared</span>
+
+<span class="token comment"># Command renaming.</span>
+<span class="token comment">#</span>
+<span class="token comment"># It is possible to change the name of dangerous commands in a shared</span>
+<span class="token comment"># environment. For instance the CONFIG command may be renamed into something</span>
+<span class="token comment"># hard to guess so that it will still be available for internal-use tools</span>
+<span class="token comment"># but not available for general clients.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Example:</span>
+<span class="token comment">#</span>
+<span class="token comment"># rename-command CONFIG b840fc02d524045429941cc15f59e41cb7be6c52</span>
+<span class="token comment">#</span>
+<span class="token comment"># It is also possible to completely kill a command by renaming it into</span>
+<span class="token comment"># an empty string:</span>
+<span class="token comment">#</span>
+<span class="token comment"># rename-command CONFIG &quot;&quot;</span>
+<span class="token comment">#</span>
+<span class="token comment"># Please note that changing the name of commands that are logged into the</span>
+<span class="token comment"># AOF file or transmitted to slaves may cause problems.</span>
+</code></pre>
+<h1 id="clients">CLIENTS</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################### CLIENTS ####################################</span>
+
+<span class="token comment"># Set the max number of connected clients at the same time. By default</span>
+<span class="token comment"># this limit is set to 10000 clients, however if the Redis server is not</span>
+<span class="token comment"># able to configure the process file limit to allow for the specified limit</span>
+<span class="token comment"># the max number of allowed clients is set to the current file limit</span>
+<span class="token comment"># minus 32 (as Redis reserves a few file descriptors for internal uses).</span>
+<span class="token comment">#</span>
+<span class="token comment"># Once the limit is reached Redis will close all the new connections sending</span>
+<span class="token comment"># an error &apos;max number of clients reached&apos;.</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxclients 10000</span>
+</code></pre>
+<h1 id="memory-management">MEMORY MANAGEMENT</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">############################## MEMORY MANAGEMENT ################################</span>
+
+<span class="token comment"># Set a memory usage limit to the specified amount of bytes.</span>
+<span class="token comment"># When the memory limit is reached Redis will try to remove keys</span>
+<span class="token comment"># according to the eviction policy selected (see maxmemory-policy).</span>
+<span class="token comment">#</span>
+<span class="token comment"># If Redis can&apos;t remove keys according to the policy, or if the policy is</span>
+<span class="token comment"># set to &apos;noeviction&apos;, Redis will start to reply with errors to commands</span>
+<span class="token comment"># that would use more memory, like SET, LPUSH, and so on, and will continue</span>
+<span class="token comment"># to reply to read-only commands like GET.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This option is usually useful when using Redis as an LRU or LFU cache, or to</span>
+<span class="token comment"># set a hard memory limit for an instance (using the &apos;noeviction&apos; policy).</span>
+<span class="token comment">#</span>
+<span class="token comment"># WARNING: If you have slaves attached to an instance with maxmemory on,</span>
+<span class="token comment"># the size of the output buffers needed to feed the slaves are subtracted</span>
+<span class="token comment"># from the used memory count, so that network problems / resyncs will</span>
+<span class="token comment"># not trigger a loop where keys are evicted, and in turn the output</span>
+<span class="token comment"># buffer of slaves is full with DELs of keys evicted triggering the deletion</span>
+<span class="token comment"># of more keys, and so forth until the database is completely emptied.</span>
+<span class="token comment">#</span>
+<span class="token comment"># In short... if you have slaves attached it is suggested that you set a lower</span>
+<span class="token comment"># limit for maxmemory so that there is some free RAM on the system for slave</span>
+<span class="token comment"># output buffers (but this is not needed if the policy is &apos;noeviction&apos;).</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory &lt;bytes&gt;</span>
+
+<span class="token comment"># MAXMEMORY POLICY: how Redis will select what to remove when maxmemory</span>
+<span class="token comment"># is reached. You can select among five behaviors:</span>
+<span class="token comment">#</span>
+<span class="token comment"># volatile-lru -&gt; Evict using approximated LRU among the keys with an expire set.</span>
+<span class="token comment"># allkeys-lru -&gt; Evict any key using approximated LRU.</span>
+<span class="token comment"># volatile-lfu -&gt; Evict using approximated LFU among the keys with an expire set.</span>
+<span class="token comment"># allkeys-lfu -&gt; Evict any key using approximated LFU.</span>
+<span class="token comment"># volatile-random -&gt; Remove a random key among the ones with an expire set.</span>
+<span class="token comment"># allkeys-random -&gt; Remove a random key, any key.</span>
+<span class="token comment"># volatile-ttl -&gt; Remove the key with the nearest expire time (minor TTL)</span>
+<span class="token comment"># noeviction -&gt; Don&apos;t evict anything, just return an error on write operations.</span>
+<span class="token comment">#</span>
+<span class="token comment"># LRU means Least Recently Used</span>
+<span class="token comment"># LFU means Least Frequently Used</span>
+<span class="token comment">#</span>
+<span class="token comment"># Both LRU, LFU and volatile-ttl are implemented using approximated</span>
+<span class="token comment"># randomized algorithms.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note: with any of the above policies, Redis will return an error on write</span>
+<span class="token comment">#       operations, when there are no suitable keys for eviction.</span>
+<span class="token comment">#</span>
+<span class="token comment">#       At the date of writing these commands are: set setnx setex append</span>
+<span class="token comment">#       incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd</span>
+<span class="token comment">#       sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby</span>
+<span class="token comment">#       zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby</span>
+<span class="token comment">#       getset mset msetnx exec sort</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default is:</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory-policy noeviction</span>
+
+<span class="token comment"># LRU, LFU and minimal TTL algorithms are not precise algorithms but approximated</span>
+<span class="token comment"># algorithms (in order to save memory), so you can tune it for speed or</span>
+<span class="token comment"># accuracy. For default Redis will check five keys and pick the one that was</span>
+<span class="token comment"># used less recently, you can change the sample size using the following</span>
+<span class="token comment"># configuration directive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default of 5 produces good enough results. 10 Approximates very closely</span>
+<span class="token comment"># true LRU but costs more CPU. 3 is faster but not very accurate.</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory-samples 5</span>
+</code></pre>
+<h1 id="lazy-freeing">LAZY FREEING</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">############################# LAZY FREEING ####################################</span>
+
+<span class="token comment"># Redis has two primitives to delete keys. One is called DEL and is a blocking</span>
+<span class="token comment"># deletion of the object. It means that the server stops processing new commands</span>
+<span class="token comment"># in order to reclaim all the memory associated with an object in a synchronous</span>
+<span class="token comment"># way. If the key deleted is associated with a small object, the time needed</span>
+<span class="token comment"># in order to execute the DEL command is very small and comparable to most other</span>
+<span class="token comment"># O(1) or O(log_N) commands in Redis. However if the key is associated with an</span>
+<span class="token comment"># aggregated value containing millions of elements, the server can block for</span>
+<span class="token comment"># a long time (even seconds) in order to complete the operation.</span>
+<span class="token comment">#</span>
+<span class="token comment"># For the above reasons Redis also offers non blocking deletion primitives</span>
+<span class="token comment"># such as UNLINK (non blocking DEL) and the ASYNC option of FLUSHALL and</span>
+<span class="token comment"># FLUSHDB commands, in order to reclaim memory in background. Those commands</span>
+<span class="token comment"># are executed in constant time. Another thread will incrementally free the</span>
+<span class="token comment"># object in the background as fast as possible.</span>
+<span class="token comment">#</span>
+<span class="token comment"># DEL, UNLINK and ASYNC option of FLUSHALL and FLUSHDB are user-controlled.</span>
+<span class="token comment"># It&apos;s up to the design of the application to understand when it is a good</span>
+<span class="token comment"># idea to use one or the other. However the Redis server sometimes has to</span>
+<span class="token comment"># delete keys or flush the whole database as a side effect of other operations.</span>
+<span class="token comment"># Specifically Redis deletes objects independently of a user call in the</span>
+<span class="token comment"># following scenarios:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) On eviction, because of the maxmemory and maxmemory policy configurations,</span>
+<span class="token comment">#    in order to make room for new data, without going over the specified</span>
+<span class="token comment">#    memory limit.</span>
+<span class="token comment"># 2) Because of expire: when a key with an associated time to live (see the</span>
+<span class="token comment">#    EXPIRE command) must be deleted from memory.</span>
+<span class="token comment"># 3) Because of a side effect of a command that stores data on a key that may</span>
+<span class="token comment">#    already exist. For example the RENAME command may delete the old key</span>
+<span class="token comment">#    content when it is replaced with another one. Similarly SUNIONSTORE</span>
+<span class="token comment">#    or SORT with STORE option may delete existing keys. The SET command</span>
+<span class="token comment">#    itself removes any old content of the specified key in order to replace</span>
+<span class="token comment">#    it with the specified string.</span>
+<span class="token comment"># 4) During replication, when a slave performs a full resynchronization with</span>
+<span class="token comment">#    its master, the content of the whole database is removed in order to</span>
+<span class="token comment">#    load the RDB file just transfered.</span>
+<span class="token comment">#</span>
+<span class="token comment"># In all the above cases the default is to delete objects in a blocking way,</span>
+<span class="token comment"># like if DEL was called. However you can configure each case specifically</span>
+<span class="token comment"># in order to instead release memory in a non-blocking way like if UNLINK</span>
+<span class="token comment"># was called, using the following configuration directives:</span>
+
+lazyfree-lazy-eviction no
+lazyfree-lazy-expire no
+lazyfree-lazy-server-del no
+slave-lazy-flush no
+</code></pre>
+<h1 id="append-only-mode">APPEND ONLY MODE</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">############################## APPEND ONLY MODE ###############################</span>
+
+<span class="token comment"># By default Redis asynchronously dumps the dataset on disk. This mode is</span>
+<span class="token comment"># good enough in many applications, but an issue with the Redis process or</span>
+<span class="token comment"># a power outage may result into a few minutes of writes lost (depending on</span>
+<span class="token comment"># the configured save points).</span>
+<span class="token comment">#</span>
+<span class="token comment"># The Append Only File is an alternative persistence mode that provides</span>
+<span class="token comment"># much better durability. For instance using the default data fsync policy</span>
+<span class="token comment"># (see later in the config file) Redis can lose just one second of writes in a</span>
+<span class="token comment"># dramatic event like a server power outage, or a single write if something</span>
+<span class="token comment"># wrong with the Redis process itself happens, but the operating system is</span>
+<span class="token comment"># still running correctly.</span>
+<span class="token comment">#</span>
+<span class="token comment"># AOF and RDB persistence can be enabled at the same time without problems.</span>
+<span class="token comment"># If the AOF is enabled on startup Redis will load the AOF, that is the file</span>
+<span class="token comment"># with the better durability guarantees.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Please check http://redis.io/topics/persistence for more information.</span>
+
+appendonly no
+
+<span class="token comment"># The name of the append only file (default: &quot;appendonly.aof&quot;)</span>
+
+appendfilename <span class="token string">&quot;appendonly.aof&quot;</span>
+
+<span class="token comment"># The fsync() call tells the Operating System to actually write data on disk</span>
+<span class="token comment"># instead of waiting for more data in the output buffer. Some OS will really flush</span>
+<span class="token comment"># data on disk, some other OS will just try to do it ASAP.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Redis supports three different modes:</span>
+<span class="token comment">#</span>
+<span class="token comment"># no: don&apos;t fsync, just let the OS flush the data when it wants. Faster.</span>
+<span class="token comment"># always: fsync after every write to the append only log. Slow, Safest.</span>
+<span class="token comment"># everysec: fsync only one time every second. Compromise.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default is &quot;everysec&quot;, as that&apos;s usually the right compromise between</span>
+<span class="token comment"># speed and data safety. It&apos;s up to you to understand if you can relax this to</span>
+<span class="token comment"># &quot;no&quot; that will let the operating system flush the output buffer when</span>
+<span class="token comment"># it wants, for better performances (but if you can live with the idea of</span>
+<span class="token comment"># some data loss consider the default persistence mode that&apos;s snapshotting),</span>
+<span class="token comment"># or on the contrary, use &quot;always&quot; that&apos;s very slow but a bit safer than</span>
+<span class="token comment"># everysec.</span>
+<span class="token comment">#</span>
+<span class="token comment"># More details please check the following article:</span>
+<span class="token comment"># http://antirez.com/post/redis-persistence-demystified.html</span>
+<span class="token comment">#</span>
+<span class="token comment"># If unsure, use &quot;everysec&quot;.</span>
+
+<span class="token comment"># appendfsync always</span>
+appendfsync everysec
+<span class="token comment"># appendfsync no</span>
+
+<span class="token comment"># When the AOF fsync policy is set to always or everysec, and a background</span>
+<span class="token comment"># saving process (a background save or AOF log background rewriting) is</span>
+<span class="token comment"># performing a lot of I/O against the disk, in some Linux configurations</span>
+<span class="token comment"># Redis may block too long on the fsync() call. Note that there is no fix for</span>
+<span class="token comment"># this currently, as even performing fsync in a different thread will block</span>
+<span class="token comment"># our synchronous write(2) call.</span>
+<span class="token comment">#</span>
+<span class="token comment"># In order to mitigate this problem it&apos;s possible to use the following option</span>
+<span class="token comment"># that will prevent fsync() from being called in the main process while a</span>
+<span class="token comment"># BGSAVE or BGREWRITEAOF is in progress.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This means that while another child is saving, the durability of Redis is</span>
+<span class="token comment"># the same as &quot;appendfsync none&quot;. In practical terms, this means that it is</span>
+<span class="token comment"># possible to lose up to 30 seconds of log in the worst scenario (with the</span>
+<span class="token comment"># default Linux settings).</span>
+<span class="token comment">#</span>
+<span class="token comment"># If you have latency problems turn this to &quot;yes&quot;. Otherwise leave it as</span>
+<span class="token comment"># &quot;no&quot; that is the safest pick from the point of view of durability.</span>
+
+no-appendfsync-on-rewrite no
+
+<span class="token comment"># Automatic rewrite of the append only file.</span>
+<span class="token comment"># Redis is able to automatically rewrite the log file implicitly calling</span>
+<span class="token comment"># BGREWRITEAOF when the AOF log size grows by the specified percentage.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This is how it works: Redis remembers the size of the AOF file after the</span>
+<span class="token comment"># latest rewrite (if no rewrite has happened since the restart, the size of</span>
+<span class="token comment"># the AOF at startup is used).</span>
+<span class="token comment">#</span>
+<span class="token comment"># This base size is compared to the current size. If the current size is</span>
+<span class="token comment"># bigger than the specified percentage, the rewrite is triggered. Also</span>
+<span class="token comment"># you need to specify a minimal size for the AOF file to be rewritten, this</span>
+<span class="token comment"># is useful to avoid rewriting the AOF file even if the percentage increase</span>
+<span class="token comment"># is reached but it is still pretty small.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Specify a percentage of zero in order to disable the automatic AOF</span>
+<span class="token comment"># rewrite feature.</span>
+
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+
+<span class="token comment"># An AOF file may be found to be truncated at the end during the Redis</span>
+<span class="token comment"># startup process, when the AOF data gets loaded back into memory.</span>
+<span class="token comment"># This may happen when the system where Redis is running</span>
+<span class="token comment"># crashes, especially when an ext4 filesystem is mounted without the</span>
+<span class="token comment"># data=ordered option (however this can&apos;t happen when Redis itself</span>
+<span class="token comment"># crashes or aborts but the operating system still works correctly).</span>
+<span class="token comment">#</span>
+<span class="token comment"># Redis can either exit with an error when this happens, or load as much</span>
+<span class="token comment"># data as possible (the default now) and start if the AOF file is found</span>
+<span class="token comment"># to be truncated at the end. The following option controls this behavior.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If aof-load-truncated is set to yes, a truncated AOF file is loaded and</span>
+<span class="token comment"># the Redis server starts emitting a log to inform the user of the event.</span>
+<span class="token comment"># Otherwise if the option is set to no, the server aborts with an error</span>
+<span class="token comment"># and refuses to start. When the option is set to no, the user requires</span>
+<span class="token comment"># to fix the AOF file using the &quot;redis-check-aof&quot; utility before to restart</span>
+<span class="token comment"># the server.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that if the AOF file will be found to be corrupted in the middle</span>
+<span class="token comment"># the server will still exit with an error. This option only applies when</span>
+<span class="token comment"># Redis will try to read more data from the AOF file but not enough bytes</span>
+<span class="token comment"># will be found.</span>
+aof-load-truncated <span class="token function">yes</span>
+
+<span class="token comment"># When rewriting the AOF file, Redis is able to use an RDB preamble in the</span>
+<span class="token comment"># AOF file for faster rewrites and recoveries. When this option is turned</span>
+<span class="token comment"># on the rewritten AOF file is composed of two different stanzas:</span>
+<span class="token comment">#</span>
+<span class="token comment">#   [RDB file][AOF tail]</span>
+<span class="token comment">#</span>
+<span class="token comment"># When loading Redis recognizes that the AOF file starts with the &quot;REDIS&quot;</span>
+<span class="token comment"># string and loads the prefixed RDB file, and continues loading the AOF</span>
+<span class="token comment"># tail.</span>
+<span class="token comment">#</span>
+<span class="token comment"># This is currently turned off by default in order to avoid the surprise</span>
+<span class="token comment"># of a format change, but will at some point be used as the default.</span>
+aof-use-rdb-preamble no
+</code></pre>
+<h1 id="lua-scripting">LUA SCRIPTING</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################ LUA SCRIPTING  ###############################</span>
+
+<span class="token comment"># Max execution time of a Lua script in milliseconds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If the maximum execution time is reached Redis will log that a script is</span>
+<span class="token comment"># still in execution after the maximum allowed time and will start to</span>
+<span class="token comment"># reply to queries with an error.</span>
+<span class="token comment">#</span>
+<span class="token comment"># When a long running script exceeds the maximum execution time only the</span>
+<span class="token comment"># SCRIPT KILL and SHUTDOWN NOSAVE commands are available. The first can be</span>
+<span class="token comment"># used to stop a script that did not yet called write commands. The second</span>
+<span class="token comment"># is the only way to shut down the server in the case a write command was</span>
+<span class="token comment"># already issued by the script but the user doesn&apos;t want to wait for the natural</span>
+<span class="token comment"># termination of the script.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Set it to 0 or a negative value for unlimited execution without warnings.</span>
+lua-time-limit 5000
+</code></pre>
+<h1 id="redis-cluster">REDIS CLUSTER</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################ REDIS CLUSTER  ###############################</span>
+<span class="token comment">#</span>
+<span class="token comment"># ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span>
+<span class="token comment"># WARNING EXPERIMENTAL: Redis Cluster is considered to be stable code, however</span>
+<span class="token comment"># in order to mark it as &quot;mature&quot; we need to wait for a non trivial percentage</span>
+<span class="token comment"># of users to deploy it in production.</span>
+<span class="token comment"># ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span>
+<span class="token comment">#</span>
+<span class="token comment"># Normal Redis instances can&apos;t be part of a Redis Cluster; only nodes that are</span>
+<span class="token comment"># started as cluster nodes can. In order to start a Redis instance as a</span>
+<span class="token comment"># cluster node enable the cluster support uncommenting the following:</span>
+<span class="token comment">#</span>
+<span class="token comment"># cluster-enabled yes</span>
+
+<span class="token comment"># Every cluster node has a cluster configuration file. This file is not</span>
+<span class="token comment"># intended to be edited by hand. It is created and updated by Redis nodes.</span>
+<span class="token comment"># Every Redis Cluster node requires a different cluster configuration file.</span>
+<span class="token comment"># Make sure that instances running in the same system do not have</span>
+<span class="token comment"># overlapping cluster configuration file names.</span>
+<span class="token comment">#</span>
+<span class="token comment"># cluster-config-file nodes-6379.conf</span>
+
+<span class="token comment"># Cluster node timeout is the amount of milliseconds a node must be unreachable</span>
+<span class="token comment"># for it to be considered in failure state.</span>
+<span class="token comment"># Most other internal time limits are multiple of the node timeout.</span>
+<span class="token comment">#</span>
+<span class="token comment"># cluster-node-timeout 15000</span>
+
+<span class="token comment"># A slave of a failing master will avoid to start a failover if its data</span>
+<span class="token comment"># looks too old.</span>
+<span class="token comment">#</span>
+<span class="token comment"># There is no simple way for a slave to actually have an exact measure of</span>
+<span class="token comment"># its &quot;data age&quot;, so the following two checks are performed:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) If there are multiple slaves able to failover, they exchange messages</span>
+<span class="token comment">#    in order to try to give an advantage to the slave with the best</span>
+<span class="token comment">#    replication offset (more data from the master processed).</span>
+<span class="token comment">#    Slaves will try to get their rank by offset, and apply to the start</span>
+<span class="token comment">#    of the failover a delay proportional to their rank.</span>
+<span class="token comment">#</span>
+<span class="token comment"># 2) Every single slave computes the time of the last interaction with</span>
+<span class="token comment">#    its master. This can be the last ping or command received (if the master</span>
+<span class="token comment">#    is still in the &quot;connected&quot; state), or the time that elapsed since the</span>
+<span class="token comment">#    disconnection with the master (if the replication link is currently down).</span>
+<span class="token comment">#    If the last interaction is too old, the slave will not try to failover</span>
+<span class="token comment">#    at all.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The point &quot;2&quot; can be tuned by user. Specifically a slave will not perform</span>
+<span class="token comment"># the failover if, since the last interaction with the master, the time</span>
+<span class="token comment"># elapsed is greater than:</span>
+<span class="token comment">#</span>
+<span class="token comment">#   (node-timeout * slave-validity-factor) + repl-ping-slave-period</span>
+<span class="token comment">#</span>
+<span class="token comment"># So for example if node-timeout is 30 seconds, and the slave-validity-factor</span>
+<span class="token comment"># is 10, and assuming a default repl-ping-slave-period of 10 seconds, the</span>
+<span class="token comment"># slave will not try to failover if it was not able to talk with the master</span>
+<span class="token comment"># for longer than 310 seconds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># A large slave-validity-factor may allow slaves with too old data to failover</span>
+<span class="token comment"># a master, while a too small value may prevent the cluster from being able to</span>
+<span class="token comment"># elect a slave at all.</span>
+<span class="token comment">#</span>
+<span class="token comment"># For maximum availability, it is possible to set the slave-validity-factor</span>
+<span class="token comment"># to a value of 0, which means, that slaves will always try to failover the</span>
+<span class="token comment"># master regardless of the last time they interacted with the master.</span>
+<span class="token comment"># (However they&apos;ll always try to apply a delay proportional to their</span>
+<span class="token comment"># offset rank).</span>
+<span class="token comment">#</span>
+<span class="token comment"># Zero is the only value able to guarantee that when all the partitions heal</span>
+<span class="token comment"># the cluster will always be able to continue.</span>
+<span class="token comment">#</span>
+<span class="token comment"># cluster-slave-validity-factor 10</span>
+
+<span class="token comment"># Cluster slaves are able to migrate to orphaned masters, that are masters</span>
+<span class="token comment"># that are left without working slaves. This improves the cluster ability</span>
+<span class="token comment"># to resist to failures as otherwise an orphaned master can&apos;t be failed over</span>
+<span class="token comment"># in case of failure if it has no working slaves.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Slaves migrate to orphaned masters only if there are still at least a</span>
+<span class="token comment"># given number of other working slaves for their old master. This number</span>
+<span class="token comment"># is the &quot;migration barrier&quot;. A migration barrier of 1 means that a slave</span>
+<span class="token comment"># will migrate only if there is at least 1 other working slave for its master</span>
+<span class="token comment"># and so forth. It usually reflects the number of slaves you want for every</span>
+<span class="token comment"># master in your cluster.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Default is 1 (slaves migrate only if their masters remain with at least</span>
+<span class="token comment"># one slave). To disable migration just set it to a very large value.</span>
+<span class="token comment"># A value of 0 can be set but is useful only for debugging and dangerous</span>
+<span class="token comment"># in production.</span>
+<span class="token comment">#</span>
+<span class="token comment"># cluster-migration-barrier 1</span>
+
+<span class="token comment"># By default Redis Cluster nodes stop accepting queries if they detect there</span>
+<span class="token comment"># is at least an hash slot uncovered (no available node is serving it).</span>
+<span class="token comment"># This way if the cluster is partially down (for example a range of hash slots</span>
+<span class="token comment"># are no longer covered) all the cluster becomes, eventually, unavailable.</span>
+<span class="token comment"># It automatically returns available as soon as all the slots are covered again.</span>
+<span class="token comment">#</span>
+<span class="token comment"># However sometimes you want the subset of the cluster which is working,</span>
+<span class="token comment"># to continue to accept queries for the part of the key space that is still</span>
+<span class="token comment"># covered. In order to do so, just set the cluster-require-full-coverage</span>
+<span class="token comment"># option to no.</span>
+<span class="token comment">#</span>
+<span class="token comment"># cluster-require-full-coverage yes</span>
+
+<span class="token comment"># In order to setup your cluster make sure to read the documentation</span>
+<span class="token comment"># available at http://redis.io web site.</span>
+</code></pre>
+<h1 id="cluster-dockernat-support">CLUSTER DOCKER/NAT support</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">########################## CLUSTER DOCKER/NAT support  ########################</span>
+
+<span class="token comment"># In certain deployments, Redis Cluster nodes address discovery fails, because</span>
+<span class="token comment"># addresses are NAT-ted or because ports are forwarded (the typical case is</span>
+<span class="token comment"># Docker and other containers).</span>
+<span class="token comment">#</span>
+<span class="token comment"># In order to make Redis Cluster working in such environments, a static</span>
+<span class="token comment"># configuration where each node knows its public address is needed. The</span>
+<span class="token comment"># following two options are used for this scope, and are:</span>
+<span class="token comment">#</span>
+<span class="token comment"># * cluster-announce-ip</span>
+<span class="token comment"># * cluster-announce-port</span>
+<span class="token comment"># * cluster-announce-bus-port</span>
+<span class="token comment">#</span>
+<span class="token comment"># Each instruct the node about its address, client port, and cluster message</span>
+<span class="token comment"># bus port. The information is then published in the header of the bus packets</span>
+<span class="token comment"># so that other nodes will be able to correctly map the address of the node</span>
+<span class="token comment"># publishing the information.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If the above options are not used, the normal Redis Cluster auto-detection</span>
+<span class="token comment"># will be used instead.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Note that when remapped, the bus port may not be at the fixed offset of</span>
+<span class="token comment"># clients port + 10000, so you can specify any port and bus-port depending</span>
+<span class="token comment"># on how they get remapped. If the bus-port is not set, a fixed offset of</span>
+<span class="token comment"># 10000 will be used as usually.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Example:</span>
+<span class="token comment">#</span>
+<span class="token comment"># cluster-announce-ip 10.1.1.5</span>
+<span class="token comment"># cluster-announce-port 6379</span>
+<span class="token comment"># cluster-announce-bus-port 6380</span>
+</code></pre>
+<h1 id="slow-log">SLOW LOG</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## SLOW LOG ###################################</span>
+
+<span class="token comment"># The Redis Slow Log is a system to log queries that exceeded a specified</span>
+<span class="token comment"># execution time. The execution time does not include the I/O operations</span>
+<span class="token comment"># like talking with the client, sending the reply and so forth,</span>
+<span class="token comment"># but just the time needed to actually execute the command (this is the only</span>
+<span class="token comment"># stage of command execution where the thread is blocked and can not serve</span>
+<span class="token comment"># other requests in the meantime).</span>
+<span class="token comment">#</span>
+<span class="token comment"># You can configure the slow log with two parameters: one tells Redis</span>
+<span class="token comment"># what is the execution time, in microseconds, to exceed in order for the</span>
+<span class="token comment"># command to get logged, and the other parameter is the length of the</span>
+<span class="token comment"># slow log. When a new command is logged the oldest one is removed from the</span>
+<span class="token comment"># queue of logged commands.</span>
+
+<span class="token comment"># The following time is expressed in microseconds, so 1000000 is equivalent</span>
+<span class="token comment"># to one second. Note that a negative number disables the slow log, while</span>
+<span class="token comment"># a value of zero forces the logging of every command.</span>
+slowlog-log-slower-than 10000
+
+<span class="token comment"># There is no limit to this length. Just be aware that it will consume memory.</span>
+<span class="token comment"># You can reclaim memory used by the slow log with SLOWLOG RESET.</span>
+slowlog-max-len 128
+</code></pre>
+<h1 id="latency-monitor">LATENCY MONITOR</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################ LATENCY MONITOR ##############################</span>
+
+<span class="token comment"># The Redis latency monitoring subsystem samples different operations</span>
+<span class="token comment"># at runtime in order to collect data related to possible sources of</span>
+<span class="token comment"># latency of a Redis instance.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Via the LATENCY command this information is available to the user that can</span>
+<span class="token comment"># print graphs and obtain reports.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The system only logs operations that were performed in a time equal or</span>
+<span class="token comment"># greater than the amount of milliseconds specified via the</span>
+<span class="token comment"># latency-monitor-threshold configuration directive. When its value is set</span>
+<span class="token comment"># to zero, the latency monitor is turned off.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default latency monitoring is disabled since it is mostly not needed</span>
+<span class="token comment"># if you don&apos;t have latency issues, and collecting data has a performance</span>
+<span class="token comment"># impact, that while very small, can be measured under big load. Latency</span>
+<span class="token comment"># monitoring can easily be enabled at runtime using the command</span>
+<span class="token comment"># &quot;CONFIG SET latency-monitor-threshold &lt;milliseconds&gt;&quot; if needed.</span>
+latency-monitor-threshold 0
+</code></pre>
+<h1 id="event-notification">EVENT NOTIFICATION</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">############################# EVENT NOTIFICATION ##############################</span>
+
+<span class="token comment"># Redis can notify Pub/Sub clients about events happening in the key space.</span>
+<span class="token comment"># This feature is documented at http://redis.io/topics/notifications</span>
+<span class="token comment">#</span>
+<span class="token comment"># For instance if keyspace events notification is enabled, and a client</span>
+<span class="token comment"># performs a DEL operation on key &quot;foo&quot; stored in the Database 0, two</span>
+<span class="token comment"># messages will be published via Pub/Sub:</span>
+<span class="token comment">#</span>
+<span class="token comment"># PUBLISH __keyspace@0__:foo del</span>
+<span class="token comment"># PUBLISH __keyevent@0__:del foo</span>
+<span class="token comment">#</span>
+<span class="token comment"># It is possible to select the events that Redis will notify among a set</span>
+<span class="token comment"># of classes. Every class is identified by a single character:</span>
+<span class="token comment">#</span>
+<span class="token comment">#  K     Keyspace events, published with __keyspace@&lt;db&gt;__ prefix.</span>
+<span class="token comment">#  E     Keyevent events, published with __keyevent@&lt;db&gt;__ prefix.</span>
+<span class="token comment">#  g     Generic commands (non-type specific) like DEL, EXPIRE, RENAME, ...</span>
+<span class="token comment">#  $     String commands</span>
+<span class="token comment">#  l     List commands</span>
+<span class="token comment">#  s     Set commands</span>
+<span class="token comment">#  h     Hash commands</span>
+<span class="token comment">#  z     Sorted set commands</span>
+<span class="token comment">#  x     Expired events (events generated every time a key expires)</span>
+<span class="token comment">#  e     Evicted events (events generated when a key is evicted for maxmemory)</span>
+<span class="token comment">#  A     Alias for g$lshzxe, so that the &quot;AKE&quot; string means all the events.</span>
+<span class="token comment">#</span>
+<span class="token comment">#  The &quot;notify-keyspace-events&quot; takes as argument a string that is composed</span>
+<span class="token comment">#  of zero or multiple characters. The empty string means that notifications</span>
+<span class="token comment">#  are disabled.</span>
+<span class="token comment">#</span>
+<span class="token comment">#  Example: to enable list and generic events, from the point of view of the</span>
+<span class="token comment">#           event name, use:</span>
+<span class="token comment">#</span>
+<span class="token comment">#  notify-keyspace-events Elg</span>
+<span class="token comment">#</span>
+<span class="token comment">#  Example 2: to get the stream of the expired keys subscribing to channel</span>
+<span class="token comment">#             name __keyevent@0__:expired use:</span>
+<span class="token comment">#</span>
+<span class="token comment">#  notify-keyspace-events Ex</span>
+<span class="token comment">#</span>
+<span class="token comment">#  By default all notifications are disabled because most users don&apos;t need</span>
+<span class="token comment">#  this feature and the feature has some overhead. Note that if you don&apos;t</span>
+<span class="token comment">#  specify at least one of K or E, no events will be delivered.</span>
+notify-keyspace-events <span class="token string">&quot;&quot;</span>
+</code></pre>
+<h1 id="advanced-config">ADVANCED CONFIG</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">############################### ADVANCED CONFIG ###############################</span>
+
+<span class="token comment"># Hashes are encoded using a memory efficient data structure when they have a</span>
+<span class="token comment"># small number of entries, and the biggest entry does not exceed a given</span>
+<span class="token comment"># threshold. These thresholds can be configured using the following directives.</span>
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+
+<span class="token comment"># Lists are also encoded in a special way to save a lot of space.</span>
+<span class="token comment"># The number of entries allowed per internal list node can be specified</span>
+<span class="token comment"># as a fixed maximum size or a maximum number of elements.</span>
+<span class="token comment"># For a fixed maximum size, use -5 through -1, meaning:</span>
+<span class="token comment"># -5: max size: 64 Kb  &lt;-- not recommended for normal workloads</span>
+<span class="token comment"># -4: max size: 32 Kb  &lt;-- not recommended</span>
+<span class="token comment"># -3: max size: 16 Kb  &lt;-- probably not recommended</span>
+<span class="token comment"># -2: max size: 8 Kb   &lt;-- good</span>
+<span class="token comment"># -1: max size: 4 Kb   &lt;-- good</span>
+<span class="token comment"># Positive numbers mean store up to _exactly_ that number of elements</span>
+<span class="token comment"># per list node.</span>
+<span class="token comment"># The highest performing option is usually -2 (8 Kb size) or -1 (4 Kb size),</span>
+<span class="token comment"># but if your use case is unique, adjust the settings as necessary.</span>
+list-max-ziplist-size -2
+
+<span class="token comment"># Lists may also be compressed.</span>
+<span class="token comment"># Compress depth is the number of quicklist ziplist nodes from *each* side of</span>
+<span class="token comment"># the list to *exclude* from compression.  The head and tail of the list</span>
+<span class="token comment"># are always uncompressed for fast push/pop operations.  Settings are:</span>
+<span class="token comment"># 0: disable all list compression</span>
+<span class="token comment"># 1: depth 1 means &quot;don&apos;t start compressing until after 1 node into the list,</span>
+<span class="token comment">#    going from either the head or tail&quot;</span>
+<span class="token comment">#    So: [head]-&gt;node-&gt;node-&gt;...-&gt;node-&gt;[tail]</span>
+<span class="token comment">#    [head], [tail] will always be uncompressed; inner nodes will compress.</span>
+<span class="token comment"># 2: [head]-&gt;[next]-&gt;node-&gt;node-&gt;...-&gt;node-&gt;[prev]-&gt;[tail]</span>
+<span class="token comment">#    2 here means: don&apos;t compress head or head-&gt;next or tail-&gt;prev or tail,</span>
+<span class="token comment">#    but compress all nodes between them.</span>
+<span class="token comment"># 3: [head]-&gt;[next]-&gt;[next]-&gt;node-&gt;node-&gt;...-&gt;node-&gt;[prev]-&gt;[prev]-&gt;[tail]</span>
+<span class="token comment"># etc.</span>
+list-compress-depth 0
+
+<span class="token comment"># Sets have a special encoding in just one case: when a set is composed</span>
+<span class="token comment"># of just strings that happen to be integers in radix 10 in the range</span>
+<span class="token comment"># of 64 bit signed integers.</span>
+<span class="token comment"># The following configuration setting sets the limit in the size of the</span>
+<span class="token comment"># set in order to use this special memory saving encoding.</span>
+set-max-intset-entries 512
+
+<span class="token comment"># Similarly to hashes and lists, sorted sets are also specially encoded in</span>
+<span class="token comment"># order to save a lot of space. This encoding is only used when the length and</span>
+<span class="token comment"># elements of a sorted set are below the following limits:</span>
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+
+<span class="token comment"># HyperLogLog sparse representation bytes limit. The limit includes the</span>
+<span class="token comment"># 16 bytes header. When an HyperLogLog using the sparse representation crosses</span>
+<span class="token comment"># this limit, it is converted into the dense representation.</span>
+<span class="token comment">#</span>
+<span class="token comment"># A value greater than 16000 is totally useless, since at that point the</span>
+<span class="token comment"># dense representation is more memory efficient.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The suggested value is ~ 3000 in order to have the benefits of</span>
+<span class="token comment"># the space efficient encoding without slowing down too much PFADD,</span>
+<span class="token comment"># which is O(N) with the sparse encoding. The value can be raised to</span>
+<span class="token comment"># ~ 10000 when CPU is not a concern, but space is, and the data set is</span>
+<span class="token comment"># composed of many HyperLogLogs with cardinality in the 0 - 15000 range.</span>
+hll-sparse-max-bytes 3000
+
+<span class="token comment"># Active rehashing uses 1 millisecond every 100 milliseconds of CPU time in</span>
+<span class="token comment"># order to help rehashing the main Redis hash table (the one mapping top-level</span>
+<span class="token comment"># keys to values). The hash table implementation Redis uses (see dict.c)</span>
+<span class="token comment"># performs a lazy rehashing: the more operation you run into a hash table</span>
+<span class="token comment"># that is rehashing, the more rehashing &quot;steps&quot; are performed, so if the</span>
+<span class="token comment"># server is idle the rehashing is never complete and some more memory is used</span>
+<span class="token comment"># by the hash table.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default is to use this millisecond 10 times every second in order to</span>
+<span class="token comment"># actively rehash the main dictionaries, freeing memory when possible.</span>
+<span class="token comment">#</span>
+<span class="token comment"># If unsure:</span>
+<span class="token comment"># use &quot;activerehashing no&quot; if you have hard latency requirements and it is</span>
+<span class="token comment"># not a good thing in your environment that Redis can reply from time to time</span>
+<span class="token comment"># to queries with 2 milliseconds delay.</span>
+<span class="token comment">#</span>
+<span class="token comment"># use &quot;activerehashing yes&quot; if you don&apos;t have such hard requirements but</span>
+<span class="token comment"># want to free memory asap when possible.</span>
+activerehashing <span class="token function">yes</span>
+
+<span class="token comment"># The client output buffer limits can be used to force disconnection of clients</span>
+<span class="token comment"># that are not reading data from the server fast enough for some reason (a</span>
+<span class="token comment"># common reason is that a Pub/Sub client can&apos;t consume messages as fast as the</span>
+<span class="token comment"># publisher can produce them).</span>
+<span class="token comment">#</span>
+<span class="token comment"># The limit can be set differently for the three different classes of clients:</span>
+<span class="token comment">#</span>
+<span class="token comment"># normal -&gt; normal clients including MONITOR clients</span>
+<span class="token comment"># slave  -&gt; slave clients</span>
+<span class="token comment"># pubsub -&gt; clients subscribed to at least one pubsub channel or pattern</span>
+<span class="token comment">#</span>
+<span class="token comment"># The syntax of every client-output-buffer-limit directive is the following:</span>
+<span class="token comment">#</span>
+<span class="token comment"># client-output-buffer-limit &lt;class&gt; &lt;hard limit&gt; &lt;soft limit&gt; &lt;soft seconds&gt;</span>
+<span class="token comment">#</span>
+<span class="token comment"># A client is immediately disconnected once the hard limit is reached, or if</span>
+<span class="token comment"># the soft limit is reached and remains reached for the specified number of</span>
+<span class="token comment"># seconds (continuously).</span>
+<span class="token comment"># So for instance if the hard limit is 32 megabytes and the soft limit is</span>
+<span class="token comment"># 16 megabytes / 10 seconds, the client will get disconnected immediately</span>
+<span class="token comment"># if the size of the output buffers reach 32 megabytes, but will also get</span>
+<span class="token comment"># disconnected if the client reaches 16 megabytes and continuously overcomes</span>
+<span class="token comment"># the limit for 10 seconds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default normal clients are not limited because they don&apos;t receive data</span>
+<span class="token comment"># without asking (in a push way), but just after a request, so only</span>
+<span class="token comment"># asynchronous clients may create a scenario where data is requested faster</span>
+<span class="token comment"># than it can read.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Instead there is a default limit for pubsub and slave clients, since</span>
+<span class="token comment"># subscribers and slaves receive data in a push fashion.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Both the hard or the soft limit can be disabled by setting them to zero.</span>
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+
+<span class="token comment"># Client query buffers accumulate new commands. They are limited to a fixed</span>
+<span class="token comment"># amount by default in order to avoid that a protocol desynchronization (for</span>
+<span class="token comment"># instance due to a bug in the client) will lead to unbound memory usage in</span>
+<span class="token comment"># the query buffer. However you can configure it here if you have very special</span>
+<span class="token comment"># needs, such us huge multi/exec requests or alike.</span>
+<span class="token comment">#</span>
+<span class="token comment"># client-query-buffer-limit 1gb</span>
+
+<span class="token comment"># In the Redis protocol, bulk requests, that are, elements representing single</span>
+<span class="token comment"># strings, are normally limited ot 512 mb. However you can change this limit</span>
+<span class="token comment"># here.</span>
+<span class="token comment">#</span>
+<span class="token comment"># proto-max-bulk-len 512mb</span>
+
+<span class="token comment"># Redis calls an internal function to perform many background tasks, like</span>
+<span class="token comment"># closing connections of clients in timeout, purging expired keys that are</span>
+<span class="token comment"># never requested, and so forth.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Not all tasks are performed with the same frequency, but Redis checks for</span>
+<span class="token comment"># tasks to perform according to the specified &quot;hz&quot; value.</span>
+<span class="token comment">#</span>
+<span class="token comment"># By default &quot;hz&quot; is set to 10. Raising the value will use more CPU when</span>
+<span class="token comment"># Redis is idle, but at the same time will make Redis more responsive when</span>
+<span class="token comment"># there are many keys expiring at the same time, and timeouts may be</span>
+<span class="token comment"># handled with more precision.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The range is between 1 and 500, however a value over 100 is usually not</span>
+<span class="token comment"># a good idea. Most users should use the default of 10 and raise this up to</span>
+<span class="token comment"># 100 only in environments where very low latency is required.</span>
+hz 10
+
+<span class="token comment"># When a child rewrites the AOF file, if the following option is enabled</span>
+<span class="token comment"># the file will be fsync-ed every 32 MB of data generated. This is useful</span>
+<span class="token comment"># in order to commit the file to the disk more incrementally and avoid</span>
+<span class="token comment"># big latency spikes.</span>
+aof-rewrite-incremental-fsync <span class="token function">yes</span>
+
+<span class="token comment"># Redis LFU eviction (see maxmemory setting) can be tuned. However it is a good</span>
+<span class="token comment"># idea to start with the default settings and only change them after investigating</span>
+<span class="token comment"># how to improve the performances and how the keys LFU change over time, which</span>
+<span class="token comment"># is possible to inspect via the OBJECT FREQ command.</span>
+<span class="token comment">#</span>
+<span class="token comment"># There are two tunable parameters in the Redis LFU implementation: the</span>
+<span class="token comment"># counter logarithm factor and the counter decay time. It is important to</span>
+<span class="token comment"># understand what the two parameters mean before changing them.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The LFU counter is just 8 bits per key, it&apos;s maximum value is 255, so Redis</span>
+<span class="token comment"># uses a probabilistic increment with logarithmic behavior. Given the value</span>
+<span class="token comment"># of the old counter, when a key is accessed, the counter is incremented in</span>
+<span class="token comment"># this way:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1. A random number R between 0 and 1 is extracted.</span>
+<span class="token comment"># 2. A probability P is calculated as 1/(old_value*lfu_log_factor+1).</span>
+<span class="token comment"># 3. The counter is incremented only if R &lt; P.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default lfu-log-factor is 10. This is a table of how the frequency</span>
+<span class="token comment"># counter changes with a different number of accesses with different</span>
+<span class="token comment"># logarithmic factors:</span>
+<span class="token comment">#</span>
+<span class="token comment"># +--------+------------+------------+------------+------------+------------+</span>
+<span class="token comment"># | factor | 100 hits   | 1000 hits  | 100K hits  | 1M hits    | 10M hits   |</span>
+<span class="token comment"># +--------+------------+------------+------------+------------+------------+</span>
+<span class="token comment"># | 0      | 104        | 255        | 255        | 255        | 255        |</span>
+<span class="token comment"># +--------+------------+------------+------------+------------+------------+</span>
+<span class="token comment"># | 1      | 18         | 49         | 255        | 255        | 255        |</span>
+<span class="token comment"># +--------+------------+------------+------------+------------+------------+</span>
+<span class="token comment"># | 10     | 10         | 18         | 142        | 255        | 255        |</span>
+<span class="token comment"># +--------+------------+------------+------------+------------+------------+</span>
+<span class="token comment"># | 100    | 8          | 11         | 49         | 143        | 255        |</span>
+<span class="token comment"># +--------+------------+------------+------------+------------+------------+</span>
+<span class="token comment">#</span>
+<span class="token comment"># NOTE: The above table was obtained by running the following commands:</span>
+<span class="token comment">#</span>
+<span class="token comment">#   redis-benchmark -n 1000000 incr foo</span>
+<span class="token comment">#   redis-cli object freq foo</span>
+<span class="token comment">#</span>
+<span class="token comment"># NOTE 2: The counter initial value is 5 in order to give new objects a chance</span>
+<span class="token comment"># to accumulate hits.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The counter decay time is the time, in minutes, that must elapse in order</span>
+<span class="token comment"># for the key counter to be divided by two (or decremented if it has a value</span>
+<span class="token comment"># less &lt;= 10).</span>
+<span class="token comment">#</span>
+<span class="token comment"># The default value for the lfu-decay-time is 1. A Special value of 0 means to</span>
+<span class="token comment"># decay the counter every time it happens to be scanned.</span>
+<span class="token comment">#</span>
+<span class="token comment"># lfu-log-factor 10</span>
+<span class="token comment"># lfu-decay-time 1</span>
+</code></pre>
+<h1 id="active-defragmentation">ACTIVE DEFRAGMENTATION</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">########################### ACTIVE DEFRAGMENTATION #######################</span>
+<span class="token comment">#</span>
+<span class="token comment"># WARNING THIS FEATURE IS EXPERIMENTAL. However it was stress tested</span>
+<span class="token comment"># even in production and manually tested by multiple engineers for some</span>
+<span class="token comment"># time.</span>
+<span class="token comment">#</span>
+<span class="token comment"># What is active defragmentation?</span>
+<span class="token comment"># -------------------------------</span>
+<span class="token comment">#</span>
+<span class="token comment"># Active (online) defragmentation allows a Redis server to compact the</span>
+<span class="token comment"># spaces left between small allocations and deallocations of data in memory,</span>
+<span class="token comment"># thus allowing to reclaim back memory.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Fragmentation is a natural process that happens with every allocator (but</span>
+<span class="token comment"># less so with Jemalloc, fortunately) and certain workloads. Normally a server</span>
+<span class="token comment"># restart is needed in order to lower the fragmentation, or at least to flush</span>
+<span class="token comment"># away all the data and create it again. However thanks to this feature</span>
+<span class="token comment"># implemented by Oran Agra for Redis 4.0 this process can happen at runtime</span>
+<span class="token comment"># in an &quot;hot&quot; way, while the server is running.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Basically when the fragmentation is over a certain level (see the</span>
+<span class="token comment"># configuration options below) Redis will start to create new copies of the</span>
+<span class="token comment"># values in contiguous memory regions by exploiting certain specific Jemalloc</span>
+<span class="token comment"># features (in order to understand if an allocation is causing fragmentation</span>
+<span class="token comment"># and to allocate it in a better place), and at the same time, will release the</span>
+<span class="token comment"># old copies of the data. This process, repeated incrementally for all the keys</span>
+<span class="token comment"># will cause the fragmentation to drop back to normal values.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Important things to understand:</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1. This feature is disabled by default, and only works if you compiled Redis</span>
+<span class="token comment">#    to use the copy of Jemalloc we ship with the source code of Redis.</span>
+<span class="token comment">#    This is the default with Linux builds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># 2. You never need to enable this feature if you don&apos;t have fragmentation</span>
+<span class="token comment">#    issues.</span>
+<span class="token comment">#</span>
+<span class="token comment"># 3. Once you experience fragmentation, you can enable this feature when</span>
+<span class="token comment">#    needed with the command &quot;CONFIG SET activedefrag yes&quot;.</span>
+<span class="token comment">#</span>
+<span class="token comment"># The configuration parameters are able to fine tune the behavior of the</span>
+<span class="token comment"># defragmentation process. If you are not sure about what they mean it is</span>
+<span class="token comment"># a good idea to leave the defaults untouched.</span>
+
+<span class="token comment"># Enabled active defragmentation</span>
+<span class="token comment"># activedefrag yes</span>
+
+<span class="token comment"># Minimum amount of fragmentation waste to start active defrag</span>
+<span class="token comment"># active-defrag-ignore-bytes 100mb</span>
+
+<span class="token comment"># Minimum percentage of fragmentation to start active defrag</span>
+<span class="token comment"># active-defrag-threshold-lower 10</span>
+
+<span class="token comment"># Maximum percentage of fragmentation at which we use maximum effort</span>
+<span class="token comment"># active-defrag-threshold-upper 100</span>
+
+<span class="token comment"># Minimal effort for defrag in CPU percentage</span>
+<span class="token comment"># active-defrag-cycle-min 25</span>
+
+<span class="token comment"># Maximal effort for defrag in CPU percentage</span>
+<span class="token comment"># active-defrag-cycle-max 75</span>
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
+2018-12-29 14:31:46
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="redis-conf-cn.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Redis配置详解(中文版)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Redis配置详解(英文版)","level":"1.9.5","depth":2,"next":{"title":"Mysql","level":"1.10","depth":1,"ref":"","articles":[{"title":"Mysql常用命令","level":"1.10.1","depth":2,"path":"mysql/mysql-commands.md","ref":"mysql/mysql-commands.md","articles":[]}]},"previous":{"title":"Redis配置详解(中文版)","level":"1.9.4","depth":2,"path":"redis/redis-conf-cn.md","ref":"redis/redis-conf-cn.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.1","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":5,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.2","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":6,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.2"},{"backlink":"tcpip/ip.html#fig1.8.2.3","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":7,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.3"},{"backlink":"tcpip/ip.html#fig1.8.2.4","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":8,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.0.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.4"},{"backlink":"tcpip/ip.html#fig1.8.2.5","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":9,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.5"},{"backlink":"tcpip/ip.html#fig1.8.2.6","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":10,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.6"},{"backlink":"tcpip/ip.html#fig1.8.2.7","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":11,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/2.2.1.png","index":7,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.7"},{"backlink":"tcpip/ip.html#fig1.8.2.8","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":12,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.3.png","index":8,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.8"},{"backlink":"tcpip/ip.html#fig1.8.2.9","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":13,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.4.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.9"},{"backlink":"tcpip/ip.html#fig1.8.2.10","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":14,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/3.1.png","index":10,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.10"},{"backlink":"tcpip/ip.html#fig1.8.2.11","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":15,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/3.2.png","index":11,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.11"},{"backlink":"tcpip/ip.html#fig1.8.2.12","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":16,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.12"},{"backlink":"tcpip/ip.html#fig1.8.2.13","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":17,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.13"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.1","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":18,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.1"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.2","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":19,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.2"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.3","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":20,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.3.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.3"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.4","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":21,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.4"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.5","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":22,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.5"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.6","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":23,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/2.3.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.6"},{"backlink":"tcpip/http-message.html#fig1.8.5.1","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":24,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.1"},{"backlink":"tcpip/http-message.html#fig1.8.5.2","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":25,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.2"},{"backlink":"tcpip/http-message.html#fig1.8.5.3","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":26,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.2.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.3"},{"backlink":"tcpip/http-message.html#fig1.8.5.4","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":27,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.3.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.4"},{"backlink":"tcpip/http-message.html#fig1.8.5.5","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":28,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.3.3.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.5"},{"backlink":"tcpip/http-message.html#fig1.8.5.6","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":29,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.6"},{"backlink":"tcpip/http-message.html#fig1.8.5.7","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":30,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.2.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.7"},{"backlink":"tcpip/http-code.html#fig1.8.6.1","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":31,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.1"},{"backlink":"tcpip/http-code.html#fig1.8.6.2","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":32,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.1.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.2"},{"backlink":"tcpip/http-code.html#fig1.8.6.3","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":33,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.3"},{"backlink":"tcpip/http-code.html#fig1.8.6.4","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":34,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.3.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.4"},{"backlink":"tcpip/http-code.html#fig1.8.6.5","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":35,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.5"},{"backlink":"tcpip/http-code.html#fig1.8.6.6","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":36,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.6"},{"backlink":"tcpip/http-code.html#fig1.8.6.7","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":37,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.3.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.7"},{"backlink":"tcpip/http-code.html#fig1.8.6.8","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":38,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.4.png","index":8,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.8"},{"backlink":"tcpip/http-code.html#fig1.8.6.9","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":39,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.9"},{"backlink":"tcpip/http-code.html#fig1.8.6.10","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":40,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.2.png","index":10,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.10"},{"backlink":"tcpip/http-code.html#fig1.8.6.11","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":41,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.3.png","index":11,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.11"},{"backlink":"tcpip/http-code.html#fig1.8.6.12","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":42,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.4.png","index":12,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.12"},{"backlink":"tcpip/http-code.html#fig1.8.6.13","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":43,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.4.1.png","index":13,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.13"},{"backlink":"tcpip/http-code.html#fig1.8.6.14","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":44,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.4.2.png","index":14,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.14"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"redis/redis-conf-en.md","mtime":"2018-12-29T06:31:46.056Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-28T09:03:00.399Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

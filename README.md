@@ -38,5 +38,7 @@ Linux 学习笔记
     * [Redis介绍](redis/redis-introduction.md) 
     * [Redis集群模式部署](redis/redis-cluster.md) 
     * [Redis主从及哨兵模式部署](redis/redis-sentinel.md) 
+    * [Redis配置详解(中文版)](redis/redis-conf-cn.md) 
+    * [Redis配置详解(英文版)](redis/redis-conf-en.md)    
 * [Mysql]()
     * [Mysql常用命令](mysql/mysql-commands.md) 

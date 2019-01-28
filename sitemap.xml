@@ -26,5 +26,7 @@
 <url> <loc>https://www.huweihuang.com/linux-notes/redis/redis-introduction.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/redis/redis-cluster.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/redis/redis-sentinel.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/redis/redis-conf-cn.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/redis/redis-conf-en.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/mysql/mysql-commands.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>

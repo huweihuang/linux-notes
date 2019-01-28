@@ -1,0 +1,1528 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redis配置详解(中文版) · Linux 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="胡伟煌">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="redis-conf-en.html" />
+    
+    
+    <link rel="prev" href="redis-sentinel.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../images/favicon.ico'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/favicon.ico">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon.ico">
+        
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"huweihuang/linux-notes","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com" target="_blank" class="custom-link">胡伟煌的博客</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Linux 文件系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../file/linux-introduction.html">
+            
+                <a href="../file/linux-introduction.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    Linux 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../file/linux-file-permission.html">
+            
+                <a href="../file/linux-file-permission.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    Linux 文件权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Shell 脚本
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../shell/shell-introduction.html">
+            
+                <a href="../shell/shell-introduction.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    Shell简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    运维工具
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../tools/ansible-usage.html">
+            
+                <a href="../tools/ansible-usage.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    Ansible的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../tools/supervisor-usage.html">
+            
+                <a href="../tools/supervisor-usage.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Supervisor的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../tools/confd-usage.html">
+            
+                <a href="../tools/confd-usage.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Confd的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../tools/nfs-usage.html">
+            
+                <a href="../tools/nfs-usage.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    NFS的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Git
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../git/git.html">
+            
+                <a href="../git/git.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Git 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../git/git-common-cmd.html">
+            
+                <a href="../git/git-common-cmd.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Git 常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../git/git-commands.html">
+            
+                <a href="../git/git-commands.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Git 命令分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Nginx
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../nginx/install-nginx.html">
+            
+                <a href="../nginx/install-nginx.html">
+            
+                    
+                        <b>1.6.1.</b>
+                    
+                    Nginx安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../nginx/nginx-proxy.html">
+            
+                <a href="../nginx/nginx-proxy.html">
+            
+                    
+                        <b>1.6.2.</b>
+                    
+                    Nginx作为反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../nginx/nginx-http.html">
+            
+                <a href="../nginx/nginx-http.html">
+            
+                    
+                        <b>1.6.3.</b>
+                    
+                    Nginx http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Keepalived
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../keepalived/keepalived-introduction.html">
+            
+                <a href="../keepalived/keepalived-introduction.html">
+            
+                    
+                        <b>1.7.1.</b>
+                    
+                    Keepalived简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../keepalived/install-keepalived.html">
+            
+                <a href="../keepalived/install-keepalived.html">
+            
+                    
+                        <b>1.7.2.</b>
+                    
+                    Keepalived的安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../keepalived/keepalived-conf.html">
+            
+                <a href="../keepalived/keepalived-conf.html">
+            
+                    
+                        <b>1.7.3.</b>
+                    
+                    Keepalived的配置详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                        <b>1.8.</b>
+                    
+                    TCP/IP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../tcpip/tcpip-basics.html">
+            
+                <a href="../tcpip/tcpip-basics.html">
+            
+                    
+                        <b>1.8.1.</b>
+                    
+                    TCP/IP基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../tcpip/ip.html">
+            
+                <a href="../tcpip/ip.html">
+            
+                    
+                        <b>1.8.2.</b>
+                    
+                    IP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../tcpip/tcp-udp.html">
+            
+                <a href="../tcpip/tcp-udp.html">
+            
+                    
+                        <b>1.8.3.</b>
+                    
+                    TCP与UDP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../tcpip/http-basics.html">
+            
+                <a href="../tcpip/http-basics.html">
+            
+                    
+                        <b>1.8.4.</b>
+                    
+                    Http基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../tcpip/http-message.html">
+            
+                <a href="../tcpip/http-message.html">
+            
+                    
+                        <b>1.8.5.</b>
+                    
+                    Http报文
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../tcpip/http-code.html">
+            
+                <a href="../tcpip/http-code.html">
+            
+                    
+                        <b>1.8.6.</b>
+                    
+                    Http状态码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                        <b>1.9.</b>
+                    
+                    Redis
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="redis-introduction.html">
+            
+                <a href="redis-introduction.html">
+            
+                    
+                        <b>1.9.1.</b>
+                    
+                    Redis介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="redis-cluster.html">
+            
+                <a href="redis-cluster.html">
+            
+                    
+                        <b>1.9.2.</b>
+                    
+                    Redis集群模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="redis-sentinel.html">
+            
+                <a href="redis-sentinel.html">
+            
+                    
+                        <b>1.9.3.</b>
+                    
+                    Redis主从及哨兵模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.4" data-path="redis-conf-cn.html">
+            
+                <a href="redis-conf-cn.html">
+            
+                    
+                        <b>1.9.4.</b>
+                    
+                    Redis配置详解(中文版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="redis-conf-en.html">
+            
+                <a href="redis-conf-en.html">
+            
+                    
+                        <b>1.9.5.</b>
+                    
+                    Redis配置详解(英文版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                        <b>1.10.</b>
+                    
+                    Mysql
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../mysql/mysql-commands.html">
+            
+                <a href="../mysql/mysql-commands.html">
+            
+                    
+                        <b>1.10.1.</b>
+                    
+                    Mysql常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Redis配置详解(中文版)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p>&#x4EE5;&#x4E0B;&#x4E3A;<code>redis.conf</code>&#x7684;&#x6587;&#x4EF6;&#x7684;&#x4E2D;&#x6587;&#x63CF;&#x8FF0;&#xFF0C;&#x6574;&#x7406;&#x4E8E;&#x7F51;&#x7EDC;</p>
+</blockquote>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># Redis &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x793A;&#x4F8B;</span>
+
+<span class="token comment"># &#x6CE8;&#x610F;&#x5355;&#x4F4D;: &#x5F53;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#x65F6;, &#x53EF;&#x80FD;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x50CF;1k,5GB,4M&#x7B49;&#x5E38;&#x89C1;&#x683C;&#x5F0F;</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1k =&gt; 1000 bytes</span>
+<span class="token comment"># 1kb =&gt; 1024 bytes</span>
+<span class="token comment"># 1m =&gt; 1000000 bytes</span>
+<span class="token comment"># 1mb =&gt; 1024*1024 bytes</span>
+<span class="token comment"># 1g =&gt; 1000000000 bytes</span>
+<span class="token comment"># 1gb =&gt; 1024*1024*1024 bytes</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5355;&#x4F4D;&#x662F;&#x5BF9;&#x5927;&#x5C0F;&#x5199;&#x4E0D;&#x654F;&#x611F;&#x7684; 1GB 1Gb 1gB &#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</span>
+</code></pre>
+<h1 id="includes">INCLUDES</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## INCLUDES ###################################</span>
+
+<span class="token comment"># &#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5176;&#x4ED6;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;&#x5982;&#x679C;&#x4F60;&#x6709;&#x4E00;&#x4E2A;&#x9002;&#x7528;&#x4E8E;&#x6240;&#x6709;Redis&#x670D;&#x52A1;&#x5668;&#x7684;&#x6807;&#x51C6;&#x914D;&#x7F6E;&#x6A21;&#x677F;</span>
+<span class="token comment"># &#x4F46;&#x4E5F;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x5C06;&#x5F88;&#x6709;&#x7528;&#x3002;&#x88AB;&#x5305;&#x542B;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E5F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;</span>
+<span class="token comment"># &#x6240;&#x4EE5;&#x9700;&#x8981;&#x8C28;&#x614E;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x6CE8;&#x610F;&#x201C;inclue&#x201D;&#x9009;&#x9879;&#x4E0D;&#x80FD;&#x88AB;admin&#x6216;Redis&#x54E8;&#x5175;&#x7684;&quot;CONFIG REWRITE&quot;&#x547D;&#x4EE4;&#x91CD;&#x5199;&#x3002;</span>
+<span class="token comment"># &#x56E0;&#x4E3A;Redis&#x603B;&#x662F;&#x4F7F;&#x7528;&#x6700;&#x540E;&#x89E3;&#x6790;&#x7684;&#x914D;&#x7F6E;&#x884C;&#x6700;&#x4E3A;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#x7684;&#x503C;, &#x4F60;&#x6700;&#x597D;&#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x5F00;&#x5934;&#x914D;&#x7F6E;includes&#x6765;</span>
+<span class="token comment"># &#x907F;&#x514D;&#x5B83;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x91CD;&#x5199;&#x914D;&#x7F6E;&#x3002;</span>
+<span class="token comment"># &#x5982;&#x679C;&#x76F8;&#x53CD;&#x4F60;&#x60F3;&#x7528;includes&#x7684;&#x914D;&#x7F6E;&#x8986;&#x76D6;&#x539F;&#x6765;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x4F60;&#x6700;&#x597D;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x7684;&#x6700;&#x540E;&#x4F7F;&#x7528;include</span>
+<span class="token comment">#</span>
+<span class="token comment"># include /path/to/local.conf</span>
+<span class="token comment"># include /path/to/other.conf</span>
+</code></pre>
+<h1 id="general">GENERAL</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################ GENERAL  #####################################</span>
+
+<span class="token comment"># &#x9ED8;&#x8BA4;Rdis&#x4E0D;&#x4F1A;&#x4F5C;&#x4E3A;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x7684;&#x8BDD;&#x914D;&#x7F6E;&#x6210;&apos;yes&apos;</span>
+<span class="token comment"># &#x6CE8;&#x610F;&#x914D;&#x7F6E;&#x6210;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x540E;Redis&#x4F1A;&#x5C06;&#x8FDB;&#x7A0B;&#x53F7;&#x5199;&#x5165;&#x6587;&#x4EF6;/var/run/redis.pid</span>
+daemonize no
+
+<span class="token comment"># &#x5F53;&#x4EE5;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x65B9;&#x5F0F;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;Redis&#x4F1A;&#x628A;&#x8FDB;&#x7A0B;ID&#x5199;&#x5230; /var/run/redis.pid&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x4FEE;&#x6539;&#x8DEF;&#x5F84;&#x3002;</span>
+pidfile /var/run/redis.pid
+
+<span class="token comment"># &#x63A5;&#x53D7;&#x8FDE;&#x63A5;&#x7684;&#x7279;&#x5B9A;&#x7AEF;&#x53E3;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;6379</span>
+<span class="token comment"># &#x5982;&#x679C;&#x7AEF;&#x53E3;&#x8BBE;&#x7F6E;&#x4E3A;0&#xFF0C;Redis&#x5C31;&#x4E0D;&#x4F1A;&#x76D1;&#x542C;TCP&#x5957;&#x63A5;&#x5B57;&#x3002;</span>
+port 6379
+
+<span class="token comment"># TCP listen() backlog.</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5728;&#x9AD8;&#x5E76;&#x53D1;&#x73AF;&#x5883;&#x4E0B;&#x4F60;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x9AD8;backlog&#x503C;&#x6765;&#x907F;&#x514D;&#x6162;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x95EE;&#x9898;&#x3002;&#x6CE8;&#x610F;Linux&#x5185;&#x6838;&#x9ED8;&#x9ED8;&#x5730;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x51CF;&#x5C0F;</span>
+<span class="token comment"># &#x5230;/proc/sys/net/core/somaxconn&#x7684;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x786E;&#x8BA4;&#x589E;&#x5927;somaxconn&#x548C;tcp_max_syn_backlog</span>
+<span class="token comment"># &#x4E24;&#x4E2A;&#x503C;&#x6765;&#x8FBE;&#x5230;&#x60F3;&#x8981;&#x7684;&#x6548;&#x679C;&#x3002;</span>
+tcp-backlog 511
+
+<span class="token comment"># &#x9ED8;&#x8BA4;Redis&#x76D1;&#x542C;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x6240;&#x6709;&#x53EF;&#x7528;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x53EF;&#x4EE5;&#x7528;&quot;bind&quot;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#x8DDF;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;ip&#x5730;&#x5740;&#x6765;&#x5B9E;&#x73B0;</span>
+<span class="token comment"># &#x76D1;&#x542C;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x793A;&#x4F8B;:</span>
+<span class="token comment">#</span>
+<span class="token comment"># bind 192.168.1.100 10.0.0.1</span>
+<span class="token comment"># bind 127.0.0.1</span>
+
+<span class="token comment"># &#x6307;&#x5B9A;&#x7528;&#x6765;&#x76D1;&#x542C;Unix&#x5957;&#x5957;&#x63A5;&#x5B57;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x6CA1;&#x6709;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C; &#x6240;&#x4EE5;&#x5728;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;Redis&#x4E0D;&#x4F1A;&#x76D1;&#x542C;Unix&#x5957;&#x63A5;&#x5B57;</span>
+<span class="token comment">#</span>
+<span class="token comment"># unixsocket /tmp/redis.sock</span>
+<span class="token comment"># unixsocketperm 755</span>
+
+<span class="token comment"># &#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7A7A;&#x95F2;&#x591A;&#x5C11;&#x79D2;&#x540E;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x3002;(0&#x4EE3;&#x8868;&#x7981;&#x7528;&#xFF0C;&#x6C38;&#x4E0D;&#x5173;&#x95ED;)</span>
+<span class="token function">timeout</span> 0
+
+<span class="token comment"># TCP keepalive.</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5982;&#x679C;&#x975E;&#x96F6;&#xFF0C;&#x5219;&#x8BBE;&#x7F6E;SO_KEEPALIVE&#x9009;&#x9879;&#x6765;&#x5411;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;ACK&#xFF0C;&#x7531;&#x4E8E;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x539F;&#x56E0;&#x8FD9;&#x662F;&#x5F88;&#x6709;&#x7528;&#x7684;&#xFF1A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1&#xFF09;&#x80FD;&#x591F;&#x68C0;&#x6D4B;&#x65E0;&#x54CD;&#x5E94;&#x7684;&#x5BF9;&#x7AEF;</span>
+<span class="token comment"># 2&#xFF09;&#x8BA9;&#x8BE5;&#x8FDE;&#x63A5;&#x4E2D;&#x95F4;&#x7684;&#x7F51;&#x7EDC;&#x8BBE;&#x5907;&#x77E5;&#x9053;&#x8FD9;&#x4E2A;&#x8FDE;&#x63A5;&#x8FD8;&#x5B58;&#x6D3B;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5728;Linux&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x503C;(&#x5355;&#x4F4D;&#xFF1A;&#x79D2;)&#x5C31;&#x662F;&#x53D1;&#x9001;ACK&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x3002;</span>
+<span class="token comment"># &#x6CE8;&#x610F;&#xFF1A;&#x8981;&#x5173;&#x95ED;&#x8FD9;&#x4E2A;&#x8FDE;&#x63A5;&#x9700;&#x8981;&#x4E24;&#x500D;&#x7684;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x503C;&#x3002;</span>
+<span class="token comment"># &#x5728;&#x5176;&#x4ED6;&#x5185;&#x6838;&#x4E0A;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x7531;&#x5185;&#x6838;&#x914D;&#x7F6E;&#x51B3;&#x5B9A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x7684;&#x4E00;&#x4E2A;&#x5408;&#x7406;&#x503C;&#x662F;60&#x79D2;</span>
+tcp-keepalive 0
+
+<span class="token comment"># &#x6307;&#x5B9A;&#x670D;&#x52A1;&#x5668;&#x8C03;&#x8BD5;&#x7B49;&#x7EA7;</span>
+<span class="token comment"># &#x53EF;&#x80FD;&#x503C;&#xFF1A;</span>
+<span class="token comment"># debug &#xFF08;&#x5927;&#x91CF;&#x4FE1;&#x606F;&#xFF0C;&#x5BF9;&#x5F00;&#x53D1;/&#x6D4B;&#x8BD5;&#x6709;&#x7528;&#xFF09;</span>
+<span class="token comment"># verbose &#xFF08;&#x5F88;&#x591A;&#x7CBE;&#x7B80;&#x7684;&#x6709;&#x7528;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x50CF;debug&#x7B49;&#x7EA7;&#x90A3;&#x4E48;&#x591A;&#xFF09;</span>
+<span class="token comment"># notice &#xFF08;&#x9002;&#x91CF;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x662F;&#x4F60;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x9700;&#x8981;&#x7684;&#xFF09;</span>
+<span class="token comment"># warning &#xFF08;&#x53EA;&#x6709;&#x5F88;&#x91CD;&#x8981;/&#x4E25;&#x91CD;&#x7684;&#x4FE1;&#x606F;&#x4F1A;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;&#xFF09;</span>
+loglevel notice
+
+<span class="token comment"># &#x6307;&#x660E;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x540D;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&quot;stdout&quot;&#x6765;&#x5F3A;&#x5236;&#x8BA9;Redis&#x628A;&#x65E5;&#x5FD7;&#x4FE1;&#x606F;&#x5199;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x4E0A;&#x3002;</span>
+<span class="token comment"># &#x6CE8;&#x610F;:&#x5982;&#x679C;Redis&#x4EE5;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x65B9;&#x5F0F;&#x8FD0;&#x884C;&#xFF0C;&#x800C;&#x8BBE;&#x7F6E;&#x65E5;&#x5FD7;&#x663E;&#x793A;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x7684;&#x8BDD;&#xFF0C;&#x65E5;&#x5FD7;&#x4F1A;&#x53D1;&#x9001;&#x5230;/dev/null</span>
+logfile <span class="token string">&quot;&quot;</span>
+
+<span class="token comment"># &#x8981;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x5668;&#xFF0C;&#x53EA;&#x8981;&#x8BBE;&#x7F6E; &quot;syslog-enabled&quot; &#x4E3A; &quot;yes&quot; &#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</span>
+<span class="token comment"># &#x7136;&#x540E;&#x6839;&#x636E;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;syslog&#x53C2;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</span>
+<span class="token comment"># syslog-enabled no</span>
+
+<span class="token comment"># &#x6307;&#x660E;syslog&#x8EAB;&#x4EFD;</span>
+<span class="token comment"># syslog-ident redis</span>
+
+<span class="token comment"># &#x6307;&#x660E;syslog&#x7684;&#x8BBE;&#x5907;&#x3002;&#x5FC5;&#x987B;&#x662F;user&#x6216;LOCAL0 ~ LOCAL7&#x4E4B;&#x4E00;&#x3002;</span>
+<span class="token comment"># syslog-facility local0</span>
+
+<span class="token comment"># &#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#x4E2A;&#x6570;&#x3002;&#x9ED8;&#x8BA4;&#x6570;&#x636E;&#x5E93;&#x662F; DB 0&#xFF0C;</span>
+<span class="token comment"># &#x53EF;&#x4EE5;&#x901A;&#x8FC7;select &lt;dbid&gt;  (0 &lt;= dbid &lt;= &apos;databases&apos; - 1 &#xFF09;&#x6765;&#x4E3A;&#x6BCF;&#x4E2A;&#x8FDE;&#x63A5;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x3002;</span>
+databases 16
+</code></pre>
+<h1 id="snapshotting">SNAPSHOTTING</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################ SNAPSHOTTING  ################################</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x628A;&#x6570;&#x636E;&#x5E93;&#x5B58;&#x5230;&#x78C1;&#x76D8;&#x4E0A;:</span>
+<span class="token comment">#</span>
+<span class="token comment">#   save &lt;seconds&gt; &lt;changes&gt;</span>
+<span class="token comment">#   </span>
+<span class="token comment">#   &#x4F1A;&#x5728;&#x6307;&#x5B9A;&#x79D2;&#x6570;&#x548C;&#x6570;&#x636E;&#x53D8;&#x5316;&#x6B21;&#x6570;&#x4E4B;&#x540E;&#x628A;&#x6570;&#x636E;&#x5E93;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment">#   &#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x5C06;&#x4F1A;&#x8FDB;&#x884C;&#x628A;&#x6570;&#x636E;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x7684;&#x64CD;&#x4F5C;:</span>
+<span class="token comment">#   900&#x79D2;&#xFF08;15&#x5206;&#x949F;&#xFF09;&#x4E4B;&#x540E;&#xFF0C;&#x4E14;&#x81F3;&#x5C11;1&#x6B21;&#x53D8;&#x66F4;</span>
+<span class="token comment">#   300&#x79D2;&#xFF08;5&#x5206;&#x949F;&#xFF09;&#x4E4B;&#x540E;&#xFF0C;&#x4E14;&#x81F3;&#x5C11;10&#x6B21;&#x53D8;&#x66F4;</span>
+<span class="token comment">#   60&#x79D2;&#x4E4B;&#x540E;&#xFF0C;&#x4E14;&#x81F3;&#x5C11;10000&#x6B21;&#x53D8;&#x66F4;</span>
+<span class="token comment">#</span>
+<span class="token comment">#   &#x6CE8;&#x610F;&#xFF1A;&#x4F60;&#x8981;&#x60F3;&#x4E0D;&#x5199;&#x78C1;&#x76D8;&#x7684;&#x8BDD;&#x5C31;&#x628A;&#x6240;&#x6709; &quot;save&quot; &#x8BBE;&#x7F6E;&#x6CE8;&#x91CA;&#x6389;&#x5C31;&#x884C;&#x4E86;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment">#   &#x901A;&#x8FC7;&#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x5E26;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x53C2;&#x6570;&#x7684;save&#x6307;&#x4EE4;&#x4E5F;&#x80FD;&#x79FB;&#x9664;&#x4E4B;&#x524D;&#x6240;&#x6709;&#x914D;&#x7F6E;&#x7684;save&#x6307;&#x4EE4;</span>
+<span class="token comment">#   &#x50CF;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</span>
+<span class="token comment">#   save &quot;&quot; </span>
+
+save 900 1
+save 300 10
+save 60 10000
+
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x5982;&#x679C;&#x5F00;&#x542F;RDB&#x5FEB;&#x7167;(&#x81F3;&#x5C11;&#x4E00;&#x6761;save&#x6307;&#x4EE4;)&#x5E76;&#x4E14;&#x6700;&#x65B0;&#x7684;&#x540E;&#x53F0;&#x4FDD;&#x5B58;&#x5931;&#x8D25;&#xFF0C;Redis&#x5C06;&#x4F1A;&#x505C;&#x6B62;&#x63A5;&#x53D7;&#x5199;&#x64CD;&#x4F5C;</span>
+<span class="token comment"># &#x8FD9;&#x5C06;&#x4F7F;&#x7528;&#x6237;&#x77E5;&#x9053;&#x6570;&#x636E;&#x6CA1;&#x6709;&#x6B63;&#x786E;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5230;&#x786C;&#x76D8;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x80FD;&#x6CA1;&#x4EBA;&#x6CE8;&#x610F;&#x5230;&#x5E76;&#x4E14;&#x9020;&#x6210;&#x4E00;&#x4E9B;&#x707E;&#x96BE;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5982;&#x679C;&#x540E;&#x53F0;&#x4FDD;&#x5B58;&#x8FDB;&#x7A0B;&#x80FD;&#x91CD;&#x65B0;&#x5F00;&#x59CB;&#x5DE5;&#x4F5C;&#xFF0C;Redis&#x5C06;&#x81EA;&#x52A8;&#x5141;&#x8BB8;&#x5199;&#x64CD;&#x4F5C;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x7136;&#x800C;&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7ECF;&#x90E8;&#x7F72;&#x4E86;&#x9002;&#x5F53;&#x7684;Redis&#x670D;&#x52A1;&#x5668;&#x548C;&#x6301;&#x4E45;&#x5316;&#x7684;&#x76D1;&#x63A7;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x60F3;&#x5173;&#x6389;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x4EE5;&#x4FBF;&#x4E8E;&#x5373;&#x4F7F;&#x662F;</span>
+<span class="token comment"># &#x786C;&#x76D8;&#xFF0C;&#x6743;&#x9650;&#x7B49;&#x51FA;&#x95EE;&#x9898;&#x4E86;Redis&#x4E5F;&#x80FD;&#x591F;&#x50CF;&#x5E73;&#x65F6;&#x4E00;&#x6837;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;</span>
+stop-writes-on-bgsave-error <span class="token function">yes</span>
+
+<span class="token comment"># &#x5F53;&#x5BFC;&#x51FA;&#x5230; .rdb &#x6570;&#x636E;&#x5E93;&#x65F6;&#x662F;&#x5426;&#x7528;LZF&#x538B;&#x7F29;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#xFF1F;</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E3A; &quot;yes&quot;&#xFF0C;&#x56E0;&#x4E3A;&#x51E0;&#x4E4E;&#x5728;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x4E0B;&#x5B83;&#x90FD;&#x662F;&#x4E0D;&#x9519;&#x7684;&#x3002;</span>
+<span class="token comment"># &#x5982;&#x679C;&#x4F60;&#x60F3;&#x8282;&#x7701;CPU&#x7684;&#x8BDD;&#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x8FD9;&#x4E2A;&#x8BBE;&#x7F6E;&#x4E3A; &quot;no&quot;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F60;&#x6709;&#x53EF;&#x538B;&#x7F29;&#x7684;key&#x548C;value&#x7684;&#x8BDD;&#xFF0C;</span>
+<span class="token comment"># &#x90A3;&#x6570;&#x636E;&#x6587;&#x4EF6;&#x5C31;&#x4F1A;&#x66F4;&#x5927;&#x4E86;&#x3002;</span>
+rdbcompression <span class="token function">yes</span>
+
+<span class="token comment"># &#x56E0;&#x4E3A;&#x7248;&#x672C;5&#x7684;RDB&#x6709;&#x4E00;&#x4E2A;CRC64&#x7B97;&#x6CD5;&#x7684;&#x6821;&#x9A8C;&#x548C;&#x653E;&#x5728;&#x4E86;&#x6587;&#x4EF6;&#x7684;&#x6700;&#x540E;&#x3002;&#x8FD9;&#x5C06;&#x4F7F;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x66F4;&#x52A0;&#x53EF;&#x9760;&#x4F46;&#x5728;</span>
+<span class="token comment"># &#x751F;&#x4EA7;&#x548C;&#x52A0;&#x8F7D;RDB&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x8FD9;&#x6709;&#x4E00;&#x4E2A;&#x6027;&#x80FD;&#x6D88;&#x8017;(&#x5927;&#x7EA6;10%)&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x53EF;&#x4EE5;&#x5173;&#x6389;&#x5B83;&#x6765;&#x83B7;&#x53D6;&#x6700;&#x597D;&#x7684;&#x6027;&#x80FD;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x751F;&#x6210;&#x7684;&#x5173;&#x95ED;&#x6821;&#x9A8C;&#x7684;RDB&#x6587;&#x4EF6;&#x6709;&#x4E00;&#x4E2A;0&#x7684;&#x6821;&#x9A8C;&#x548C;&#xFF0C;&#x5B83;&#x5C06;&#x544A;&#x8BC9;&#x52A0;&#x8F7D;&#x4EE3;&#x7801;&#x8DF3;&#x8FC7;&#x68C0;&#x67E5;</span>
+rdbchecksum <span class="token function">yes</span>
+
+<span class="token comment"># &#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6587;&#x4EF6;&#x540D;</span>
+dbfilename dump.rdb
+
+<span class="token comment"># &#x5DE5;&#x4F5C;&#x76EE;&#x5F55;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x6570;&#x636E;&#x5E93;&#x4F1A;&#x5199;&#x5230;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6587;&#x4EF6;&#x540D;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x7684; &quot;dbfilename&quot; &#x7684;&#x503C;&#x3002;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x7D2F;&#x52A0;&#x6587;&#x4EF6;&#x4E5F;&#x653E;&#x8FD9;&#x91CC;&#x3002;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x6CE8;&#x610F;&#x4F60;&#x8FD9;&#x91CC;&#x6307;&#x5B9A;&#x7684;&#x5FC5;&#x987B;&#x662F;&#x76EE;&#x5F55;&#xFF0C;&#x4E0D;&#x662F;&#x6587;&#x4EF6;&#x540D;&#x3002;</span>
+<span class="token function">dir</span> ./
+</code></pre>
+<h1 id="replication">REPLICATION</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################# REPLICATION #################################</span>
+<span class="token comment"># &#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x3002;&#x901A;&#x8FC7; slaveof &#x6307;&#x4EE4;&#x6765;&#x5B9E;&#x73B0;Redis&#x5B9E;&#x4F8B;&#x7684;&#x5907;&#x4EFD;&#x3002;</span>
+<span class="token comment"># &#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x91CC;&#x662F;&#x672C;&#x5730;&#x4ECE;&#x8FDC;&#x7AEF;&#x590D;&#x5236;&#x6570;&#x636E;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x672C;&#x5730;&#x53EF;&#x4EE5;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6587;&#x4EF6;&#x3001;&#x7ED1;&#x5B9A;&#x4E0D;&#x540C;&#x7684;IP&#x3001;&#x76D1;&#x542C;</span>
+<span class="token comment"># &#x4E0D;&#x540C;&#x7684;&#x7AEF;&#x53E3;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># slaveof &lt;masterip&gt; &lt;masterport&gt;</span>
+
+<span class="token comment"># &#x5982;&#x679C;master&#x8BBE;&#x7F6E;&#x4E86;&#x5BC6;&#x7801;&#x4FDD;&#x62A4;&#xFF08;&#x901A;&#x8FC7; &quot;requirepass&quot; &#x9009;&#x9879;&#x6765;&#x914D;&#x7F6E;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;slave&#x5728;&#x5F00;&#x59CB;&#x540C;&#x6B65;&#x4E4B;&#x524D;&#x5FC5;&#x987B;</span>
+<span class="token comment"># &#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#xFF0C;&#x5426;&#x5219;&#x5B83;&#x7684;&#x540C;&#x6B65;&#x8BF7;&#x6C42;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># masterauth &lt;master-password&gt;</span>
+
+<span class="token comment"># &#x5F53;&#x4E00;&#x4E2A;slave&#x5931;&#x53BB;&#x548C;master&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x6216;&#x8005;&#x540C;&#x6B65;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x4E2D;&#xFF0C;slave&#x7684;&#x884C;&#x4E3A;&#x6709;&#x4E24;&#x79CD;&#x53EF;&#x80FD;&#xFF1A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1) &#x5982;&#x679C; slave-serve-stale-data &#x8BBE;&#x7F6E;&#x4E3A; &quot;yes&quot; (&#x9ED8;&#x8BA4;&#x503C;)&#xFF0C;slave&#x4F1A;&#x7EE7;&#x7EED;&#x54CD;&#x5E94;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#xFF0C;</span>
+<span class="token comment">#    &#x53EF;&#x80FD;&#x662F;&#x6B63;&#x5E38;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x8FD8;&#x6CA1;&#x83B7;&#x5F97;&#x503C;&#x7684;&#x7A7A;&#x6570;&#x636E;&#x3002;</span>
+<span class="token comment"># 2) &#x5982;&#x679C; slave-serve-stale-data &#x8BBE;&#x7F6E;&#x4E3A; &quot;no&quot;&#xFF0C;slave&#x4F1A;&#x56DE;&#x590D;&quot;&#x6B63;&#x5728;&#x4ECE;master&#x540C;&#x6B65;</span>
+<span class="token comment">#   &#xFF08;SYNC with master in progress&#xFF09;&quot;&#x6765;&#x5904;&#x7406;&#x5404;&#x79CD;&#x8BF7;&#x6C42;&#xFF0C;&#x9664;&#x4E86; INFO &#x548C; SLAVEOF &#x547D;&#x4EE4;&#x3002;</span>
+<span class="token comment">#</span>
+slave-serve-stale-data <span class="token function">yes</span>
+
+<span class="token comment"># &#x4F60;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;salve&#x5B9E;&#x4F8B;&#x662F;&#x5426;&#x63A5;&#x53D7;&#x5199;&#x64CD;&#x4F5C;&#x3002;&#x53EF;&#x5199;&#x7684;slave&#x5B9E;&#x4F8B;&#x53EF;&#x80FD;&#x5BF9;&#x5B58;&#x50A8;&#x4E34;&#x65F6;&#x6570;&#x636E;&#x6BD4;&#x8F83;&#x6709;&#x7528;(&#x56E0;&#x4E3A;&#x5199;&#x5165;salve</span>
+<span class="token comment"># &#x7684;&#x6570;&#x636E;&#x5728;&#x540C;master&#x540C;&#x6B65;&#x4E4B;&#x540E;&#x5C06;&#x5F88;&#x5BB9;&#x88AB;&#x5220;&#x9664;)&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x7531;&#x4E8E;&#x914D;&#x7F6E;&#x9519;&#x8BEF;&#x5728;&#x5199;&#x5165;&#x65F6;&#x4E5F;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4ECE;Redis2.6&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x7684;slave&#x4E3A;&#x53EA;&#x8BFB;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x6CE8;&#x610F;:&#x53EA;&#x8BFB;&#x7684;slave&#x4E0D;&#x662F;&#x4E3A;&#x4E86;&#x66B4;&#x9732;&#x7ED9;&#x4E92;&#x8054;&#x7F51;&#x4E0A;&#x4E0D;&#x53EF;&#x4FE1;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#x3002;&#x5B83;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x9632;&#x6B62;&#x5B9E;&#x4F8B;&#x8BEF;&#x7528;&#x7684;&#x4FDD;&#x62A4;&#x5C42;&#x3002;</span>
+<span class="token comment"># &#x4E00;&#x4E2A;&#x53EA;&#x8BFB;&#x7684;slave&#x652F;&#x6301;&#x6240;&#x6709;&#x7684;&#x7BA1;&#x7406;&#x547D;&#x4EE4;&#x6BD4;&#x5982;config,debug&#x7B49;&#x3002;&#x4E3A;&#x4E86;&#x9650;&#x5236;&#x4F60;&#x53EF;&#x4EE5;&#x7528;&apos;rename-command&apos;&#x6765;</span>
+<span class="token comment"># &#x9690;&#x85CF;&#x6240;&#x6709;&#x7684;&#x7BA1;&#x7406;&#x548C;&#x5371;&#x9669;&#x547D;&#x4EE4;&#x6765;&#x589E;&#x5F3A;&#x53EA;&#x8BFB;slave&#x7684;&#x5B89;&#x5168;&#x6027;</span>
+slave-read-only <span class="token function">yes</span>
+
+<span class="token comment"># slave&#x6839;&#x636E;&#x6307;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5411;master&#x53D1;&#x9001;ping&#x8BF7;&#x6C42;&#x3002;</span>
+<span class="token comment"># &#x65F6;&#x95F4;&#x95F4;&#x9694;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; repl_ping_slave_period &#x6765;&#x8BBE;&#x7F6E;&#x3002;</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;10&#x79D2;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-ping-slave-period 10</span>
+
+<span class="token comment"># &#x4EE5;&#x4E0B;&#x9009;&#x9879;&#x8BBE;&#x7F6E;&#x540C;&#x6B65;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
+<span class="token comment">#</span>
+<span class="token comment"># 1&#xFF09;slave&#x5728;&#x4E0E;master SYNC&#x671F;&#x95F4;&#x6709;&#x5927;&#x91CF;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x9020;&#x6210;&#x8D85;&#x65F6;</span>
+<span class="token comment"># 2&#xFF09;&#x5728;slave&#x89D2;&#x5EA6;&#xFF0C;master&#x8D85;&#x65F6;&#xFF0C;&#x5305;&#x62EC;&#x6570;&#x636E;&#x3001;ping&#x7B49;</span>
+<span class="token comment"># 3&#xFF09;&#x5728;master&#x89D2;&#x5EA6;&#xFF0C;slave&#x8D85;&#x65F6;&#xFF0C;&#x5F53;master&#x53D1;&#x9001;REPLCONF ACK pings</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x786E;&#x4FDD;&#x8FD9;&#x4E2A;&#x503C;&#x5927;&#x4E8E;&#x6307;&#x5B9A;&#x7684;repl-ping-slave-period&#xFF0C;&#x5426;&#x5219;&#x5728;&#x4E3B;&#x4ECE;&#x95F4;&#x6D41;&#x91CF;&#x4E0D;&#x9AD8;&#x65F6;&#x6BCF;&#x6B21;&#x90FD;&#x4F1A;&#x68C0;&#x6D4B;&#x5230;&#x8D85;&#x65F6;</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-timeout 60</span>
+
+<span class="token comment"># &#x662F;&#x5426;&#x5728;slave&#x5957;&#x63A5;&#x5B57;&#x53D1;&#x9001;SYNC&#x4E4B;&#x540E;&#x7981;&#x7528; TCP_NODELAY &#xFF1F;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5982;&#x679C;&#x4F60;&#x9009;&#x62E9;&#x201C;yes&#x201D;Redis&#x5C06;&#x4F7F;&#x7528;&#x66F4;&#x5C11;&#x7684;TCP&#x5305;&#x548C;&#x5E26;&#x5BBD;&#x6765;&#x5411;slaves&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x5C06;&#x4F7F;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5230;slave</span>
+<span class="token comment"># &#x4E0A;&#x6709;&#x5EF6;&#x8FDF;&#xFF0C;Linux&#x5185;&#x6838;&#x7684;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x4F1A;&#x8FBE;&#x5230;40&#x6BEB;&#x79D2;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5982;&#x679C;&#x4F60;&#x9009;&#x62E9;&#x4E86; &quot;no&quot; &#x6570;&#x636E;&#x4F20;&#x8F93;&#x5230;salve&#x7684;&#x5EF6;&#x8FDF;&#x5C06;&#x4F1A;&#x51CF;&#x5C11;&#x4F46;&#x8981;&#x4F7F;&#x7528;&#x66F4;&#x591A;&#x7684;&#x5E26;&#x5BBD;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x6211;&#x4EEC;&#x4F1A;&#x4E3A;&#x4F4E;&#x5EF6;&#x8FDF;&#x505A;&#x4F18;&#x5316;&#xFF0C;&#x4F46;&#x9AD8;&#x6D41;&#x91CF;&#x60C5;&#x51B5;&#x6216;&#x4E3B;&#x4ECE;&#x4E4B;&#x95F4;&#x7684;&#x8DF3;&#x6570;&#x8FC7;&#x591A;&#x65F6;&#xFF0C;&#x628A;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x8BBE;&#x7F6E;&#x4E3A;&#x201C;yes&#x201D;</span>
+<span class="token comment"># &#x662F;&#x4E2A;&#x4E0D;&#x9519;&#x7684;&#x9009;&#x62E9;&#x3002;</span>
+repl-disable-tcp-nodelay no
+
+<span class="token comment"># &#x8BBE;&#x7F6E;&#x6570;&#x636E;&#x5907;&#x4EFD;&#x7684;backlog&#x5927;&#x5C0F;&#x3002;backlog&#x662F;&#x4E00;&#x4E2A;slave&#x5728;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x65F6;&#x8BB0;&#x5F55;salve&#x6570;&#x636E;&#x7684;&#x7F13;&#x51B2;&#xFF0C;</span>
+<span class="token comment"># &#x6240;&#x4EE5;&#x4E00;&#x4E2A;slave&#x5728;&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x4E0D;&#x5FC5;&#x8981;&#x5168;&#x91CF;&#x7684;&#x540C;&#x6B65;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x589E;&#x91CF;&#x540C;&#x6B65;&#x5C31;&#x8DB3;&#x591F;&#x4E86;&#xFF0C;&#x5C06;&#x5728;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x7684;&#x8FD9;&#x6BB5;</span>
+<span class="token comment"># &#x65F6;&#x95F4;&#x5185;slave&#x4E22;&#x5931;&#x7684;&#x90E8;&#x5206;&#x6570;&#x636E;&#x4F20;&#x9001;&#x7ED9;&#x5B83;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x540C;&#x6B65;&#x7684;backlog&#x8D8A;&#x5927;&#xFF0C;slave&#x80FD;&#x591F;&#x8FDB;&#x884C;&#x589E;&#x91CF;&#x540C;&#x6B65;&#x5E76;&#x4E14;&#x5141;&#x8BB8;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x7684;&#x65F6;&#x95F4;&#x5C31;&#x8D8A;&#x957F;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># backlog&#x53EA;&#x5206;&#x914D;&#x4E00;&#x6B21;&#x5E76;&#x4E14;&#x81F3;&#x5C11;&#x9700;&#x8981;&#x4E00;&#x4E2A;slave&#x8FDE;&#x63A5;</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-backlog-size 1mb</span>
+
+<span class="token comment"># &#x5F53;master&#x5728;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x4E0D;&#x518D;&#x4E0E;&#x4EFB;&#x4F55;slave&#x8FDE;&#x63A5;&#xFF0C;backlog&#x5C06;&#x4F1A;&#x91CA;&#x653E;&#x3002;&#x4EE5;&#x4E0B;&#x9009;&#x9879;&#x914D;&#x7F6E;&#x4E86;&#x4ECE;&#x6700;&#x540E;&#x4E00;&#x4E2A;</span>
+<span class="token comment"># slave&#x65AD;&#x5F00;&#x5F00;&#x59CB;&#x8BA1;&#x65F6;&#x591A;&#x5C11;&#x79D2;&#x540E;&#xFF0C;backlog&#x7F13;&#x51B2;&#x5C06;&#x4F1A;&#x91CA;&#x653E;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># 0&#x8868;&#x793A;&#x6C38;&#x4E0D;&#x91CA;&#x653E;backlog</span>
+<span class="token comment">#</span>
+<span class="token comment"># repl-backlog-ttl 3600</span>
+
+<span class="token comment"># slave&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x5C55;&#x793A;&#x5728;Redis&#x7684;Info&#x8F93;&#x51FA;&#x4E2D;&#x3002;&#x5982;&#x679C;master&#x4E0D;&#x518D;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x4E86;&#xFF0C;&#x54E8;&#x5175;&#x5C06;&#x7528;&#x5B83;&#x6765;</span>
+<span class="token comment"># &#x9009;&#x62E9;&#x4E00;&#x4E2A;slave&#x63D0;&#x5347;=&#x5347;&#x4E3A;master&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4F18;&#x5148;&#x7EA7;&#x6570;&#x5B57;&#x5C0F;&#x7684;salve&#x4F1A;&#x4F18;&#x5148;&#x8003;&#x8651;&#x63D0;&#x5347;&#x4E3A;master&#xFF0C;&#x6240;&#x4EE5;&#x4F8B;&#x5982;&#x6709;&#x4E09;&#x4E2A;slave&#x4F18;&#x5148;&#x7EA7;&#x5206;&#x522B;&#x4E3A;10&#xFF0C;100&#xFF0C;25&#xFF0C;</span>
+<span class="token comment"># &#x54E8;&#x5175;&#x5C06;&#x6311;&#x9009;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x5C0F;&#x6570;&#x5B57;&#x4E3A;10&#x7684;slave&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># 0&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x6807;&#x8BC6;&#x8FD9;&#x4E2A;slave&#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;master&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x4E3A;0&#x7684;slave&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;</span>
+<span class="token comment"># &#x54E8;&#x5175;&#x6311;&#x9009;&#x63D0;&#x5347;&#x4E3A;master</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x4F18;&#x5148;&#x7EA7;&#x4E3A;100</span>
+slave-priority 100
+
+<span class="token comment"># &#x5982;&#x679C;master&#x5C11;&#x4E8E;N&#x4E2A;&#x5EF6;&#x65F6;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;M&#x79D2;&#x7684;&#x5DF2;&#x8FDE;&#x63A5;slave&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x505C;&#x6B62;&#x63A5;&#x6536;&#x5199;&#x64CD;&#x4F5C;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># N&#x4E2A;slave&#x9700;&#x8981;&#x662F;&#x201C;oneline&#x201D;&#x72B6;&#x6001;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5EF6;&#x65F6;&#x662F;&#x4EE5;&#x79D2;&#x4E3A;&#x5355;&#x4F4D;&#xFF0C;&#x5E76;&#x4E14;&#x5FC5;&#x987B;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;&#x6307;&#x5B9A;&#x503C;&#xFF0C;&#x662F;&#x4ECE;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4ECE;slave&#x63A5;&#x6536;&#x5230;&#x7684;ping&#xFF08;&#x901A;&#x5E38;&#x6BCF;&#x79D2;&#x53D1;&#x9001;&#xFF09;</span>
+<span class="token comment"># &#x5F00;&#x59CB;&#x8BA1;&#x6570;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># This option does not GUARANTEES that N replicas will accept the write, but</span>
+<span class="token comment"># will limit the window of exposure for lost writes in case not enough slaves</span>
+<span class="token comment"># are available, to the specified number of seconds.</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4F8B;&#x5982;&#x81F3;&#x5C11;&#x9700;&#x8981;3&#x4E2A;&#x5EF6;&#x65F6;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;10&#x79D2;&#x7684;slave&#x7528;&#x4E0B;&#x9762;&#x7684;&#x6307;&#x4EE4;&#xFF1A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># min-slaves-to-write 3</span>
+<span class="token comment"># min-slaves-max-lag 10</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4E24;&#x8005;&#x4E4B;&#x4E00;&#x8BBE;&#x7F6E;&#x4E3A;0&#x5C06;&#x7981;&#x7528;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x9ED8;&#x8BA4; min-slaves-to-write &#x503C;&#x662F;0&#xFF08;&#x8BE5;&#x529F;&#x80FD;&#x7981;&#x7528;&#xFF09;&#x5E76;&#x4E14; min-slaves-max-lag &#x503C;&#x662F;10&#x3002;</span>
+</code></pre>
+<h1 id="security">SECURITY</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## SECURITY ###################################</span>
+
+<span class="token comment"># &#x8981;&#x6C42;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x547D;&#x4EE4;&#x65F6;&#x90FD;&#x8981;&#x9A8C;&#x8BC1;&#x8EAB;&#x4EFD;&#x548C;&#x5BC6;&#x7801;&#x3002;</span>
+<span class="token comment"># &#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x5728;&#x6709;&#x4F60;&#x4E0D;&#x4FE1;&#x4EFB;&#x7684;&#x5176;&#x5B83;&#x5BA2;&#x6237;&#x7AEF;&#x80FD;&#x591F;&#x8BBF;&#x95EE;redis&#x670D;&#x52A1;&#x5668;&#x7684;&#x73AF;&#x5883;&#x91CC;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</span>
+<span class="token comment">#</span>
+
+<span class="token comment"># &#x4E3A;&#x4E86;&#x5411;&#x540E;&#x517C;&#x5BB9;&#x7684;&#x8BDD;&#x8FD9;&#x6BB5;&#x5E94;&#x8BE5;&#x6CE8;&#x91CA;&#x6389;&#x3002;&#x800C;&#x4E14;&#x5927;&#x591A;&#x6570;&#x4EBA;&#x4E0D;&#x9700;&#x8981;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;(&#x4F8B;&#x5982;:&#x5B83;&#x4EEC;&#x8FD0;&#x884C;&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;)</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x8B66;&#x544A;&#xFF1A;&#x56E0;&#x4E3A;Redis&#x592A;&#x5FEB;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x5916;&#x9762;&#x7684;&#x4EBA;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x6BCF;&#x79D2;150k&#x7684;&#x5BC6;&#x7801;&#x6765;&#x8BD5;&#x56FE;&#x7834;&#x89E3;&#x5BC6;&#x7801;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4F60;&#x9700;&#x8981;</span>
+<span class="token comment"># &#x4E00;&#x4E2A;&#x9AD8;&#x5F3A;&#x5EA6;&#x7684;&#x5BC6;&#x7801;&#xFF0C;&#x5426;&#x5219;&#x7834;&#x89E3;&#x592A;&#x5BB9;&#x6613;&#x4E86;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># requirepass foobared</span>
+
+<span class="token comment"># &#x547D;&#x4EE4;&#x91CD;&#x547D;&#x540D;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5728;&#x5171;&#x4EAB;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x5371;&#x9669;&#x547D;&#x4EE4;&#x6539;&#x53D8;&#x540D;&#x5B57;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4E3A; CONFIG &#x6539;&#x4E2A;&#x5176;&#x4ED6;&#x4E0D;&#x592A;&#x5BB9;&#x6613;&#x731C;&#x5230;&#x7684;&#x540D;&#x5B57;&#xFF0C;</span>
+<span class="token comment"># &#x8FD9;&#x6837;&#x5185;&#x90E8;&#x7684;&#x5DE5;&#x5177;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF0C;&#x800C;&#x666E;&#x901A;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5C06;&#x4E0D;&#x884C;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4F8B;&#x5982;&#xFF1A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># rename-command CONFIG b840fc02d524045429941cc15f59e41cb7be6c52</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6539;&#x540D;&#x4E3A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x5B8C;&#x5168;&#x7981;&#x7528;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;</span>
+<span class="token comment">#</span>
+<span class="token comment"># rename-command CONFIG &quot;&quot;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x8BF7;&#x6CE8;&#x610F;&#xFF1A;&#x6539;&#x53D8;&#x547D;&#x4EE4;&#x540D;&#x5B57;&#x88AB;&#x8BB0;&#x5F55;&#x5230;AOF&#x6587;&#x4EF6;&#x6216;&#x88AB;&#x4F20;&#x9001;&#x5230;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x95EE;&#x9898;&#x3002;</span>
+</code></pre>
+<h1 id="limits">LIMITS</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################### LIMITS ####################################</span>
+
+<span class="token comment"># &#x8BBE;&#x7F6E;&#x6700;&#x591A;&#x540C;&#x65F6;&#x8FDE;&#x63A5;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x6570;&#x91CF;&#x3002;&#x9ED8;&#x8BA4;&#x8FD9;&#x4E2A;&#x9650;&#x5236;&#x662F;10000&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x7136;&#x800C;&#x5982;&#x679C;Redis&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x80FD;&#x914D;&#x7F6E;</span>
+<span class="token comment"># &#x5904;&#x7406;&#x6587;&#x4EF6;&#x7684;&#x9650;&#x5236;&#x6570;&#x6765;&#x6EE1;&#x8DB3;&#x6307;&#x5B9A;&#x7684;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x5927;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x6570;&#x5C31;&#x88AB;&#x8BBE;&#x7F6E;&#x6210;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x9650;&#x5236;&#x6570;&#x51CF;32&#xFF08;&#x56E0;</span>
+<span class="token comment"># &#x4E3A;Redis&#x670D;&#x52A1;&#x5668;&#x4FDD;&#x7559;&#x4E86;&#x4E00;&#x4E9B;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x4F5C;&#x4E3A;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#xFF09;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4E00;&#x65E6;&#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x9650;&#x5236;&#xFF0C;Redis&#x4F1A;&#x5173;&#x95ED;&#x6240;&#x6709;&#x65B0;&#x8FDE;&#x63A5;&#x5E76;&#x53D1;&#x9001;&#x9519;&#x8BEF;&apos;max number of clients reached&apos;</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxclients 10000</span>
+
+<span class="token comment"># &#x4E0D;&#x8981;&#x7528;&#x6BD4;&#x8BBE;&#x7F6E;&#x7684;&#x4E0A;&#x9650;&#x66F4;&#x591A;&#x7684;&#x5185;&#x5B58;&#x3002;&#x4E00;&#x65E6;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x8FBE;&#x5230;&#x4E0A;&#x9650;&#xFF0C;Redis&#x4F1A;&#x6839;&#x636E;&#x9009;&#x5B9A;&#x7684;&#x56DE;&#x6536;&#x7B56;&#x7565;&#xFF08;&#x53C2;&#x89C1;&#xFF1A;</span>
+<span class="token comment"># maxmemmory-policy&#xFF09;&#x5220;&#x9664;key</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5982;&#x679C;&#x56E0;&#x4E3A;&#x5220;&#x9664;&#x7B56;&#x7565;Redis&#x65E0;&#x6CD5;&#x5220;&#x9664;key&#xFF0C;&#x6216;&#x8005;&#x7B56;&#x7565;&#x8BBE;&#x7F6E;&#x4E3A; &quot;noeviction&quot;&#xFF0C;Redis&#x4F1A;&#x56DE;&#x590D;&#x9700;&#x8981;&#x66F4;</span>
+<span class="token comment"># &#x591A;&#x5185;&#x5B58;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x7ED9;&#x547D;&#x4EE4;&#x3002;&#x4F8B;&#x5982;&#xFF0C;SET,LPUSH&#x7B49;&#x7B49;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x7EE7;&#x7EED;&#x54CD;&#x5E94;&#x50CF;Get&#x8FD9;&#x6837;&#x7684;&#x53EA;&#x8BFB;&#x547D;&#x4EE4;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5728;&#x4F7F;&#x7528;Redis&#x4F5C;&#x4E3A;LRU&#x7F13;&#x5B58;&#xFF0C;&#x6216;&#x8005;&#x4E3A;&#x5B9E;&#x4F8B;&#x8BBE;&#x7F6E;&#x4E86;&#x786C;&#x6027;&#x5185;&#x5B58;&#x9650;&#x5236;&#x7684;&#x65F6;&#x5019;&#xFF08;&#x4F7F;&#x7528; &quot;noeviction&quot; &#x7B56;&#x7565;&#xFF09;</span>
+<span class="token comment"># &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x901A;&#x5E38;&#x4E8B;&#x5F88;&#x6709;&#x7528;&#x7684;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x8B66;&#x544A;&#xFF1A;&#x5F53;&#x6709;&#x591A;&#x4E2A;slave&#x8FDE;&#x4E0A;&#x8FBE;&#x5230;&#x5185;&#x5B58;&#x4E0A;&#x9650;&#x7684;&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;master&#x4E3A;&#x540C;&#x6B65;slave&#x7684;&#x8F93;&#x51FA;&#x7F13;&#x51B2;&#x533A;&#x6240;&#x9700;</span>
+<span class="token comment"># &#x5185;&#x5B58;&#x4E0D;&#x8BA1;&#x7B97;&#x5728;&#x4F7F;&#x7528;&#x5185;&#x5B58;&#x4E2D;&#x3002;&#x8FD9;&#x6837;&#x5F53;&#x9A71;&#x9010;key&#x65F6;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x56E0;&#x7F51;&#x7EDC;&#x95EE;&#x9898; / &#x91CD;&#x65B0;&#x540C;&#x6B65;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x9A71;&#x9010;key</span>
+<span class="token comment"># &#x7684;&#x5FAA;&#x73AF;&#xFF0C;&#x53CD;&#x8FC7;&#x6765;slaves&#x7684;&#x8F93;&#x51FA;&#x7F13;&#x51B2;&#x533A;&#x5145;&#x6EE1;&#x4E86;key&#x88AB;&#x9A71;&#x9010;&#x7684;DEL&#x547D;&#x4EE4;&#xFF0C;&#x8FD9;&#x5C06;&#x89E6;&#x53D1;&#x5220;&#x9664;&#x66F4;&#x591A;&#x7684;key&#xFF0C;</span>
+<span class="token comment"># &#x76F4;&#x5230;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x5B8C;&#x5168;&#x88AB;&#x6E05;&#x7A7A;&#x4E3A;&#x6B62;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x603B;&#x4E4B;...&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x9644;&#x52A0;&#x591A;&#x4E2A;slave&#xFF0C;&#x5EFA;&#x8BAE;&#x4F60;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x7A0D;&#x5C0F;maxmemory&#x9650;&#x5236;&#xFF0C;&#x8FD9;&#x6837;&#x7CFB;&#x7EDF;&#x5C31;&#x4F1A;&#x6709;&#x7A7A;&#x95F2;</span>
+<span class="token comment"># &#x7684;&#x5185;&#x5B58;&#x4F5C;&#x4E3A;slave&#x7684;&#x8F93;&#x51FA;&#x7F13;&#x5B58;&#x533A;(&#x4F46;&#x662F;&#x5982;&#x679C;&#x6700;&#x5927;&#x5185;&#x5B58;&#x7B56;&#x7565;&#x8BBE;&#x7F6E;&#x4E3A;&quot;noeviction&quot;&#x7684;&#x8BDD;&#x5C31;&#x6CA1;&#x5FC5;&#x8981;&#x4E86;)</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory &lt;bytes&gt;</span>
+
+<span class="token comment"># &#x6700;&#x5927;&#x5185;&#x5B58;&#x7B56;&#x7565;&#xFF1A;&#x5982;&#x679C;&#x8FBE;&#x5230;&#x5185;&#x5B58;&#x9650;&#x5236;&#x4E86;&#xFF0C;Redis&#x5982;&#x4F55;&#x9009;&#x62E9;&#x5220;&#x9664;key&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4E0B;&#x9762;&#x4E94;&#x4E2A;&#x884C;&#x4E3A;&#x91CC;&#x9009;&#xFF1A;</span>
+<span class="token comment"># </span>
+<span class="token comment"># volatile-lru -&gt; &#x6839;&#x636E;LRU&#x7B97;&#x6CD5;&#x751F;&#x6210;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x6765;&#x5220;&#x9664;&#x3002;</span>
+<span class="token comment"># allkeys-lru -&gt; &#x6839;&#x636E;LRU&#x7B97;&#x6CD5;&#x5220;&#x9664;&#x4EFB;&#x4F55;key&#x3002;</span>
+<span class="token comment"># volatile-random -&gt; &#x6839;&#x636E;&#x8FC7;&#x671F;&#x8BBE;&#x7F6E;&#x6765;&#x968F;&#x673A;&#x5220;&#x9664;key&#x3002; </span>
+<span class="token comment"># allkeys-&gt;random -&gt; &#x65E0;&#x5DEE;&#x522B;&#x968F;&#x673A;&#x5220;&#x3002; </span>
+<span class="token comment"># volatile-ttl -&gt; &#x6839;&#x636E;&#x6700;&#x8FD1;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x6765;&#x5220;&#x9664;&#xFF08;&#x8F85;&#x4EE5;TTL&#xFF09; </span>
+<span class="token comment"># noeviction -&gt; &#x8C01;&#x4E5F;&#x4E0D;&#x5220;&#xFF0C;&#x76F4;&#x63A5;&#x5728;&#x5199;&#x64CD;&#x4F5C;&#x65F6;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x6CE8;&#x610F;&#xFF1A;&#x5BF9;&#x6240;&#x6709;&#x7B56;&#x7565;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;Redis&#x627E;&#x4E0D;&#x5230;&#x5408;&#x9002;&#x7684;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x7684;key&#x90FD;&#x4F1A;&#x5728;&#x5199;&#x64CD;&#x4F5C;&#x65F6;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x3002;</span>
+<span class="token comment">#</span>
+
+<span class="token comment">#       &#x76EE;&#x524D;&#x4E3A;&#x6B62;&#x6D89;&#x53CA;&#x7684;&#x547D;&#x4EE4;&#xFF1A;set setnx setex append</span>
+<span class="token comment">#       incr decr rpush lpush rpushx lpushx linsert lset rpoplpush sadd</span>
+<span class="token comment">#       sinter sinterstore sunion sunionstore sdiff sdiffstore zadd zincrby</span>
+<span class="token comment">#       zunionstore zinterstore hset hsetnx hmset hincrby incrby decrby</span>
+<span class="token comment">#       getset mset msetnx exec sort</span>
+<span class="token comment">#</span>
+
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x503C;&#x5982;&#x4E0B;&#xFF1A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory-policy volatile-lru</span>
+
+<span class="token comment"># LRU&#x548C;&#x6700;&#x5C0F;TTL&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x90FD;&#x4E0D;&#x662F;&#x5F88;&#x7CBE;&#x786E;&#xFF0C;&#x4F46;&#x662F;&#x5F88;&#x63A5;&#x8FD1;&#xFF08;&#x4E3A;&#x4E86;&#x7701;&#x5185;&#x5B58;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x53EF;&#x4EE5;&#x7528;&#x6837;&#x672C;&#x91CF;&#x505A;&#x68C0;&#x6D4B;&#x3002;</span>
+<span class="token comment"># &#x4F8B;&#x5982;&#xFF1A;&#x9ED8;&#x8BA4;Redis&#x4F1A;&#x68C0;&#x67E5;3&#x4E2A;key&#x7136;&#x540E;&#x53D6;&#x6700;&#x65E7;&#x7684;&#x90A3;&#x4E2A;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x6307;&#x4EE4;&#x6765;&#x8BBE;&#x7F6E;&#x6837;&#x672C;&#x7684;&#x4E2A;&#x6570;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># maxmemory-samples 3</span>
+</code></pre>
+<h1 id="append-only-mode">APPEND ONLY MODE</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">############################## APPEND ONLY MODE ###############################</span>
+
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Redis&#x662F;&#x5F02;&#x6B65;&#x7684;&#x628A;&#x6570;&#x636E;&#x5BFC;&#x51FA;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#x3002;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x5728;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x91CC;&#x5DF2;&#x7ECF;&#x8DB3;&#x591F;&#x597D;&#xFF0C;&#x4F46;Redis&#x8FDB;&#x7A0B;</span>
+<span class="token comment"># &#x51FA;&#x95EE;&#x9898;&#x6216;&#x65AD;&#x7535;&#x65F6;&#x53EF;&#x80FD;&#x9020;&#x6210;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x4E22;&#x5931;(&#x8FD9;&#x53D6;&#x51B3;&#x4E8E;&#x914D;&#x7F6E;&#x7684;save&#x6307;&#x4EE4;)&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># AOF&#x662F;&#x4E00;&#x79CD;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x53EF;&#x9760;&#x7684;&#x66FF;&#x4EE3;&#x6301;&#x4E45;&#x5316;&#x6A21;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#x6570;&#x636E;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7B56;&#x7565;&#xFF08;&#x53C2;&#x89C1;&#x540E;&#x9762;&#x7684;&#x914D;&#x7F6E;&#xFF09;</span>
+<span class="token comment"># &#x5728;&#x9047;&#x5230;&#x50CF;&#x670D;&#x52A1;&#x5668;&#x65AD;&#x7535;&#x6216;&#x5355;&#x5199;&#x60C5;&#x51B5;&#x4E0B;Redis&#x81EA;&#x8EAB;&#x8FDB;&#x7A0B;&#x51FA;&#x95EE;&#x9898;&#x4F46;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4ECD;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x7B49;&#x7A81;&#x53D1;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;Redis</span>
+<span class="token comment"># &#x80FD;&#x53EA;&#x4E22;&#x5931;1&#x79D2;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># AOF&#x548C;RDB&#x6301;&#x4E45;&#x5316;&#x80FD;&#x540C;&#x65F6;&#x542F;&#x52A8;&#x5E76;&#x4E14;&#x4E0D;&#x4F1A;&#x6709;&#x95EE;&#x9898;&#x3002;</span>
+<span class="token comment"># &#x5982;&#x679C;AOF&#x5F00;&#x542F;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x542F;&#x52A8;&#x65F6;Redis&#x5C06;&#x52A0;&#x8F7D;AOF&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x66F4;&#x80FD;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x7684;&#x53EF;&#x9760;&#x6027;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x8BF7;&#x67E5;&#x770B; http://redis.io/topics/persistence &#x6765;&#x83B7;&#x53D6;&#x66F4;&#x591A;&#x4FE1;&#x606F;.</span>
+
+appendonly no
+
+<span class="token comment"># &#x7EAF;&#x7D2F;&#x52A0;&#x6587;&#x4EF6;&#x540D;&#x5B57;&#xFF08;&#x9ED8;&#x8BA4;&#xFF1A;&quot;appendonly.aof&quot;&#xFF09;</span>
+
+appendfilename <span class="token string">&quot;appendonly.aof&quot;</span>
+
+<span class="token comment"># fsync() &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x544A;&#x8BC9;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x628A;&#x6570;&#x636E;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7B49;&#x66F4;&#x591A;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x5165;&#x8F93;&#x51FA;&#x7F13;&#x51B2;&#x533A;&#x3002;</span>
+<span class="token comment"># &#x6709;&#x4E9B;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4F1A;&#x771F;&#x7684;&#x628A;&#x6570;&#x636E;&#x9A6C;&#x4E0A;&#x5237;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#xFF1B;&#x6709;&#x4E9B;&#x5219;&#x4F1A;&#x5C3D;&#x5FEB;&#x53BB;&#x5C1D;&#x8BD5;&#x8FD9;&#x4E48;&#x505A;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># Redis&#x652F;&#x6301;&#x4E09;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x6A21;&#x5F0F;&#xFF1A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># no&#xFF1A;&#x4E0D;&#x8981;&#x7ACB;&#x523B;&#x5237;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x5237;&#x7684;&#x65F6;&#x5019;&#x518D;&#x5237;&#x3002;&#x6BD4;&#x8F83;&#x5FEB;&#x3002;</span>
+<span class="token comment"># always&#xFF1A;&#x6BCF;&#x6B21;&#x5199;&#x64CD;&#x4F5C;&#x90FD;&#x7ACB;&#x523B;&#x5199;&#x5165;&#x5230;aof&#x6587;&#x4EF6;&#x3002;&#x6162;&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x5B89;&#x5168;&#x3002;</span>
+<span class="token comment"># everysec&#xFF1A;&#x6BCF;&#x79D2;&#x5199;&#x4E00;&#x6B21;&#x3002;&#x6298;&#x4E2D;&#x65B9;&#x6848;&#x3002; </span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x7684; &quot;everysec&quot; &#x901A;&#x5E38;&#x6765;&#x8BF4;&#x80FD;&#x5728;&#x901F;&#x5EA6;&#x548C;&#x6570;&#x636E;&#x5B89;&#x5168;&#x6027;&#x4E4B;&#x95F4;&#x53D6;&#x5F97;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x5E73;&#x8861;&#x3002;&#x6839;&#x636E;&#x4F60;&#x7684;&#x7406;&#x89E3;&#x6765;</span>
+<span class="token comment"># &#x51B3;&#x5B9A;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x80FD;&#x653E;&#x5BBD;&#x8BE5;&#x914D;&#x7F6E;&#x4E3A;&quot;no&quot; &#x6765;&#x83B7;&#x53D6;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;(&#x4F46;&#x5982;&#x679C;&#x4F60;&#x80FD;&#x5FCD;&#x53D7;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x4E22;&#x5931;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528;</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x7684;&#x5FEB;&#x7167;&#x6301;&#x4E45;&#x5316;&#x6A21;&#x5F0F;)&#xFF0C;&#x6216;&#x8005;&#x76F8;&#x53CD;&#xFF0C;&#x7528;&#x201C;always&#x201D;&#x4F1A;&#x6BD4;&#x8F83;&#x6162;&#x4F46;&#x6BD4;everysec&#x8981;&#x66F4;&#x5B89;&#x5168;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x8BF7;&#x67E5;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x6587;&#x7AE0;&#x6765;&#x83B7;&#x53D6;&#x66F4;&#x591A;&#x7684;&#x7EC6;&#x8282;</span>
+<span class="token comment"># http://antirez.com/post/redis-persistence-demystified.html </span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x5982;&#x679C;&#x4E0D;&#x80FD;&#x786E;&#x5B9A;&#xFF0C;&#x5C31;&#x7528; &quot;everysec&quot;</span>
+
+<span class="token comment"># appendfsync always</span>
+appendfsync everysec
+<span class="token comment"># appendfsync no</span>
+
+<span class="token comment"># &#x5982;&#x679C;AOF&#x7684;&#x540C;&#x6B65;&#x7B56;&#x7565;&#x8BBE;&#x7F6E;&#x6210; &quot;always&quot; &#x6216;&#x8005; &quot;everysec&quot;&#xFF0C;&#x5E76;&#x4E14;&#x540E;&#x53F0;&#x7684;&#x5B58;&#x50A8;&#x8FDB;&#x7A0B;&#xFF08;&#x540E;&#x53F0;&#x5B58;&#x50A8;&#x6216;&#x5199;&#x5165;AOF</span>
+<span class="token comment"># &#x65E5;&#x5FD7;&#xFF09;&#x4F1A;&#x4EA7;&#x751F;&#x5F88;&#x591A;&#x78C1;&#x76D8;I/O&#x5F00;&#x9500;&#x3002;&#x67D0;&#x4E9B;Linux&#x7684;&#x914D;&#x7F6E;&#x4E0B;&#x4F1A;&#x4F7F;Redis&#x56E0;&#x4E3A; fsync()&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x800C;&#x963B;&#x585E;&#x5F88;&#x4E45;&#x3002;</span>
+<span class="token comment"># &#x6CE8;&#x610F;&#xFF0C;&#x76EE;&#x524D;&#x5BF9;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#x8FD8;&#x6CA1;&#x6709;&#x5B8C;&#x7F8E;&#x4FEE;&#x6B63;&#xFF0C;&#x751A;&#x81F3;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x7684; fsync() &#x4F1A;&#x963B;&#x585E;&#x6211;&#x4EEC;&#x540C;&#x6B65;&#x7684;write(2)&#x8C03;&#x7528;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4E3A;&#x4E86;&#x7F13;&#x89E3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x5728; BGSAVE &#x6216; BGREWRITEAOF &#x5904;&#x7406;&#x65F6;&#x963B;&#x6B62;fsync()&#x3002;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x6709;&#x5B50;&#x8FDB;&#x7A0B;&#x5728;&#x8FDB;&#x884C;&#x4FDD;&#x5B58;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;Redis&#x5C31;&#x5904;&#x4E8E;&quot;&#x4E0D;&#x53EF;&#x540C;&#x6B65;&quot;&#x7684;&#x72B6;&#x6001;&#x3002;</span>
+<span class="token comment"># &#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x8BF4;&#xFF0C;&#x5728;&#x6700;&#x5DEE;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x80FD;&#x4F1A;&#x4E22;&#x6389;30&#x79D2;&#x949F;&#x7684;&#x65E5;&#x5FD7;&#x6570;&#x636E;&#x3002;&#xFF08;&#x9ED8;&#x8BA4;Linux&#x8BBE;&#x5B9A;&#xFF09;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x5982;&#x679C;&#x628A;&#x8FD9;&#x4E2A;&#x8BBE;&#x7F6E;&#x6210;&quot;yes&quot;&#x5E26;&#x6765;&#x4E86;&#x5EF6;&#x8FDF;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x4FDD;&#x6301;&quot;no&quot;&#xFF0C;&#x8FD9;&#x662F;&#x4FDD;&#x5B58;&#x6301;&#x4E45;&#x6570;&#x636E;&#x7684;&#x6700;&#x5B89;&#x5168;&#x7684;&#x65B9;&#x5F0F;&#x3002;</span>
+
+no-appendfsync-on-rewrite no
+
+<span class="token comment"># &#x81EA;&#x52A8;&#x91CD;&#x5199;AOF&#x6587;&#x4EF6;</span>
+<span class="token comment"># &#x5982;&#x679C;AOF&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x589E;&#x5927;&#x5230;&#x6307;&#x5B9A;&#x767E;&#x5206;&#x6BD4;&#xFF0C;Redis&#x80FD;&#x591F;&#x901A;&#x8FC7; BGREWRITEAOF &#x81EA;&#x52A8;&#x91CD;&#x5199;AOF&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x3002;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A;Redis&#x8BB0;&#x4F4F;&#x4E0A;&#x6B21;&#x91CD;&#x5199;&#x65F6;AOF&#x6587;&#x4EF6;&#x7684;&#x5927;&#x5C0F;&#xFF08;&#x5982;&#x679C;&#x91CD;&#x542F;&#x540E;&#x8FD8;&#x6CA1;&#x6709;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x76F4;&#x63A5;&#x7528;&#x542F;&#x52A8;&#x65F6;&#x7684;AOF&#x5927;&#x5C0F;&#xFF09;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x8FD9;&#x4E2A;&#x57FA;&#x51C6;&#x5927;&#x5C0F;&#x548C;&#x5F53;&#x524D;&#x5927;&#x5C0F;&#x505A;&#x6BD4;&#x8F83;&#x3002;&#x5982;&#x679C;&#x5F53;&#x524D;&#x5927;&#x5C0F;&#x8D85;&#x8FC7;&#x6307;&#x5B9A;&#x6BD4;&#x4F8B;&#xFF0C;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x91CD;&#x5199;&#x64CD;&#x4F5C;&#x3002;&#x4F60;&#x8FD8;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x88AB;&#x91CD;&#x5199;</span>
+<span class="token comment"># &#x65E5;&#x5FD7;&#x7684;&#x6700;&#x5C0F;&#x5C3A;&#x5BF8;&#xFF0C;&#x8FD9;&#x6837;&#x907F;&#x514D;&#x4E86;&#x8FBE;&#x5230;&#x6307;&#x5B9A;&#x767E;&#x5206;&#x6BD4;&#x4F46;&#x5C3A;&#x5BF8;&#x4ECD;&#x7136;&#x5F88;&#x5C0F;&#x7684;&#x60C5;&#x51B5;&#x8FD8;&#x8981;&#x91CD;&#x5199;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x6307;&#x5B9A;&#x767E;&#x5206;&#x6BD4;&#x4E3A;0&#x4F1A;&#x7981;&#x7528;AOF&#x81EA;&#x52A8;&#x91CD;&#x5199;&#x7279;&#x6027;&#x3002;</span>
+
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+
+<span class="token comment">################################ LUA SCRIPTING  ###############################</span>
+
+<span class="token comment"># Lua &#x811A;&#x672C;&#x7684;&#x6700;&#x5927;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x6BEB;&#x79D2;&#x4E3A;&#x5355;&#x4F4D;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5982;&#x679C;&#x8FBE;&#x5230;&#x4E86;&#x6700;&#x5927;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;Redis&#x5C06;&#x8981;&#x8BB0;&#x5F55;&#x5728;&#x8FBE;&#x5230;&#x6700;&#x5927;&#x5141;&#x8BB8;&#x65F6;&#x95F4;&#x4E4B;&#x540E;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#x4ECD;&#x7136;&#x5728;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x5C06;</span>
+<span class="token comment"># &#x5F00;&#x59CB;&#x5BF9;&#x67E5;&#x8BE2;&#x8FDB;&#x884C;&#x9519;&#x8BEF;&#x54CD;&#x5E94;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5F53;&#x4E00;&#x4E2A;&#x957F;&#x65F6;&#x95F4;&#x8FD0;&#x884C;&#x7684;&#x811A;&#x672C;&#x8D85;&#x8FC7;&#x4E86;&#x6700;&#x5927;&#x6267;&#x884C;&#x65F6;&#x95F4;&#xFF0C;&#x53EA;&#x6709; SCRIPT KILL &#x548C; SHUTDOWN NOSAVE &#x4E24;&#x4E2A;</span>
+<span class="token comment"># &#x547D;&#x4EE4;&#x53EF;&#x7528;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x505C;&#x6B62;&#x4E00;&#x4E2A;&#x8FD8;&#x6CA1;&#x6709;&#x8C03;&#x7528;&#x5199;&#x547D;&#x540D;&#x7684;&#x811A;&#x672C;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x5173;&#x95ED;&#x670D;&#x52A1;&#x5668;&#x552F;&#x4E00;&#x65B9;&#x5F0F;&#xFF0C;&#x5F53;</span>
+<span class="token comment"># &#x5199;&#x547D;&#x4EE4;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7;&#x811A;&#x672C;&#x5F00;&#x59CB;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x7528;&#x6237;&#x4E0D;&#x60F3;&#x7B49;&#x5230;&#x811A;&#x672C;&#x7684;&#x81EA;&#x7136;&#x7EC8;&#x6B62;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x8BBE;&#x7F6E;&#x6210;0&#x6216;&#x8005;&#x8D1F;&#x503C;&#x8868;&#x793A;&#x4E0D;&#x9650;&#x5236;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x8B66;&#x544A;</span>
+lua-time-limit 5000
+</code></pre>
+<h1 id="slow-log">SLOW LOG</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">################################## SLOW LOG ###################################</span>
+
+<span class="token comment"># Redis&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x8BB0;&#x5F55;&#x8D85;&#x8FC7;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x7684;&#x67E5;&#x8BE2;&#x3002;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x4E0D;&#x5305;&#x62EC;&#x5404;&#x79CD;I/O&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x8FDE;&#x63A5;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;</span>
+<span class="token comment"># &#x53D1;&#x9001;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x7B49;&#xFF0C;&#x800C;&#x53EA;&#x8BA1;&#x7B97;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x7684;&#x5B9E;&#x9645;&#x65F6;&#x95F4;&#xFF08;&#x8FD9;&#x53EA;&#x662F;&#x7EBF;&#x7A0B;&#x963B;&#x585E;&#x800C;&#x65E0;&#x6CD5;&#x540C;&#x65F6;&#x4E3A;&#x5176;&#x4ED6;&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x7684;&#x547D;&#x4EE4;&#x6267;</span>
+<span class="token comment"># &#x884C;&#x9636;&#x6BB5;&#xFF09;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x4F60;&#x53EF;&#x4EE5;&#x4E3A;&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#x914D;&#x7F6E;&#x4E24;&#x4E2A;&#x53C2;&#x6570;:&#x4E00;&#x4E2A;&#x6307;&#x660E;Redis&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;(&#x5355;&#x4F4D;&#x4E3A;&#x5FAE;&#x79D2;)&#x6765;&#x8BB0;&#x5F55;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x7684;&#x547D;&#x4EE4;</span>
+<span class="token comment"># &#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#x957F;&#x5EA6;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x547D;&#x4EE4;&#x88AB;&#x5199;&#x8FDB;&#x65E5;&#x5FD7;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6700;&#x8001;&#x7684;&#x90A3;&#x4E2A;&#x8BB0;&#x5F55;&#x4ECE;&#x961F;&#x5217;&#x4E2D;&#x79FB;&#x9664;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4E0B;&#x9762;&#x7684;&#x65F6;&#x95F4;&#x5355;&#x4F4D;&#x662F;&#x5FAE;&#x79D2;&#xFF0C;&#x6240;&#x4EE5;1000000&#x5C31;&#x662F;1&#x79D2;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x8D1F;&#x6570;&#x65F6;&#x95F4;&#x4F1A;&#x7981;&#x7528;&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#xFF0C;&#x800C;0&#x5219;&#x4F1A;&#x5F3A;&#x5236;&#x8BB0;&#x5F55;</span>
+<span class="token comment"># &#x6240;&#x6709;&#x547D;&#x4EE4;&#x3002;</span>
+slowlog-log-slower-than 10000
+
+<span class="token comment"># &#x8FD9;&#x4E2A;&#x957F;&#x5EA6;&#x6CA1;&#x6709;&#x9650;&#x5236;&#x3002;&#x53EA;&#x662F;&#x8981;&#x4E3B;&#x8981;&#x4F1A;&#x6D88;&#x8017;&#x5185;&#x5B58;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; SLOWLOG RESET &#x6765;&#x56DE;&#x6536;&#x5185;&#x5B58;&#x3002;</span>
+slowlog-max-len 128
+</code></pre>
+<h1 id="event-notification">Event notification</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment">############################# Event notification ##############################</span>
+
+<span class="token comment"># Redis &#x80FD;&#x901A;&#x77E5; Pub/Sub &#x5BA2;&#x6237;&#x7AEF;&#x5173;&#x4E8E;&#x952E;&#x7A7A;&#x95F4;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x4EF6;</span>
+<span class="token comment"># &#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x6587;&#x6863;&#x4F4D;&#x4E8E;http://redis.io/topics/keyspace-events</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4F8B;&#x5982;&#xFF1A;&#x5982;&#x679C;&#x952E;&#x7A7A;&#x95F4;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#x88AB;&#x5F00;&#x542F;&#xFF0C;&#x5E76;&#x4E14;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9; 0 &#x53F7;&#x6570;&#x636E;&#x5E93;&#x7684;&#x952E; foo &#x6267;&#x884C; DEL &#x547D;&#x4EE4;&#x65F6;&#xFF0C;&#x5C06;&#x901A;&#x8FC7;</span>
+<span class="token comment"># Pub/Sub&#x53D1;&#x5E03;&#x4E24;&#x6761;&#x6D88;&#x606F;&#xFF1A;</span>
+<span class="token comment"># PUBLISH __keyspace@0__:foo del</span>
+<span class="token comment"># PUBLISH __keyevent@0__:del foo</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x53EF;&#x4EE5;&#x5728;&#x4E0B;&#x8868;&#x4E2D;&#x9009;&#x62E9;Redis&#x8981;&#x901A;&#x77E5;&#x7684;&#x4E8B;&#x4EF6;&#x7C7B;&#x578B;&#x3002;&#x4E8B;&#x4EF6;&#x7C7B;&#x578B;&#x7531;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#x6765;&#x6807;&#x8BC6;&#xFF1A;</span>
+<span class="token comment">#</span>
+<span class="token comment"># K    &#x952E;&#x7A7A;&#x95F4;&#x901A;&#x77E5;&#xFF0C;&#x4EE5;__keyspace@&lt;db&gt;__&#x4E3A;&#x524D;&#x7F00;</span>
+<span class="token comment"># E    &#x952E;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#xFF0C;&#x4EE5;__keysevent@&lt;db&gt;__&#x4E3A;&#x524D;&#x7F00;</span>
+<span class="token comment"># g    DEL , EXPIRE , RENAME &#x7B49;&#x7C7B;&#x578B;&#x65E0;&#x5173;&#x7684;&#x901A;&#x7528;&#x547D;&#x4EE4;&#x7684;&#x901A;&#x77E5;, ...</span>
+<span class="token comment"># $    String&#x547D;&#x4EE4;</span>
+<span class="token comment"># l    List&#x547D;&#x4EE4;</span>
+<span class="token comment"># s    Set&#x547D;&#x4EE4;</span>
+<span class="token comment"># h    Hash&#x547D;&#x4EE4;</span>
+<span class="token comment"># z    &#x6709;&#x5E8F;&#x96C6;&#x5408;&#x547D;&#x4EE4;</span>
+<span class="token comment"># x    &#x8FC7;&#x671F;&#x4E8B;&#x4EF6;&#xFF08;&#x6BCF;&#x6B21;key&#x8FC7;&#x671F;&#x65F6;&#x751F;&#x6210;&#xFF09;</span>
+<span class="token comment"># e    &#x9A71;&#x9010;&#x4E8B;&#x4EF6;&#xFF08;&#x5F53;key&#x5728;&#x5185;&#x5B58;&#x6EE1;&#x4E86;&#x88AB;&#x6E05;&#x9664;&#x65F6;&#x751F;&#x6210;&#xFF09;</span>
+<span class="token comment"># A    g$lshzxe&#x7684;&#x522B;&#x540D;&#xFF0C;&#x56E0;&#x6B64;&#x201D;AKE&#x201D;&#x610F;&#x5473;&#x7740;&#x6240;&#x6709;&#x7684;&#x4E8B;&#x4EF6;</span>
+<span class="token comment">#</span>
+<span class="token comment"># notify-keyspace-events &#x5E26;&#x4E00;&#x4E2A;&#x7531;0&#x5230;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x7EC4;&#x6210;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x53C2;&#x6570;&#x3002;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x610F;&#x601D;&#x662F;&#x901A;&#x77E5;&#x88AB;&#x7981;&#x7528;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4F8B;&#x5B50;&#xFF1A;&#x542F;&#x7528;List&#x548C;&#x901A;&#x7528;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#xFF1A;</span>
+<span class="token comment"># notify-keyspace-events Elg</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4F8B;&#x5B50;2&#xFF1A;&#x4E3A;&#x4E86;&#x83B7;&#x53D6;&#x8FC7;&#x671F;key&#x7684;&#x901A;&#x77E5;&#x8BA2;&#x9605;&#x540D;&#x5B57;&#x4E3A; __keyevent@__:expired &#x7684;&#x9891;&#x9053;&#xFF0C;&#x7528;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;</span>
+<span class="token comment"># notify-keyspace-events Ex</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x6240;&#x7528;&#x7684;&#x901A;&#x77E5;&#x88AB;&#x7981;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x7528;&#x6237;&#x901A;&#x5E38;&#x4E0D;&#x9700;&#x8981;&#x8BE5;&#x7279;&#x6027;&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x7279;&#x6027;&#x4F1A;&#x6709;&#x6027;&#x80FD;&#x635F;&#x8017;&#x3002;</span>
+<span class="token comment"># &#x6CE8;&#x610F;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x6307;&#x5B9A;&#x81F3;&#x5C11;K&#x6216;E&#x4E4B;&#x4E00;&#xFF0C;&#x4E0D;&#x4F1A;&#x53D1;&#x9001;&#x4EFB;&#x4F55;&#x4E8B;&#x4EF6;&#x3002;</span>
+notify-keyspace-events <span class="token string">&quot;&quot;</span>
+</code></pre>
+<h1 id="advanced-config">ADVANCED CONFIG</h1>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x5F53;hash&#x53EA;&#x6709;&#x5C11;&#x91CF;&#x7684;entry&#x65F6;&#xFF0C;&#x5E76;&#x4E14;&#x6700;&#x5927;&#x7684;entry&#x6240;&#x5360;&#x7A7A;&#x95F4;&#x6CA1;&#x6709;&#x8D85;&#x8FC7;&#x6307;&#x5B9A;&#x7684;&#x9650;&#x5236;&#x65F6;&#xFF0C;&#x4F1A;&#x7528;&#x4E00;&#x79CD;&#x8282;&#x7701;&#x5185;&#x5B58;&#x7684;</span>
+<span class="token comment"># &#x6570;&#x636E;&#x7ED3;&#x6784;&#x6765;&#x7F16;&#x7801;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x6307;&#x4EE4;&#x6765;&#x8BBE;&#x5B9A;&#x9650;&#x5236;</span>
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+
+<span class="token comment"># &#x4E0E;hash&#x4F3C;&#xFF0C;&#x6570;&#x636E;&#x5143;&#x7D20;&#x8F83;&#x5C11;&#x7684;list&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x7F16;&#x7801;&#x4ECE;&#x800C;&#x8282;&#x7701;&#x5927;&#x91CF;&#x7A7A;&#x95F4;&#x3002;</span>
+<span class="token comment"># &#x8FD9;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x65B9;&#x5F0F;&#x53EA;&#x6709;&#x5728;&#x7B26;&#x5408;&#x4E0B;&#x9762;&#x9650;&#x5236;&#x65F6;&#x624D;&#x53EF;&#x4EE5;&#x7528;&#xFF1A;</span>
+list-max-ziplist-entries 512
+list-max-ziplist-value 64
+
+<span class="token comment"># set&#x6709;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7F16;&#x7801;&#x7684;&#x60C5;&#x51B5;&#xFF1A;&#x5F53;set&#x6570;&#x636E;&#x5168;&#x662F;&#x5341;&#x8FDB;&#x5236;64&#x4F4D;&#x6709;&#x7B26;&#x53F7;&#x6574;&#x578B;&#x6570;&#x5B57;&#x6784;&#x6210;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x3002;</span>
+<span class="token comment"># &#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x9879;&#x5C31;&#x662F;&#x7528;&#x6765;&#x8BBE;&#x7F6E;set&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x7F16;&#x7801;&#x6765;&#x8282;&#x7701;&#x5185;&#x5B58;&#x7684;&#x6700;&#x5927;&#x957F;&#x5EA6;&#x3002;</span>
+set-max-intset-entries 512
+
+<span class="token comment"># &#x4E0E;hash&#x548C;list&#x76F8;&#x4F3C;&#xFF0C;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4E00;&#x79CD;&#x7279;&#x522B;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x6765;&#x8282;&#x7701;&#x5927;&#x91CF;&#x7A7A;&#x95F4;&#x3002;</span>
+<span class="token comment"># &#x8FD9;&#x79CD;&#x7F16;&#x7801;&#x53EA;&#x9002;&#x5408;&#x957F;&#x5EA6;&#x548C;&#x5143;&#x7D20;&#x90FD;&#x5C0F;&#x4E8E;&#x4E0B;&#x9762;&#x9650;&#x5236;&#x7684;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#xFF1A;</span>
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+
+<span class="token comment"># HyperLogLog sparse representation bytes limit. The limit includes the</span>
+<span class="token comment"># 16 bytes header. When an HyperLogLog using the sparse representation crosses</span>
+<span class="token comment"># this limit, it is converted into the dense representation.</span>
+<span class="token comment">#</span>
+<span class="token comment"># A value greater than 16000 is totally useless, since at that point the</span>
+<span class="token comment"># dense representation is more memory efficient.</span>
+<span class="token comment"># </span>
+<span class="token comment"># The suggested value is ~ 3000 in order to have the benefits of</span>
+<span class="token comment"># the space efficient encoding without slowing down too much PFADD,</span>
+<span class="token comment"># which is O(N) with the sparse encoding. The value can be raised to</span>
+<span class="token comment"># ~ 10000 when CPU is not a concern, but space is, and the data set is</span>
+<span class="token comment"># composed of many HyperLogLogs with cardinality in the 0 - 15000 range.</span>
+hll-sparse-max-bytes 3000
+
+<span class="token comment"># &#x542F;&#x7528;&#x54C8;&#x5E0C;&#x5237;&#x65B0;&#xFF0C;&#x6BCF;100&#x4E2A;CPU&#x6BEB;&#x79D2;&#x4F1A;&#x62FF;&#x51FA;1&#x4E2A;&#x6BEB;&#x79D2;&#x6765;&#x5237;&#x65B0;Redis&#x7684;&#x4E3B;&#x54C8;&#x5E0C;&#x8868;&#xFF08;&#x9876;&#x7EA7;&#x952E;&#x503C;&#x6620;&#x5C04;&#x8868;&#xFF09;&#x3002;</span>
+<span class="token comment"># redis&#x6240;&#x7528;&#x7684;&#x54C8;&#x5E0C;&#x8868;&#x5B9E;&#x73B0;&#xFF08;&#x89C1;dict.c&#xFF09;&#x91C7;&#x7528;&#x5EF6;&#x8FDF;&#x54C8;&#x5E0C;&#x5237;&#x65B0;&#x673A;&#x5236;&#xFF1A;&#x4F60;&#x5BF9;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;&#x64CD;&#x4F5C;&#x8D8A;&#x591A;&#xFF0C;&#x54C8;&#x5E0C;&#x5237;&#x65B0;</span>
+<span class="token comment"># &#x64CD;&#x4F5C;&#x5C31;&#x8D8A;&#x9891;&#x7E41;&#xFF1B;&#x53CD;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x662F;&#x7A7A;&#x95F2;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x54C8;&#x5E0C;&#x5237;&#x65B0;&#x5C31;&#x4E0D;&#x4F1A;&#x5B8C;&#x6210;&#xFF0C;&#x54C8;&#x5E0C;&#x8868;&#x5C31;&#x4F1A;&#x5360;&#x7528;&#x66F4;&#x591A;&#x7684;&#x4E00;&#x4E9B;</span>
+<span class="token comment"># &#x5185;&#x5B58;&#x800C;&#x5DF2;&#x3002;</span>
+<span class="token comment"># </span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x662F;&#x6BCF;&#x79D2;&#x949F;&#x8FDB;&#x884C;10&#x6B21;&#x54C8;&#x5E0C;&#x8868;&#x5237;&#x65B0;&#xFF0C;&#x7528;&#x6765;&#x5237;&#x65B0;&#x5B57;&#x5178;&#xFF0C;&#x7136;&#x540E;&#x5C3D;&#x5FEB;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x5EFA;&#x8BAE;&#xFF1A;</span>
+<span class="token comment"># &#x5982;&#x679C;&#x4F60;&#x5BF9;&#x5EF6;&#x8FDF;&#x6BD4;&#x8F83;&#x5728;&#x610F;&#xFF0C;&#x4E0D;&#x80FD;&#x591F;&#x63A5;&#x53D7;Redis&#x65F6;&#x4E0D;&#x65F6;&#x7684;&#x5BF9;&#x8BF7;&#x6C42;&#x6709;2&#x6BEB;&#x79D2;&#x7684;&#x5EF6;&#x8FDF;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x7528;</span>
+<span class="token comment"># &quot;activerehashing no&quot;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x592A;&#x5728;&#x610F;&#x5EF6;&#x8FDF;&#x800C;&#x5E0C;&#x671B;&#x5C3D;&#x5FEB;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x5C31;&#x8BBE;&#x7F6E;&quot;activerehashing yes&quot;</span>
+activerehashing <span class="token function">yes</span>
+
+<span class="token comment"># &#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8F93;&#x51FA;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x5F3A;&#x5236;&#x65AD;&#x5F00;&#x90A3;&#x4E9B;&#x56E0;&#x4E3A;&#x67D0;&#x79CD;&#x539F;&#x56E0;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x901F;&#x5EA6;&#x4E0D;&#x591F;&#x5FEB;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;</span>
+<span class="token comment"># &#xFF08;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x7684;&#x539F;&#x56E0;&#x662F;&#x4E00;&#x4E2A;&#x53D1;&#x5E03;/&#x8BA2;&#x9605;&#x5BA2;&#x6237;&#x7AEF;&#x6D88;&#x8D39;&#x6D88;&#x606F;&#x7684;&#x901F;&#x5EA6;&#x65E0;&#x6CD5;&#x8D76;&#x4E0A;&#x751F;&#x4EA7;&#x5B83;&#x4EEC;&#x7684;&#x901F;&#x5EA6;&#xFF09;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x53EF;&#x4EE5;&#x5BF9;&#x4E09;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x9650;&#x5236;&#xFF1A;</span>
+<span class="token comment"># normal -&gt; &#x6B63;&#x5E38;&#x5BA2;&#x6237;&#x7AEF;</span>
+<span class="token comment"># slave -&gt; slave&#x548C; MONITOR &#x5BA2;&#x6237;&#x7AEF;</span>
+<span class="token comment"># pubsub -&gt; &#x81F3;&#x5C11;&#x8BA2;&#x9605;&#x4E86;&#x4E00;&#x4E2A;pubsub channel&#x6216;pattern&#x7684;&#x5BA2;&#x6237;&#x7AEF;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4E0B;&#x9762;&#x662F;&#x6BCF;&#x4E2A;client-output-buffer-limit&#x8BED;&#x6CD5;:</span>
+<span class="token comment"># client-output-buffer-limit &lt;class&gt;&lt;hard limit&gt; &lt;soft limit&gt; &lt;soft seconds&gt;</span>
+
+<span class="token comment"># &#x4E00;&#x65E6;&#x8FBE;&#x5230;&#x786C;&#x9650;&#x5236;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x7ACB;&#x5373;&#x88AB;&#x65AD;&#x5F00;&#xFF0C;&#x6216;&#x8005;&#x8FBE;&#x5230;&#x8F6F;&#x9650;&#x5236;&#x5E76;&#x6301;&#x7EED;&#x8FBE;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x79D2;&#x6570;&#xFF08;&#x8FDE;&#x7EED;&#x7684;&#xFF09;&#x3002;</span>
+<span class="token comment"># &#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x786C;&#x9650;&#x5236;&#x4E3A;32&#x5146;&#x5B57;&#x8282;&#x548C;&#x8F6F;&#x9650;&#x5236;&#x4E3A;16&#x5146;&#x5B57;&#x8282;/10&#x79D2;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5C06;&#x4F1A;&#x7ACB;&#x5373;&#x65AD;&#x5F00;</span>
+<span class="token comment"># &#x5982;&#x679C;&#x8F93;&#x51FA;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x5927;&#x5C0F;&#x8FBE;&#x5230;32&#x5146;&#x5B57;&#x8282;&#xFF0C;&#x6216;&#x5BA2;&#x6237;&#x7AEF;&#x8FBE;&#x5230;16&#x5146;&#x5B57;&#x8282;&#x5E76;&#x8FDE;&#x7EED;&#x8D85;&#x8FC7;&#x4E86;&#x9650;&#x5236;10&#x79D2;&#xFF0C;&#x5C31;&#x5C06;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;normal&#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x505A;&#x9650;&#x5236;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x5728;&#x4E0D;&#x4E3B;&#x52A8;&#x8BF7;&#x6C42;&#x65F6;&#x4E0D;&#x63A5;&#x6536;&#x6570;&#x636E;&#xFF08;&#x4EE5;&#x63A8;&#x7684;&#x65B9;&#x5F0F;&#xFF09;&#xFF0C;&#x53EA;&#x6709;&#x5F02;&#x6B65;&#x5BA2;&#x6237;&#x7AEF;</span>
+<span class="token comment"># &#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x7684;&#x901F;&#x5EA6;&#x6BD4;&#x5B83;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x7684;&#x901F;&#x5EA6;&#x5FEB;&#x7684;&#x573A;&#x666F;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># pubsub&#x548C;slave&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x8BA2;&#x9605;&#x8005;&#x548C;slaves&#x4EE5;&#x63A8;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x63A5;&#x6536;&#x6570;&#x636E;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x628A;&#x786C;&#x9650;&#x5236;&#x548C;&#x8F6F;&#x9650;&#x5236;&#x90FD;&#x8BBE;&#x7F6E;&#x4E3A;0&#x6765;&#x7981;&#x7528;&#x8BE5;&#x529F;&#x80FD;</span>
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+
+<span class="token comment"># Redis&#x8C03;&#x7528;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x6765;&#x6267;&#x884C;&#x8BB8;&#x591A;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#xFF0C;&#x5982;&#x5173;&#x95ED;&#x5BA2;&#x6237;&#x7AEF;&#x8D85;&#x65F6;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x6E05;&#x9664;&#x672A;&#x88AB;&#x8BF7;&#x6C42;&#x8FC7;&#x7684;&#x8FC7;&#x671F;Key&#x7B49;&#x7B49;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;&#x4EFB;&#x52A1;&#x90FD;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x9891;&#x7387;&#x6267;&#x884C;&#xFF0C;&#x4F46;Redis&#x4F9D;&#x7167;&#x6307;&#x5B9A;&#x7684;&#x201C;hz&#x201D;&#x503C;&#x6765;&#x6267;&#x884C;&#x68C0;&#x67E5;&#x4EFB;&#x52A1;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x201C;hz&#x201D;&#x7684;&#x88AB;&#x8BBE;&#x5B9A;&#x4E3A;10&#x3002;&#x63D0;&#x9AD8;&#x8BE5;&#x503C;&#x5C06;&#x5728;Redis&#x7A7A;&#x95F2;&#x65F6;&#x4F7F;&#x7528;&#x66F4;&#x591A;&#x7684;CPU&#x65F6;&#xFF0C;&#x4F46;&#x540C;&#x65F6;&#x5F53;&#x6709;&#x591A;&#x4E2A;key</span>
+<span class="token comment"># &#x540C;&#x65F6;&#x5230;&#x671F;&#x4F1A;&#x4F7F;Redis&#x7684;&#x53CD;&#x5E94;&#x66F4;&#x7075;&#x654F;&#xFF0C;&#x4EE5;&#x53CA;&#x8D85;&#x65F6;&#x53EF;&#x4EE5;&#x66F4;&#x7CBE;&#x786E;&#x5730;&#x5904;&#x7406;&#x3002;</span>
+<span class="token comment">#</span>
+<span class="token comment"># &#x8303;&#x56F4;&#x662F;1&#x5230;500&#x4E4B;&#x95F4;&#xFF0C;&#x4F46;&#x662F;&#x503C;&#x8D85;&#x8FC7;100&#x901A;&#x5E38;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x4E3B;&#x610F;&#x3002;</span>
+<span class="token comment"># &#x5927;&#x591A;&#x6570;&#x7528;&#x6237;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;10&#x8FD9;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x975E;&#x5E38;&#x4F4E;&#x7684;&#x5EF6;&#x8FDF;&#x8981;&#x6C42;&#x65F6;&#x6709;&#x5FC5;&#x8981;&#x63D0;&#x9AD8;&#x5230;100&#x3002;</span>
+hz 10
+
+<span class="token comment"># &#x5F53;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x91CD;&#x5199;AOF&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x542F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x5219;&#x6587;&#x4EF6;&#x6BCF;&#x751F;&#x6210;32M&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x540C;&#x6B65;&#x3002;&#x4E3A;&#x4E86;&#x589E;&#x91CF;&#x5F0F;&#x7684;</span>
+<span class="token comment"># &#x5199;&#x5165;&#x786C;&#x76D8;&#x5E76;&#x4E14;&#x907F;&#x514D;&#x5927;&#x7684;&#x5EF6;&#x8FDF;&#x9AD8;&#x5CF0;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x662F;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;</span>
+aof-rewrite-incremental-fsync <span class="token function">yes</span>
+</code></pre>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
+2018-12-29 14:19:38
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="redis-sentinel.html" class="navigation navigation-prev " aria-label="Previous page: Redis主从及哨兵模式部署">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="redis-conf-en.html" class="navigation navigation-next " aria-label="Next page: Redis配置详解(英文版)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Redis配置详解(中文版)","level":"1.9.4","depth":2,"next":{"title":"Redis配置详解(英文版)","level":"1.9.5","depth":2,"path":"redis/redis-conf-en.md","ref":"redis/redis-conf-en.md","articles":[]},"previous":{"title":"Redis主从及哨兵模式部署","level":"1.9.3","depth":2,"path":"redis/redis-sentinel.md","ref":"redis/redis-sentinel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"git/git.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"1.5.1.1"},{"backlink":"git/git-commands.html#fig1.5.3.1","level":"1.5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.1","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":5,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.1"},{"backlink":"tcpip/ip.html#fig1.8.2.2","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":6,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.2"},{"backlink":"tcpip/ip.html#fig1.8.2.3","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":7,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.3"},{"backlink":"tcpip/ip.html#fig1.8.2.4","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":8,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.0.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.4"},{"backlink":"tcpip/ip.html#fig1.8.2.5","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":9,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.5"},{"backlink":"tcpip/ip.html#fig1.8.2.6","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":10,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.6"},{"backlink":"tcpip/ip.html#fig1.8.2.7","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":11,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/2.2.1.png","index":7,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.7"},{"backlink":"tcpip/ip.html#fig1.8.2.8","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":12,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.3.png","index":8,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.8"},{"backlink":"tcpip/ip.html#fig1.8.2.9","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":13,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.4.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.9"},{"backlink":"tcpip/ip.html#fig1.8.2.10","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":14,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/3.1.png","index":10,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.10"},{"backlink":"tcpip/ip.html#fig1.8.2.11","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":15,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/3.2.png","index":11,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.11"},{"backlink":"tcpip/ip.html#fig1.8.2.12","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":16,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.12"},{"backlink":"tcpip/ip.html#fig1.8.2.13","level":"1.8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":17,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.2.13"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.1","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":18,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.1"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.2","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":19,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.2"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.3","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":20,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.3.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.3"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.4","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":21,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.4"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.5","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":22,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.5"},{"backlink":"tcpip/tcp-udp.html#fig1.8.3.6","level":"1.8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":23,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/2.3.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"1.8.3.6"},{"backlink":"tcpip/http-message.html#fig1.8.5.1","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":24,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.1"},{"backlink":"tcpip/http-message.html#fig1.8.5.2","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":25,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.2"},{"backlink":"tcpip/http-message.html#fig1.8.5.3","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":26,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.2.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.3"},{"backlink":"tcpip/http-message.html#fig1.8.5.4","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":27,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.3.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.4"},{"backlink":"tcpip/http-message.html#fig1.8.5.5","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":28,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.3.3.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.5"},{"backlink":"tcpip/http-message.html#fig1.8.5.6","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":29,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.6"},{"backlink":"tcpip/http-message.html#fig1.8.5.7","level":"1.8.5","list_caption":"Figure: img","alt":"img","nro":30,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.2.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.5.7"},{"backlink":"tcpip/http-code.html#fig1.8.6.1","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":31,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.1"},{"backlink":"tcpip/http-code.html#fig1.8.6.2","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":32,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.1.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.2"},{"backlink":"tcpip/http-code.html#fig1.8.6.3","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":33,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.3"},{"backlink":"tcpip/http-code.html#fig1.8.6.4","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":34,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.3.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.4"},{"backlink":"tcpip/http-code.html#fig1.8.6.5","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":35,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.5"},{"backlink":"tcpip/http-code.html#fig1.8.6.6","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":36,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.6"},{"backlink":"tcpip/http-code.html#fig1.8.6.7","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":37,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.3.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.7"},{"backlink":"tcpip/http-code.html#fig1.8.6.8","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":38,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.4.png","index":8,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.8"},{"backlink":"tcpip/http-code.html#fig1.8.6.9","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":39,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.9"},{"backlink":"tcpip/http-code.html#fig1.8.6.10","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":40,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.2.png","index":10,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.10"},{"backlink":"tcpip/http-code.html#fig1.8.6.11","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":41,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.3.png","index":11,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.11"},{"backlink":"tcpip/http-code.html#fig1.8.6.12","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":42,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.4.png","index":12,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.12"},{"backlink":"tcpip/http-code.html#fig1.8.6.13","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":43,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.4.1.png","index":13,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.13"},{"backlink":"tcpip/http-code.html#fig1.8.6.14","level":"1.8.6","list_caption":"Figure: img","alt":"img","nro":44,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.4.2.png","index":14,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"1.8.6.14"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"redis/redis-conf-cn.md","mtime":"2018-12-29T06:19:38.188Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-28T09:03:00.399Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
