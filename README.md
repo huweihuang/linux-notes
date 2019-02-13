@@ -40,5 +40,7 @@ Linux 学习笔记
     * [Redis主从及哨兵模式部署](redis/redis-sentinel.md) 
     * [Redis配置详解(中文版)](redis/redis-conf-cn.md) 
     * [Redis配置详解(英文版)](redis/redis-conf-en.md)    
+* [Memcached]()
+    * [Memcached的使用](memcached/memcached.md) 
 * [Mysql]()
     * [Mysql常用命令](mysql/mysql-commands.md) 
