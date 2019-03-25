@@ -107,6 +107,7 @@ vrrp_instance VI_1 {
 # 3. 注意事项
 
 1、指定Nginx健康检测脚本：/etc/keepalived/scripts/check_nginx.sh
+
 2、主备配置差别主要为（建议这么配置）：
 
 > 以下两种方式的配置，当其中一台机器keepalived挂掉后会自动VIP切到另一台机器，当挂掉机器keepalived恢复后不会抢占VIP，该方式可以避免机器恢复再次切VIP所带来的影响。
@@ -131,7 +132,9 @@ vrrp_instance VI_1 {
 ```
 
 4、可以指定为非抢占：nopreempt，即priority高不会抢占已经绑定VIP的机器。
+
 5、制定绑定IP的网卡： interface eth2
+
 6、可以指定keepalived状态变化通知
 
 ```
