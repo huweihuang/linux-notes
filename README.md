@@ -26,6 +26,7 @@ Linux 学习笔记
 * [Keepalived]()
     * [Keepalived简介](keepalived/keepalived-introduction.md) 
     * [Keepalived的安装与配置](keepalived/install-keepalived.md) 
+    * [Keepalived的相关操作](keepalived/keepalived-operation.md) 
     * [Keepalived的配置详解](keepalived/keepalived-conf.md) 
 * [TCP/IP]()
     * [TCP/IP基础](tcpip/tcpip-basics.md) 
