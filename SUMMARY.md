@@ -20,6 +20,7 @@
 * [Confd的使用](tools/confd-usage.md)
 * [NFS的使用](tools/nfs-usage.md)
 * [ceph-fuse的使用](tools/ceph-fuse.md)
+* [ssh tips](tools/ssh-tips.md)
 
 ## Git
 
