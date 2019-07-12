@@ -69,6 +69,7 @@
 
 ## 快捷键
 
+* [vim命令](keymap/vim-keymap.md) 
 * [vscode快捷键](keymap/vscode-keymap.md) 
 * [eclipse快捷键](keymap/eclipse-keymap.md) 
 * [chrome快捷键](keymap/chrome-keymap.md) 
