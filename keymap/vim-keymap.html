@@ -1,0 +1,1304 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>vim命令 · Linux 学习笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="胡伟煌">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="vscode-keymap.html" />
+    
+    
+    <link rel="prev" href="../mysql/mysql-commands.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../images/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../images/favicon.ico'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../images/favicon.ico">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon.ico">
+        
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"huweihuang/linux-notes","types":["star"],"size":"small"};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com" target="_blank" class="custom-link">胡伟煌的博客</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com/kubernetes-notes/" target="_blank" class="custom-link">Kubernetes 学习笔记</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com/golang-notes/" target="_blank" class="custom-link">Golang 学习笔记</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com/linux-notes/" target="_blank" class="custom-link">Linux 学习笔记</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com/data-structure-notes/" target="_blank" class="custom-link">数据结构学习笔记</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com/python-notes/" target="_blank" class="custom-link">Python 学习笔记</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://www.huweihuang.com/blockchain-notes/" target="_blank" class="custom-link">Blockchain 学习笔记</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">前言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux 文件系统</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../file/linux-introduction.html">
+            
+                <a href="../file/linux-introduction.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Linux 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../file/linux-file-permission.html">
+            
+                <a href="../file/linux-file-permission.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    Linux 文件权限
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Shell 脚本</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../shell/shell-introduction.html">
+            
+                <a href="../shell/shell-introduction.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    Shell简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">运维工具</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../tools/ansible-usage.html">
+            
+                <a href="../tools/ansible-usage.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Ansible的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../tools/supervisor-usage.html">
+            
+                <a href="../tools/supervisor-usage.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Supervisor的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../tools/confd-usage.html">
+            
+                <a href="../tools/confd-usage.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    Confd的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../tools/nfs-usage.html">
+            
+                <a href="../tools/nfs-usage.html">
+            
+                    
+                        <b>4.4.</b>
+                    
+                    NFS的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../tools/ceph-fuse.html">
+            
+                <a href="../tools/ceph-fuse.html">
+            
+                    
+                        <b>4.5.</b>
+                    
+                    ceph-fuse的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../tools/ssh-tips.html">
+            
+                <a href="../tools/ssh-tips.html">
+            
+                    
+                        <b>4.6.</b>
+                    
+                    ssh tips
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Git</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../git/git.html">
+            
+                <a href="../git/git.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Git 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../git/git-common-cmd.html">
+            
+                <a href="../git/git-common-cmd.html">
+            
+                    
+                        <b>5.2.</b>
+                    
+                    Git 常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../git/git-commands.html">
+            
+                <a href="../git/git-commands.html">
+            
+                    
+                        <b>5.3.</b>
+                    
+                    Git 命令分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Nginx</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../nginx/install-nginx.html">
+            
+                <a href="../nginx/install-nginx.html">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    Nginx安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../nginx/nginx-proxy.html">
+            
+                <a href="../nginx/nginx-proxy.html">
+            
+                    
+                        <b>6.2.</b>
+                    
+                    Nginx作为反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="../nginx/nginx-http.html">
+            
+                <a href="../nginx/nginx-http.html">
+            
+                    
+                        <b>6.3.</b>
+                    
+                    Nginx http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Keepalived</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../keepalived/keepalived-introduction.html">
+            
+                <a href="../keepalived/keepalived-introduction.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    Keepalived简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../keepalived/install-keepalived.html">
+            
+                <a href="../keepalived/install-keepalived.html">
+            
+                    
+                        <b>7.2.</b>
+                    
+                    Keepalived的安装与配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../keepalived/keepalived-operation.html">
+            
+                <a href="../keepalived/keepalived-operation.html">
+            
+                    
+                        <b>7.3.</b>
+                    
+                    Keepalived的相关操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="../keepalived/keepalived-conf.html">
+            
+                <a href="../keepalived/keepalived-conf.html">
+            
+                    
+                        <b>7.4.</b>
+                    
+                    Keepalived的配置详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">TCP/IP</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../tcpip/tcpip-basics.html">
+            
+                <a href="../tcpip/tcpip-basics.html">
+            
+                    
+                        <b>8.1.</b>
+                    
+                    TCP/IP基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../tcpip/ip.html">
+            
+                <a href="../tcpip/ip.html">
+            
+                    
+                        <b>8.2.</b>
+                    
+                    IP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../tcpip/tcp-udp.html">
+            
+                <a href="../tcpip/tcp-udp.html">
+            
+                    
+                        <b>8.3.</b>
+                    
+                    TCP与UDP协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="../tcpip/http-basics.html">
+            
+                <a href="../tcpip/http-basics.html">
+            
+                    
+                        <b>8.4.</b>
+                    
+                    Http基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="../tcpip/http-message.html">
+            
+                <a href="../tcpip/http-message.html">
+            
+                    
+                        <b>8.5.</b>
+                    
+                    Http报文
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="../tcpip/http-code.html">
+            
+                <a href="../tcpip/http-code.html">
+            
+                    
+                        <b>8.6.</b>
+                    
+                    Http状态码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Redis</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../redis/redis-introduction.html">
+            
+                <a href="../redis/redis-introduction.html">
+            
+                    
+                        <b>9.1.</b>
+                    
+                    Redis介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../redis/redis-cluster.html">
+            
+                <a href="../redis/redis-cluster.html">
+            
+                    
+                        <b>9.2.</b>
+                    
+                    Redis集群模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../redis/redis-sentinel.html">
+            
+                <a href="../redis/redis-sentinel.html">
+            
+                    
+                        <b>9.3.</b>
+                    
+                    Redis主从及哨兵模式部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="../redis/redis-conf-cn.html">
+            
+                <a href="../redis/redis-conf-cn.html">
+            
+                    
+                        <b>9.4.</b>
+                    
+                    Redis配置详解(中文版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="../redis/redis-conf-en.html">
+            
+                <a href="../redis/redis-conf-en.html">
+            
+                    
+                        <b>9.5.</b>
+                    
+                    Redis配置详解(英文版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Memcached</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../memcached/memcached.html">
+            
+                <a href="../memcached/memcached.html">
+            
+                    
+                        <b>10.1.</b>
+                    
+                    Memcached的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../memcached/memcached-cmd.html">
+            
+                <a href="../memcached/memcached-cmd.html">
+            
+                    
+                        <b>10.2.</b>
+                    
+                    Memcached命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Mysql</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../mysql/mysql-commands.html">
+            
+                <a href="../mysql/mysql-commands.html">
+            
+                    
+                        <b>11.1.</b>
+                    
+                    Mysql常用命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">快捷键</li>
+        
+        
+    
+        <li class="chapter active" data-level="12.1" data-path="vim-keymap.html">
+            
+                <a href="vim-keymap.html">
+            
+                    
+                        <b>12.1.</b>
+                    
+                    vim命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="vscode-keymap.html">
+            
+                <a href="vscode-keymap.html">
+            
+                    
+                        <b>12.2.</b>
+                    
+                    vscode快捷键
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="eclipse-keymap.html">
+            
+                <a href="eclipse-keymap.html">
+            
+                    
+                        <b>12.3.</b>
+                    
+                    eclipse快捷键
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="chrome-keymap.html">
+            
+                <a href="chrome-keymap.html">
+            
+                    
+                        <b>12.4.</b>
+                    
+                    chrome快捷键
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >vim命令</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="1-vi&#x7684;&#x6A21;&#x5F0F;">1. vi&#x7684;&#x6A21;&#x5F0F;</h1>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931318/article/vim/vi-mode.png"></p>
+<h2 id="11-&#x666E;&#x901A;&#x6A21;&#x5F0F;">1.1. &#x666E;&#x901A;&#x6A21;&#x5F0F;</h2>
+<p>&#x7531;Shell&#x8FDB;&#x5165;vi&#x7F16;&#x8F91;&#x5668;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x8FDB;&#x5165;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x3002;&#x5728;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4ECE;&#x952E;&#x76D8;&#x8F93;&#x5165;&#x4EFB;&#x4F55;&#x5B57;&#x7B26;&#x90FD;&#x88AB;&#x5F53;&#x4F5C;&#x547D;&#x4EE4;&#x6765;&#x89E3;&#x91CA;&#x3002;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x4E0B;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x63D0;&#x793A;&#x7B26;&#xFF0C;&#x8F93;&#x5165;&#x547D;&#x4EE4;&#x540E;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x56DE;&#x8F66;&#xFF0C;&#x800C;&#x4E14;&#x8F93;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x4E0D;&#x4F1A;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x663E;&#x793A;&#x51FA;&#x6765;&#x3002;</p>
+<h2 id="12-&#x7F16;&#x8F91;&#x6A21;&#x5F0F;">1.2. &#x7F16;&#x8F91;&#x6A21;&#x5F0F;</h2>
+<p>&#x7F16;&#x8F91;&#x6A21;&#x5F0F;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x6587;&#x672C;&#x7684;&#x7F16;&#x8F91;&#x3002;&#x8BE5;&#x6A21;&#x5F0F;&#x4E0B;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x4EFB;&#x4F55;&#x5B57;&#x7B26;&#x90FD;&#x88AB;&#x4F5C;&#x4E3A;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x5E76;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x663E;&#x793A;&#x51FA;&#x6765;&#x3002;</p>
+<h2 id="13-&#x547D;&#x4EE4;&#x6A21;&#x5F0F;">1.3. &#x547D;&#x4EE4;&#x6A21;&#x5F0F;</h2>
+<p>&#x547D;&#x4EE4;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5BF9;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x9AD8;&#x7EA7;&#x5904;&#x7406;&#x3002;&#x5C3D;&#x7BA1;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x5F88;&#x591A;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x8981;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x5982;&#x5B57;&#x7B26;&#x4E32;&#x67E5;&#x627E;&#x3001;&#x66FF;&#x6362;&#x3001;&#x663E;&#x793A;&#x884C;&#x53F7;&#x7B49;&#x64CD;&#x4F5C;&#x8FD8;&#x662F;&#x5FC5;&#x987B;&#x8981;&#x8FDB;&#x5165;&#x547D;&#x4EE4;&#x6A21;&#x5F0F;&#x3002;</p>
+<blockquote>
+<p>&#x4E5F;&#x6709;&#x6587;&#x7AE0;&#x79F0;&#x4E3A;&#x4E24;&#x79CD;&#x5DE5;&#x4F5C;&#x6A21;&#x5F0F;&#xFF0C;&#x5373;&#x628A;&#x547D;&#x4EE4;&#x6A21;&#x5F0F;&#x5408;&#x5E76;&#x5230;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x786E;&#x5B9A;&#x5F53;&#x524D;&#x5904;&#x4E8E;&#x54EA;&#x79CD;&#x6A21;&#x5F0F;&#xFF0C;&#x6309;&#x4E24;&#x6B21; Esc &#x952E;&#x5C06;&#x56DE;&#x5230;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x3002;</p>
+</blockquote>
+<h1 id="2-vim&#x547D;&#x4EE4;&#x6C47;&#x603B;">2. vim&#x547D;&#x4EE4;&#x6C47;&#x603B;</h1>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562930885/article/vim/vi-vim-cheat-sheet.gif"></p>
+<p><strong>&#x9AD8;&#x7EA7;&#x6C47;&#x603B;</strong></p>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562930889/article/vim/vim-keymap.png"></p>
+<h1 id="3-vim&#x547D;&#x4EE4;&#x5206;&#x7C7B;">3. vim&#x547D;&#x4EE4;&#x5206;&#x7C7B;</h1>
+<h2 id="31-&#x57FA;&#x7840;&#x7F16;&#x8F91;&#x3001;&#x79FB;&#x52A8;&#x5149;&#x6807;">3.1. &#x57FA;&#x7840;&#x7F16;&#x8F91;&#x3001;&#x79FB;&#x52A8;&#x5149;&#x6807;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931487/article/vim/vim-toturial/vi-vim-tutorial-1.gif"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x6307;&#x4EE4;</th>
+<th style="text-align:left">&#x89E3;&#x91CA;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$</td>
+<td style="text-align:left">&#x884C;&#x5C3E;</td>
+</tr>
+<tr>
+<td style="text-align:left">^</td>
+<td style="text-align:left">&#x884C;&#x9996;</td>
+</tr>
+<tr>
+<td style="text-align:left">w</td>
+<td style="text-align:left">&#x4E0B;&#x4E00;&#x4E2A;&#x5355;&#x8BCD; (&#x8BCD;&#x9996;&#xFF09;</td>
+</tr>
+<tr>
+<td style="text-align:left">e</td>
+<td style="text-align:left">&#x4E0B;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#xFF08;&#x8BCD;&#x5C3E;&#xFF09;</td>
+</tr>
+<tr>
+<td style="text-align:left">b</td>
+<td style="text-align:left">&#x524D;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;</td>
+</tr>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">del &#x5220;&#x9664;&#x540E;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">X</td>
+<td style="text-align:left">backspace &#x5220;&#x9664;&#x524D;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">u</td>
+<td style="text-align:left">&#x64A4;&#x9500;</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + r</td>
+<td style="text-align:left">&#x91CD;&#x505A;</td>
+</tr>
+<tr>
+<td style="text-align:left">k</td>
+<td style="text-align:left">&#x4E0A;</td>
+</tr>
+<tr>
+<td style="text-align:left">h</td>
+<td style="text-align:left">&#x4E0B;</td>
+</tr>
+<tr>
+<td style="text-align:left">g</td>
+<td style="text-align:left">&#x5DE6;</td>
+</tr>
+<tr>
+<td style="text-align:left">l</td>
+<td style="text-align:left">&#x53F3;</td>
+</tr>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">&#x63D2;&#x5165;&#xFF0C;&#x5F00;&#x59CB;&#x5199;&#x4E1C;&#x897F;</td>
+</tr>
+<tr>
+<td style="text-align:left">s</td>
+<td style="text-align:left">&#x8986;&#x76D6;</td>
+</tr>
+<tr>
+<td style="text-align:left">esc</td>
+<td style="text-align:left">&#x9000;&#x51FA;&#x8F93;&#x5165;&#x6A21;&#x5F0F;&#xFF0C;&#x8FDB;&#x5165;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x6267;&#x884C;&#x5404;&#x79CD;&#x547D;&#x4EE4;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="32-&#x64CD;&#x4F5C;&#x548C;&#x91CD;&#x590D;&#x64CD;&#x4F5C;">3.2. &#x64CD;&#x4F5C;&#x548C;&#x91CD;&#x590D;&#x64CD;&#x4F5C;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931488/article/vim/vim-toturial/vi-vim-tutorial-2.gif"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x6307;&#x4EE4;</th>
+<th style="text-align:left">&#x89E3;&#x91CA;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">f</td>
+<td style="text-align:left">&#x67E5;&#x627E;&#x5B57;&#x7B26;&#xFF0C;&#x6309;f&#x540E;&#x518D;&#x6309;&#x9700;&#x8981;&#x79FB;&#x52A8;&#x5230;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x5149;&#x6807;&#x5C31;&#x4F1A;&#x79FB;&#x52A8;&#x5230;&#x90A3;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>f;</code> &#x5C31;&#x4F1A;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A; <code>;</code>&#x7684;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td style="text-align:left">F</td>
+<td style="text-align:left">&#x53CD;&#x5411;&#x67E5;&#x627E;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:left">&#x91CD;&#x590D;&#x4E0A;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;</td>
+</tr>
+<tr>
+<td style="text-align:left">v</td>
+<td style="text-align:left">&#x9009;&#x62E9;&#x6A21;&#x5F0F;&#xFF0C;&#x7528;&#x4E0A;&#x4E0B;&#x5DE6;&#x53F3;&#x9009;&#x62E9;&#x6587;&#x672C;&#xFF0C;&#x6309;&#x76F8;&#x5E94;&#x7684;&#x6307;&#x4EE4;&#x76F4;&#x63A5;&#x6267;&#x884C;&#xFF0C;<strong>&#x5982;</strong>&#xFF1A;&#x9009;&#x4E2D;&#x540E;&#x6267;&#x884C; <code>d</code> &#x5C31;&#x76F4;&#x63A5;&#x5220;&#x9664;&#x9009;&#x4E2D;&#x7684;&#x6587;&#x672C;</td>
+</tr>
+<tr>
+<td style="text-align:left">ctrl + v</td>
+<td style="text-align:left">&#x5757;&#x72B6;&#x9009;&#x62E9;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x7EB5;&#x5411;&#x9009;&#x62E9;&#x6587;&#x672C;&#x5757;&#xFF0C;&#x800C;&#x975E;&#x4EE5;&#x884C;&#x7684;&#x5F62;&#x5F0F;</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td style="text-align:left">&#x9AD8;&#x7EA7;&#x5220;&#x9664;&#x6307;&#x4EE4;&#xFF1A;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>dw</code> &#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>df(</code> &#x914D;&#x5408; <code>f</code> &#xFF0C;&#x5220;&#x9664;&#x4ECE;&#x5149;&#x6807;&#x5904;&#x5230; <code>(</code> &#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x5355;&#x884C;&#x64CD;&#x4F5C;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>dd</code> &#x5220;&#x9664;&#x5F53;&#x524D;&#x884C;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>d2w</code> &#x5220;&#x9664;&#x4E24;&#x4E2A;&#x5355;&#x8BCD;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"><code>d2t,</code> &#x5220;&#x9664;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x5230;&#x540E;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A; <code>,</code> &#x4E4B;&#x95F4;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x4E0D;&#x5305;&#x542B; <code>,</code> &#xFF08;t = <code>to</code>&#xFF09;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="33-&#x590D;&#x5236;-&#x548C;-&#x7C98;&#x8D34;">3.3. &#x590D;&#x5236; &#x548C; &#x7C98;&#x8D34;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931487/article/vim/vim-toturial/vi-vim-tutorial-3.gif"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x6307;&#x4EE4;</th>
+<th style="text-align:left">&#x89E3;&#x91CA;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">y</td>
+<td style="text-align:left">&#x590D;&#x5236;</td>
+</tr>
+<tr>
+<td style="text-align:left">yy</td>
+<td style="text-align:left">&#x590D;&#x5236;&#x5F53;&#x524D;&#x884C;</td>
+</tr>
+<tr>
+<td style="text-align:left">p</td>
+<td style="text-align:left">&#x7C98;&#x8D34;&#x5230;<code>&#x540E;&#x9762;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">P</td>
+<td style="text-align:left">&#x7C98;&#x8D34;&#x5230;<code>&#x524D;&#x9762;</code></td>
+</tr>
+<tr>
+<td style="text-align:left">o</td>
+<td style="text-align:left">&#x5728;&#x5F53;&#x524D;&#x884C;&#x7684;<code>&#x4E0B;&#x4E00;&#x884C;</code>&#x6DFB;&#x52A0;&#x7A7A;&#x884C;&#x5E76;&#x5F00;&#x59CB;&#x8F93;&#x5165;</td>
+</tr>
+<tr>
+<td style="text-align:left">O</td>
+<td style="text-align:left">&#x5728;&#x5F53;&#x524D;&#x884C;&#x7684;<code>&#x4E0A;&#x4E00;&#x884C;</code>&#x6DFB;&#x52A0;&#x7A7A;&#x884C;&#x5E76;&#x5F00;&#x59CB;&#x8F93;&#x5165;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x6240;&#x6709;&#x7ECF;&#x8FC7; d x e &#x5904;&#x7406;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x90FD;&#x5DF2;&#x7ECF;&#x590D;&#x5236;&#x5230;&#x4E86;&#x7C98;&#x8D34;&#x677F;&#x4E0A;&#x3002;</strong></p>
+<h2 id="34-&#x641C;&#x7D22;">3.4. &#x641C;&#x7D22;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931487/article/vim/vim-toturial/vi-vim-tutorial-4.gif"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x6307;&#x4EE4;</th>
+<th style="text-align:left">&#x89E3;&#x91CA;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:left">&#x4ECE;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;<code>&#x5411;&#x540E;</code>&#x641C;&#x7D22;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#xFF1F;</td>
+<td style="text-align:left">&#x4ECE;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;<code>&#x540E;&#x524D;</code>&#x641C;&#x7D22;</td>
+</tr>
+<tr>
+<td style="text-align:left">n</td>
+<td style="text-align:left">&#x641C;&#x7D22;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x8DF3;&#x5230; <code>&#x4E0B;&#x4E00;&#x4E2A;&#x5339;</code> &#x914D;&#x9879;</td>
+</tr>
+<tr>
+<td style="text-align:left">N</td>
+<td style="text-align:left">&#x8DF3;&#x5230; <code>&#x4E0A;&#x4E00;&#x4E2A;</code> &#x5339;&#x914D;&#x9879;</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">&#x76F4;&#x63A5;&#x5339;&#x914D;&#x5F53;&#x524D;&#x5149;&#x6807;&#x4E0B;&#x9762;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x79FB;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#x9879;&#xFF0C;&#x8DDF;<code>/</code> <code>?</code> &#x6CA1;&#x6709;&#x5173;&#x7CFB;</td>
+</tr>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">&#x4E0A;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#x9879;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="35-&#x6807;&#x8BB0;-&#x548C;-&#x5B8F;">3.5. &#x6807;&#x8BB0; &#x548C; &#x5B8F;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931487/article/vim/vim-toturial/vi-vim-tutorial-5.gif"></p>
+<p><strong>&#x6807;&#x8BB0;</strong></p>
+<ul>
+<li><p><code>m</code> &#x540E;&#x8DDF; <code>a - z</code> &#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x6765;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;<code>&#x6807;&#x8BB0;</code></p>
+</li>
+<li><p><code>` </code>&#x540E;&#x8DDF; &#x5B57;&#x7B26;&#x6765;&#x8DF3;&#x5230;&#x8FD9;&#x4E2A;&#x6807;&#x8BB0;&#x70B9;</p>
+</li>
+<li><p>&#x5927;&#x5199; <code>A - Z</code> &#x662F;&#x5168;&#x5C40;&#x7684;&#xFF0C;&#x5C0F;&#x5199; <code>a - z</code></p>
+</li>
+<li><p><code>&apos;.</code> &#x4EE3;&#x8868;&#x6700;&#x540E;&#x7F16;&#x8F91;&#x4F4D;&#x7F6E;</p>
+</li>
+</ul>
+<p><strong>&#x5B8F;</strong></p>
+<ul>
+<li><p><code>q</code> &#x540E;&#x63A5; <code>a - z</code> &#x5F00;&#x59CB;&#x5F55;&#x5236;&#x5B8F;</p>
+</li>
+<li><p><code>q</code> &#x7ED3;&#x675F;&#x5B8F;&#x7684;&#x5F55;&#x5236;</p>
+</li>
+<li><p><code>@</code> &#x540E;&#x63A5; <code>a - z</code> &#x8BFB;&#x53D6;&#x5B8F;</p>
+</li>
+<li><p><code>@@</code> &#x4EE3;&#x8868;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B8F;</p>
+</li>
+</ul>
+<h2 id="36-&#x9AD8;&#x7EA7;&#x79FB;&#x52A8;">3.6. &#x9AD8;&#x7EA7;&#x79FB;&#x52A8;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931489/article/vim/vim-toturial/vi-vim-tutorial-6.gif"></p>
+<ul>
+<li><p><code>%</code> &#x5728;&#x914D;&#x5BF9;&#x7684; <code>()</code> <code>[]</code> &#x4E4B;&#x95F4;&#x79FB;&#x52A8; </p>
+</li>
+<li><p><code>H</code> <code>M</code> <code>L</code> &#x79FB;&#x52A8;&#x5230;&#x7F16;&#x8F91;&#x5668;&#x53EF;&#x89C6;&#x8303;&#x56F4;&#x7684;&#x5934;&#x90E8;&#xFF0C;&#x4E2D;&#x95F4;&#xFF0C;&#x5C3E;&#x90E8;</p>
+</li>
+<li><p><code>G</code> &#x5230;&#x6587;&#x4EF6;&#x7684;&#x5C3E;&#x90E8;&#xFF0C;&#x524D;&#x9762;&#x6DFB;&#x52A0;&#x6570;&#x5B57;&#x518D;&#x6309; <code>G</code> &#x8DF3;&#x5230;&#x8F93;&#x5165;&#x7684;&#x884C;&#xFF0C;&#x5199;&#x884C;&#x53F7;&#x7684;&#x65F6;&#x5019;&#x662F;&#x770B;&#x4E0D;&#x89C1;&#x7684;</p>
+</li>
+<li><p><code>-</code> <code>+</code> &#x8DF3;&#x5230;&#x4E0A;&#x4E00;&#x884C;&#xFF0C;&#x4E0B;&#x4E00;&#x884C;</p>
+</li>
+<li><p><code>(</code> <code>)</code> &#x8DF3;&#x5230;&#x5F53;&#x524D;&#x53E5;&#x5B50;&#x7684; <code>&#x9996; / &#x5C3E;</code></p>
+</li>
+<li><p><code>{</code> <code>}</code> &#x8DF3;&#x5230; <code>&#x524D;&#x4E00;&#x4E2A; / &#x540E;&#x4E00;&#x4E2A;</code> &#x7A7A;&#x884C;</p>
+</li>
+<li><p><code>[[</code> jumps to the previous <code>{</code> in column 0</p>
+</li>
+<li><p><code>]]</code> jumps to the next <code>}</code> column 0</p>
+</li>
+</ul>
+<h2 id="37-&#x9AD8;&#x7EA7;&#x6307;&#x4EE4;">3.7. &#x9AD8;&#x7EA7;&#x6307;&#x4EE4;</h2>
+<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1562931488/article/vim/vim-toturial/vi-vim-tutorial-7.gif"></p>
+<ul>
+<li><p><code>J</code> &#x5408;&#x5E76;&#x5F53;&#x524D;&#x884C;&#x4E0E;&#x4E0B;&#x4E00;&#x884C;&#x3002;&#x5408;&#x5E76;&#x5DF2;&#x9009;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x884C;&#x3002;</p>
+</li>
+<li><p><code>r</code> &#x66FF;&#x6362;&#x5F53;&#x524D;&#x5B57;&#x7B26;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x3002;&#x5982;&#xFF1A; <code>r</code> &#x540E;&#x63A5; <code>4</code> &#x4F1A;&#x628A;&#x5F53;&#x524D;&#x5B57;&#x7B26;&#x66FF;&#x6362;&#x6210; <code>4</code></p>
+</li>
+<li><p><code>C</code> &#x662F; <code>c$</code> &#x7684;&#x7F29;&#x5199;&#xFF1A;&#x4FEE;&#x6539;&#x4ECE;&#x5149;&#x6807;&#x5230;&#x7ED3;&#x5C3E;</p>
+</li>
+<li><p><code>D</code> &#x662F; <code>d$</code> &#x7684;&#x7F29;&#x5199;&#xFF1A;&#x5220;&#x9664;&#x4ECE;&#x5149;&#x6807;&#x5230;&#x7ED3;&#x5C3E;</p>
+</li>
+<li><p><code>Y</code> &#x662F; <code>yy</code> &#x7684;&#x7F29;&#x5199;&#xFF1A;&#x590D;&#x5236;&#x5F53;&#x524D;&#x884C;</p>
+</li>
+<li><p><code>s</code> &#x5220;&#x9664;&#x5149;&#x6807;&#x4E0B;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x5F00;&#x59CB;&#x7F16;&#x8F91;</p>
+</li>
+<li><p><code>S</code> &#x5220;&#x9664;&#x5F53;&#x524D;&#x884C;&#xFF0C;&#x5E76;&#x5F00;&#x59CB;&#x7F16;&#x8F91;</p>
+</li>
+<li><p><code>&lt;</code> &#x5411;&#x524D;&#x7F29;&#x8FDB;&#xFF0C;&#x4E00;&#x884C;&#xFF0C;&#x6216;&#x591A;&#x884C;&#xFF0C;&#x8303;&#x56F4;&#x8BBE;&#x7F6E;&#x5728;&#x524D;&#x9762;&#x63D0;&#x5230;&#x4E86;&#xFF0C;<code>t</code>&#x7B49;&#x7B49;</p>
+</li>
+<li><p><code>&gt;</code> &#x5411;&#x540E;&#x7F29;&#x8FDB;&#xFF0C;&#x4E00;&#x884C;&#xFF0C;&#x6216;&#x591A;&#x884C;</p>
+</li>
+<li><p><code>=</code> &#x683C;&#x5F0F;&#x5316;&#xFF0C;&#x4E00;&#x884C;&#xFF0C;&#x6216;&#x591A;&#x884C;</p>
+</li>
+<li><p><code>~</code> &#x5207;&#x6362;&#x5149;&#x6807;&#x4E0B;&#x7684;&#x5B57;&#x7B26;&#x5927;&#x5C0F;&#x5199;</p>
+</li>
+</ul>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<blockquote>
+<p>&#x672C;&#x6587;&#x7531;&#x4EE5;&#x4E0B;&#x6587;&#x7AE0;&#x6574;&#x7406;&#x5F97;</p>
+</blockquote>
+<ul>
+<li><a href="http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html" target="_blank">http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html</a></li>
+<li><a href="https://segmentfault.com/a/1190000016056004#articleHeader15" target="_blank">https://segmentfault.com/a/1190000016056004#articleHeader15</a> </li>
+</ul>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
+2019-07-12 20:25:44
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../mysql/mysql-commands.html" class="navigation navigation-prev " aria-label="Previous page: Mysql常用命令">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="vscode-keymap.html" class="navigation navigation-next " aria-label="Next page: vscode快捷键">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"vim命令","level":"12.1","depth":1,"next":{"title":"vscode快捷键","level":"12.2","depth":1,"path":"keymap/vscode-keymap.md","ref":"keymap/vscode-keymap.md","articles":[]},"previous":{"title":"Mysql常用命令","level":"11.1","depth":1,"path":"mysql/mysql-commands.md","ref":"mysql/mysql-commands.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","page-toc-button","image-captions","editlink","back-to-top-button","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","disqus","donate"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"disqus":{"useIdentifier":false,"shortName":"huweihuang"},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"donate":{"alipay":"http://ozilwgpje.bkt.clouddn.com/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"http://ozilwgpje.bkt.clouddn.com/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"page-toc-button":{},"back-to-top-button":{},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"tools/supervisor-usage.html#fig4.2.1","level":"4.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":1,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"4.2.1"},{"backlink":"git/git.html#fig5.1.1","level":"5.1","list_caption":"Figure: git-map","alt":"git-map","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"5.1.1"},{"backlink":"git/git-commands.html#fig5.3.1","level":"5.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"5.3.1"},{"backlink":"nginx/nginx-proxy.html#fig6.2.1","level":"6.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"6.2.1"},{"backlink":"tcpip/ip.html#fig8.2.1","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":5,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.1"},{"backlink":"tcpip/ip.html#fig8.2.2","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":6,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.2"},{"backlink":"tcpip/ip.html#fig8.2.3","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":7,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.3"},{"backlink":"tcpip/ip.html#fig8.2.4","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":8,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.0.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.4"},{"backlink":"tcpip/ip.html#fig8.2.5","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":9,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.5"},{"backlink":"tcpip/ip.html#fig8.2.6","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":10,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.6"},{"backlink":"tcpip/ip.html#fig8.2.7","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":11,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/2.2.1.png","index":7,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.7"},{"backlink":"tcpip/ip.html#fig8.2.8","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":12,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.3.png","index":8,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.8"},{"backlink":"tcpip/ip.html#fig8.2.9","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":13,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.4.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.9"},{"backlink":"tcpip/ip.html#fig8.2.10","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":14,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/3.1.png","index":10,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.10"},{"backlink":"tcpip/ip.html#fig8.2.11","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":15,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/3.2.png","index":11,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.11"},{"backlink":"tcpip/ip.html#fig8.2.12","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":16,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.12"},{"backlink":"tcpip/ip.html#fig8.2.13","level":"8.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":17,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.2.13"},{"backlink":"tcpip/tcp-udp.html#fig8.3.1","level":"8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":18,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.3.1"},{"backlink":"tcpip/tcp-udp.html#fig8.3.2","level":"8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":19,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.3.2"},{"backlink":"tcpip/tcp-udp.html#fig8.3.3","level":"8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":20,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.3.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.3.3"},{"backlink":"tcpip/tcp-udp.html#fig8.3.4","level":"8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":21,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.3.4"},{"backlink":"tcpip/tcp-udp.html#fig8.3.5","level":"8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":22,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.3.5"},{"backlink":"tcpip/tcp-udp.html#fig8.3.6","level":"8.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":23,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/2.3.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"8.3.6"},{"backlink":"tcpip/http-message.html#fig8.5.1","level":"8.5","list_caption":"Figure: img","alt":"img","nro":24,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.5.1"},{"backlink":"tcpip/http-message.html#fig8.5.2","level":"8.5","list_caption":"Figure: img","alt":"img","nro":25,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.5.2"},{"backlink":"tcpip/http-message.html#fig8.5.3","level":"8.5","list_caption":"Figure: img","alt":"img","nro":26,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.2.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.5.3"},{"backlink":"tcpip/http-message.html#fig8.5.4","level":"8.5","list_caption":"Figure: img","alt":"img","nro":27,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.3.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.5.4"},{"backlink":"tcpip/http-message.html#fig8.5.5","level":"8.5","list_caption":"Figure: img","alt":"img","nro":28,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.3.3.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.5.5"},{"backlink":"tcpip/http-message.html#fig8.5.6","level":"8.5","list_caption":"Figure: img","alt":"img","nro":29,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.5.6"},{"backlink":"tcpip/http-message.html#fig8.5.7","level":"8.5","list_caption":"Figure: img","alt":"img","nro":30,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.2.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.5.7"},{"backlink":"tcpip/http-code.html#fig8.6.1","level":"8.6","list_caption":"Figure: img","alt":"img","nro":31,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.1"},{"backlink":"tcpip/http-code.html#fig8.6.2","level":"8.6","list_caption":"Figure: img","alt":"img","nro":32,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.1.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.2"},{"backlink":"tcpip/http-code.html#fig8.6.3","level":"8.6","list_caption":"Figure: img","alt":"img","nro":33,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.3"},{"backlink":"tcpip/http-code.html#fig8.6.4","level":"8.6","list_caption":"Figure: img","alt":"img","nro":34,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.3.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.4"},{"backlink":"tcpip/http-code.html#fig8.6.5","level":"8.6","list_caption":"Figure: img","alt":"img","nro":35,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.5"},{"backlink":"tcpip/http-code.html#fig8.6.6","level":"8.6","list_caption":"Figure: img","alt":"img","nro":36,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.6"},{"backlink":"tcpip/http-code.html#fig8.6.7","level":"8.6","list_caption":"Figure: img","alt":"img","nro":37,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.3.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.7"},{"backlink":"tcpip/http-code.html#fig8.6.8","level":"8.6","list_caption":"Figure: img","alt":"img","nro":38,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.4.png","index":8,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.8"},{"backlink":"tcpip/http-code.html#fig8.6.9","level":"8.6","list_caption":"Figure: img","alt":"img","nro":39,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.9"},{"backlink":"tcpip/http-code.html#fig8.6.10","level":"8.6","list_caption":"Figure: img","alt":"img","nro":40,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.2.png","index":10,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.10"},{"backlink":"tcpip/http-code.html#fig8.6.11","level":"8.6","list_caption":"Figure: img","alt":"img","nro":41,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.3.png","index":11,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.11"},{"backlink":"tcpip/http-code.html#fig8.6.12","level":"8.6","list_caption":"Figure: img","alt":"img","nro":42,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.4.png","index":12,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.12"},{"backlink":"tcpip/http-code.html#fig8.6.13","level":"8.6","list_caption":"Figure: img","alt":"img","nro":43,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.4.1.png","index":13,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.13"},{"backlink":"tcpip/http-code.html#fig8.6.14","level":"8.6","list_caption":"Figure: img","alt":"img","nro":44,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.4.2.png","index":14,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"8.6.14"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com","Kubernetes 学习笔记":"https://www.huweihuang.com/kubernetes-notes/","Golang 学习笔记":"https://www.huweihuang.com/golang-notes/","Linux 学习笔记":"https://www.huweihuang.com/linux-notes/","数据结构学习笔记":"https://www.huweihuang.com/data-structure-notes/","Python 学习笔记":"https://www.huweihuang.com/python-notes/","Blockchain 学习笔记":"https://www.huweihuang.com/blockchain-notes/"}},"gitbook":"*","description":"Linux 学习笔记"},"file":{"path":"keymap/vim-keymap.md","mtime":"2019-07-12T12:25:44.437Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-12T12:28:37.310Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
