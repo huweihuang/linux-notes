@@ -27,6 +27,8 @@
 * [Git 介绍](git/git.md) 
 * [Git 常用命令](git/git-common-cmd.md) 
 * [Git 命令分类](git/git-commands.md) 
+* [Git commit规范](git/git-commit-msg.md) 
+* [Git 命令别名](git/git-alias-zsh.md) 
 
 ## Nginx
 
