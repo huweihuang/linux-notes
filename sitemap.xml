@@ -13,6 +13,8 @@
 <url> <loc>https://www.huweihuang.com/linux-notes/git/git.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/git/git-common-cmd.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/git/git-commands.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/git/git-commit-msg.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://www.huweihuang.com/linux-notes/git/git-alias-zsh.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/nginx/install-nginx.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/nginx/nginx-proxy.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://www.huweihuang.com/linux-notes/nginx/nginx-http.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
