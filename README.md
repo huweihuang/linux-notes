@@ -84,10 +84,15 @@
 
 ## 快捷键
 
-* [vim命令](keymap/vim-keymap.md) 
 * [vscode快捷键](keymap/vscode-keymap.md) 
 * [eclipse快捷键](keymap/eclipse-keymap.md) 
 * [chrome快捷键](keymap/chrome-keymap.md) 
+
+## vim
+
+* [vim命令](vim/vim-keymap.md) 
+* [vimrc配置](vim/vimrc-cn.md) 
+* [basic vimrc](vim/basic-vimrc.md) 
 
 
 # 赞赏
