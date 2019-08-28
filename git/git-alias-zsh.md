@@ -12,6 +12,33 @@ plugins=(... git)
 
 ## Aliases
 
+### 常用
+
+| Alias                | Command                                                      |
+| :------------------- | :----------------------------------------------------------- |
+| g                    | git                                                          |
+| **ga**               | git add                                                      |
+| **gaa**              | git add --all                                                |
+| **gcmsg**            | git commit -m                                                |
+| -------------------- | ------------------------------------------------------------ |
+| ggp                  | git push origin $(current_branch)                            |
+| ggf                  | git push --force origin $(current_branch)                    |
+| gp                   | git push                                                     |
+| gl                   | git pull                                                     |
+| ggl                  | git pull origin $(current_branch)                            |
+| -------------------- | ------------------------------------------------------------ |
+| **gco**              | git checkout                                                 |
+| gcb                  | git checkout -b                                              |
+| gcm                  | git checkout master                                          |
+| gb                   | git branch                                                   |
+| gba                  | git branch -a                                                |
+| gcf                  | git config --list                                            |
+| gd                   | git diff                                                     |
+
+
+
+### 完整列表
+
 | Alias                | Command                                                      |
 | :------------------- | :----------------------------------------------------------- |
 | g                    | git                                                          |
