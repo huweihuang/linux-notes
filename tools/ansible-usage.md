@@ -69,6 +69,12 @@ yum install -y ansible
 192.168.201.55
 192.168.201.56
 192.168.201.57
+
+# password setting
+[all:vars]
+ansible_connection=ssh
+ansible_ssh_user=root
+ansible_ssh_pass=xxx
 ```
 
 # 3. ansible的命令

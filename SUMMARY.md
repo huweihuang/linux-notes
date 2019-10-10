@@ -67,7 +67,9 @@
 
 ## Mysql
 
-* [Mysql常用命令](mysql/mysql-commands.md) 
+* [系统管理](mysql/system-manage.md) 
+* [数据表操作](mysql/table-operation.md) 
+* [表内容操作](mysql/curd-commands.md) 
 
 ## 快捷键
 
