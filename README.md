@@ -25,6 +25,14 @@
 ## Shell 脚本
 
 * [Shell简介](shell/shell-introduction.md) 
+* [Shell变量](shell/shell-var.md) 
+* [Shell运算符](shell/shell-char.md) 
+* [Shell数组](shell/shell-array.md) 
+* [Shell echo命令](shell/shell-echo.md) 
+* [Shell判断语句](shell/shell-if.md) 
+* [Shell循环语句](shell/shell-loop.md) 
+* [Shell函数](shell/shell-function.md) 
+* [Shell重定向](shell/shell-stdout.md) 
 
 ## 运维工具
 
