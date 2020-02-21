@@ -94,9 +94,10 @@
 
 ## 快捷键
 
-* [vscode快捷键](keymap/vscode-keymap.md) 
-* [eclipse快捷键](keymap/eclipse-keymap.md) 
-* [chrome快捷键](keymap/chrome-keymap.md) 
+* [vscode快捷键](keymap/vscode-keymap.md)
+* [eclipse快捷键](keymap/eclipse-keymap.md)
+* [chrome快捷键](keymap/chrome-keymap.md)
+* [tmux快捷键](keymap/tmux-keymap.md)
 * [iterm2 rzsz的使用](keymap/iterm2-rzsz.md)
 
 ## vim
