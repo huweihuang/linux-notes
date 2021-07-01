@@ -62,6 +62,7 @@ desc 表名
 ```sql
 #添加列  
 alter table 表名 add 列名 类型
+alter table 表名 add 列名 类型 after `列名`
 
 #删除列   
 alter table 表名 drop column 列名
