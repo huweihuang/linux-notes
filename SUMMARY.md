@@ -19,7 +19,7 @@
     * [文件存储结构](file/linux-file-storage.md)
     * [文件权限](file/linux-file-permission.md)
 * [磁盘]()
-
+    * [LVM的使用](disk/lvm-usage.md)
 
 ## 网络
 
