@@ -2,6 +2,20 @@
 
 ## 1.1. 连接mysql
 
+快速部署docker mysql
+
+```
+docker pull mysql:5.7
+```
+
+启动MySQL
+
+```bash
+mkdir -p ~/data/mysql
+
+docker run --name my-mysql -v ~/data/mysql:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
+```
+
 格式： mysql -h主机地址 -u用户名 －p用户密码
 
 ```bash
