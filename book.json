@@ -2,6 +2,7 @@
 {
     "title": "Linux 学习笔记",
     "description": "Linux 学习笔记",
+    "gitbook": ">= 3.2.2",
     "language": "zh-hans",
     "author": "胡伟煌",
     "links": {

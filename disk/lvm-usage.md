@@ -259,18 +259,6 @@ LVM最大的优势就是其可伸缩性，伸缩性有更加偏重与扩容。�
 
 -n：指定 LV 名称
 
-# 7. 判断磁盘是SSD或HDD盘
-
-lsblk -d -o name,rota命令，0表示SSD，1表示HDD
-
-```
-# lsblk -d -o name,rota
-NAME ROTA
-sda     0
-sdb     1
-sdc     1
-```
-
 参考：
 
 - [Linux下使用lvm将多块盘合并 | Z.S.K.'s Records](https://izsk.me/2020/09/15/System-use-lvm-manager-disks/)
