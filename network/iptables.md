@@ -20,6 +20,17 @@ iptables -D INPUT 11
 
 ## 持久化iptables（重启仍生效）
 
+持久化iptables规则，添加规则到文件中/etc/sysconfig/iptables
+
+```bash
+# vi /etc/sysconfig/iptables
+
+-A INPUT -p vrrp -j ACCEPT
+-A OUTPUT -p vrrp -j ACCEPT
+```
+
+或者
+
 ```bash
 apt-get install iptables-persistent
 

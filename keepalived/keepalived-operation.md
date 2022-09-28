@@ -165,3 +165,35 @@ Mar 09 21:28:43 k8s4 Keepalived_vrrp[8548]: one or more VIP associated with VRID
 tcpdump -nn -i any net 224.0.0.0/8
 ```
 
+## 3.2. Operation not permitted
+
+问题：
+
+两台主备机器都绑定了VIP，查看日志如下：
+
+```bash
+Sep 28 14:28:37 node Keepalived_vrrp[1686]: (VI_1): send advert error 1 (Operation not permitted)
+Sep 28 14:28:39 node Keepalived_vrrp[1686]: (VI_1): send advert error 1 (Operation not permitted)
+```
+
+原因：
+
+由于iptables vrrp协议没有放通，导致keepalived直接无法互相探测选主。
+
+解决方法：
+
+添加iptabels vrrp协议规则
+
+```bash
+iptables -A INPUT -p vrrp -j ACCEPT
+iptables -A OUTPUT -p vrrp -j ACCEPT
+```
+
+持久化iptables规则，添加规则到文件中/etc/sysconfig/iptables
+
+```bash
+# vi /etc/sysconfig/iptables
+
+-A INPUT -p vrrp -j ACCEPT
+-A OUTPUT -p vrrp -j ACCEPT
+```
