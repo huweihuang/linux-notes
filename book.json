@@ -108,10 +108,10 @@
         },
         "readmore":{
             "allowDomain":["www.huweihuang.com","localhost"],
-            "blogId": "30679-1666530720672-990",
+            "blogId": "30679-1666624328262-820",
             "name": "容器云架构",
             "qrcode": "https://res.cloudinary.com/dqxtn0ick/image/upload/v1551600382/blog/wechat-public-acconut.jpg",
-            "keyword": "vip"
+            "keyword": "linux"
         }
     }
 }
