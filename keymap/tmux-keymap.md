@@ -1,3 +1,16 @@
+---
+title: "tmux快捷键"
+weight: 4
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- 快捷键
+catagories:
+- 快捷键
+---
+
 # 1. 安装tmux
 
 ```bash

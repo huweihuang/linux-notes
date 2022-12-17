@@ -1,3 +1,16 @@
+---
+title: "Shell数组"
+weight: 4
+catalog: true
+date: 2019-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Shell
+catagories:
+- Shell
+---
+
 # 1. 字符串
 
 字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。

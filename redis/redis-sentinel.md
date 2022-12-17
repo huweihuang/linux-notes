@@ -1,3 +1,16 @@
+---
+title: "Redis哨兵模式部署"
+weight: 3
+catalog: true
+date: 2018-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Redis
+catagories:
+- Redis
+---
+
 # 1. 部署Redis集群
 
 redis的安装及配置参考[redis部署]

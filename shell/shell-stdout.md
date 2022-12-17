@@ -1,3 +1,17 @@
+---
+title: "Shell 重定向"
+weight: 8
+catalog: true
+date: 2019-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Shell
+catagories:
+- Shell
+---
+
+
 Unix 命令默认从标准输入设备(stdin)获取输入，将结果输出到标准输出设备(stdout)显示。一般情况下，标准输入设备就是键盘，标准输出设备就是终端，即显示器。
 
 # 1. 输出重定向

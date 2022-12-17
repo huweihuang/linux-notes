@@ -1,3 +1,14 @@
+---
+title: "basic vimrc"
+catalog: true
+date: 2018-5-1 17:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1542285471/header/building.jpg"
+tags:
+- VIM
+catagories:
+- VIM
+---
 
 > 以下转自https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 

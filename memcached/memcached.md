@@ -1,3 +1,16 @@
+---
+title: "Memcached的使用"
+weight: 1
+catalog: true
+date: 2018-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Memcached
+catagories:
+- Memcached
+---
+
 # 1. Memcached简介
 
 - Memcached是一个开源的，高性能，分布式内存对象缓存系统。

@@ -1,3 +1,16 @@
+---
+title: "HTTP状态码"
+weight: 3
+catalog: true
+date: 2018-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- TCPIP
+catagories:
+- TCPIP
+---
+
 # 4. HTTP状态码
 
 状态码即服务器返回的请求结果。

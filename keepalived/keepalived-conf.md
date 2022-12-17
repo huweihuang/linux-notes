@@ -1,3 +1,16 @@
+---
+title: "Keepalived配置详解"
+weight: 4
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Keepalived
+catagories:
+- Keepalived
+---
+
 # 详细配置说明
 
 keepalived只有一个配置文件`/etc/keepalived/keepalived.conf`。

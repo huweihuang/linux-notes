@@ -1,3 +1,15 @@
+---
+title: "Nginx http服务器"
+weight: 3
+catalog: true
+date: 2017-09-13 10:50:57
+subtitle:
+tags:
+- Nginx
+catagories:
+- Nginx
+---
+
 # 1. Nginx的系统架构
 
 1. Nginx包含一个单一的master进程和多个worker进程，每个进程都是单进程，并且设计为同时处理成千上万个连接。

@@ -1,3 +1,16 @@
+---
+title: "LVM的使用"
+weight: 2
+catalog: true
+date: 2020-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- disk
+catagories:
+- disk
+---
+
 > 本文由网络内容整理而成的笔记
 
 # 1. LVM简介

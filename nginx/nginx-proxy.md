@@ -1,3 +1,15 @@
+---
+title: "Nginx作为反向代理"
+weight: 2
+catalog: true
+date: 2017-09-13 10:50:57
+subtitle:
+tags:
+- Nginx
+catagories:
+- Nginx
+---
+
 # 1. 反向代理简介
 
 Nginx可以作为反向代理，接收客户端的请求，并向上游服务器发起新的请求。该请求可以根据客户端请求的URI，客户机参数或其他逻辑进行拆分，原始URL中的任何部分可以以这种方式进行转换。

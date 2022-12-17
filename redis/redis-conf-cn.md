@@ -1,3 +1,17 @@
+---
+title: "Redis配置详解（中文版）"
+weight: 4
+catalog: true
+date: 2018-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Redis
+catagories:
+- Redis
+---
+
+
 > 以下为`redis.conf`的文件的中文描述，整理于网络
 
 ```bash

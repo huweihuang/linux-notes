@@ -1,3 +1,16 @@
+---
+title: "HTTP报文"
+weight: 2
+catalog: true
+date: 2018-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- TCPIP
+catagories:
+- TCPIP
+---
+
 # 3. HTTP报文
 
 ## 3.1. HTTP报文

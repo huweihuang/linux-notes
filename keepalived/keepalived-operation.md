@@ -1,3 +1,16 @@
+---
+title: "Keepalived相关操作"
+weight: 3
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Keepalived
+catagories:
+- Keepalived
+---
+
 # 1. 常用命令
 
 ## 1.1. 查看当前VIP在哪个节点上

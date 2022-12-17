@@ -1,3 +1,16 @@
+---
+title: "Git常用命令"
+weight: 2
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Git
+catagories:
+- Git
+---
+
 # 1. Git常用命令
 
 | 分类 | 子类                        | git command                                                  | zsh alias |

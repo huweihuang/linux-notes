@@ -1,3 +1,15 @@
+---
+title: "Supervisor的使用"
+catalog: true
+date: 2018-6-6 21:06:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1542285471/header/building.jpg"
+tags:
+- Linux
+catagories:
+- Linux
+---
+
 # 1. Supervisor简介
 
 Supervisord 是用 Python 实现的一款的进程管理工具，supervisord 要求管理的程序是非 daemon 程序，supervisord 会帮你把它转成 daemon 程序，因此如果用 supervisord 来管理进程，进程需要以非daemon的方式启动。  

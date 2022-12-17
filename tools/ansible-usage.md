@@ -1,3 +1,15 @@
+---
+title: "ansible的使用"
+catalog: true
+date: 2018-5-1 17:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1542285471/header/building.jpg"
+tags:
+- Linux
+catagories:
+- Linux
+---
+
 # 1. 安装
 
 以centos为例。

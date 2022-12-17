@@ -1,3 +1,16 @@
+---
+title: "Shell简介"
+weight: 1
+catalog: true
+date: 2019-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Shell
+catagories:
+- Shell
+---
+
 # 1. shell简介
 
 `shell`是用户和Linux内核之间的一层代理，解释用户输入的命令，传递给内核。

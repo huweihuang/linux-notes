@@ -1,3 +1,16 @@
+---
+title: "Redis配置详解（英文版）"
+weight: 5
+catalog: true
+date: 2018-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Redis
+catagories:
+- Redis
+---
+
 > 本文来自redis 官方配置文件
 
 ```bash

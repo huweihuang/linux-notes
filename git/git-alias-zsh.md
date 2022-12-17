@@ -1,3 +1,16 @@
+---
+title: "Git命令别名"
+weight: 5
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Git
+catagories:
+- Git
+---
+
 > 以下由[zsh-plugin-git](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git)内容转载过来，以备查询使用。
 
 # git plugin

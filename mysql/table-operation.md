@@ -1,3 +1,15 @@
+---
+title: "Mysql常用命令之数据表操作"
+weight: 2
+catalog: true
+date: 2017-08-13 10:50:57
+subtitle:
+tags:
+- Mysql
+catagories:
+- Mysql
+---
+
 # 2. 数据库操作
 
 ```sql

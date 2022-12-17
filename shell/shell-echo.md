@@ -1,3 +1,16 @@
+---
+title: "Shell echo命令"
+weight: 5
+catalog: true
+date: 2019-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Shell
+catagories:
+- Shell
+---
+
 # 1. echo
 
 echo是Shell的一个内部指令，用于在屏幕上打印出指定的字符串。命令格式：

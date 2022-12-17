@@ -1,3 +1,16 @@
+---
+title: "iterm2 rz与sz的使用"
+weight: 5
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- 快捷键
+catagories:
+- 快捷键
+---
+
 > 本文由网络文章整理备份。
 
 # iterm2 rz与sz的功能

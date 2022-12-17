@@ -1,3 +1,16 @@
+---
+title: "chrome快捷键"
+weight: 3
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- 快捷键
+catagories:
+- 快捷键
+---
+
 # chrome快捷键
 
 # 1. 标签页和窗口快捷键

@@ -1,10 +1,23 @@
+---
+title: "Shell变量"
+weight: 2
+catalog: true
+date: 2019-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Shell
+catagories:
+- Shell
+---
+
 # 1. shell变量
 
 Shell支持自定义变量。
 
 ## 1.1. 定义变量
 
-定义变量时，变量名不加美元符号（$），如：
+定义变量时，变量名不加美元符号`（$）`，如：
 
 ```
 variableName="value"

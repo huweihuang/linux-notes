@@ -1,3 +1,15 @@
+---
+title: "Nginx的部署与配置"
+weight: 1
+catalog: true
+date: 2017-09-13 10:50:57
+subtitle:
+tags:
+- Nginx
+catagories:
+- Nginx
+---
+
 # 1. 部署
 
 ## 1.1. 使用安装包的方式

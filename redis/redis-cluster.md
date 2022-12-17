@@ -1,3 +1,16 @@
+---
+title: "Redis集群模式部署"
+weight: 2
+catalog: true
+date: 2018-4-17 21:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Redis
+catagories:
+- Redis
+---
+
 # 1. Redis部署
 
 > 以下以Linux系统为例

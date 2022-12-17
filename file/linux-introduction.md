@@ -1,3 +1,16 @@
+---
+title: "Linux介绍"
+weight: 1
+catalog: true
+date: 2020-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Linux
+catagories:
+- Linux
+---
+
 # 1. Linux简介
 
 严格来讲，Linux（内核）是`计算机软件与硬件通信之间的平台`，不是真正意义上的操作系统，而一些厂家将Linux内核和GNU软件（系统软件和工具）整合起来，并提供一些安装界面和系统设定与管理工具，就构成一些发行套件（系统），例如：`Ubuntu`、`CentOS`、`Red Hat`、`Debian`等。

@@ -1,3 +1,16 @@
+---
+title: "Keepalived安装与配置"
+weight: 2
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Keepalived
+catagories:
+- Keepalived
+---
+
 # 1. Keepalived的安装
 
 ## 1.1. yum install方式

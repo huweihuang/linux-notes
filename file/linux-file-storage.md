@@ -1,3 +1,16 @@
+---
+title: "Linux文件存储"
+weight: 3
+catalog: true
+date: 2020-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Linux
+catagories:
+- Linux
+---
+
 # 文件存储结构
 
 大部分的Linux文件系统（如ext2、ext3）规定，一个文件由目录项、inode和数据块组成

@@ -1,3 +1,16 @@
+---
+title: "Linux文件系统"
+weight: 2
+catalog: true
+date: 2020-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Linux
+catagories:
+- Linux
+---
+
 # 1. 文件系统
 
 文件系统就是分区或磁盘上的所有文件的逻辑集合。文件系统不仅包含着文件中的数据而且还有文件系统的结构，所有Linux 用户和程序看到的文件、目录、软连接及文件保护信息等都存储在其中。

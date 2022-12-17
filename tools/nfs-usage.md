@@ -1,3 +1,16 @@
+---
+title: "NFS的使用"
+catalog: true
+date: 2018-5-1 17:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1542285471/header/building.jpg"
+tags:
+- Linux
+catagories:
+- Linux
+---
+
+
 # 1. NFS简介
 
 NFS，是Network File System的简写，即网络文件系统。网络文件系统是FreeBSD支持的文件系统中的一种，也被称为NFS. NFS允许一个系统在网络上与他人共享目录和文件。

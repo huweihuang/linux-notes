@@ -1,3 +1,15 @@
+---
+title: "Mysql常用命令之系统管理"
+weight: 1
+catalog: true
+date: 2017-08-13 10:50:57
+subtitle:
+tags:
+- Mysql
+catagories:
+- Mysql
+---
+
 # 1. 系统管理
 
 ## 1.1. 连接mysql

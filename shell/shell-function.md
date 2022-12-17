@@ -1,3 +1,16 @@
+---
+title: "Shell 函数"
+weight: 8
+catalog: true
+date: 2019-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Shell
+catagories:
+- Shell
+---
+
 # 1. 函数定义
 
 函数可以让我们将一个复杂功能划分成若干模块，让程序结构更加清晰，代码重复利用率更高。Shell 也支持函数。Shell 函数必须先定义后使用。

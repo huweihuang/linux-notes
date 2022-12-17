@@ -1,3 +1,16 @@
+---
+title: "磁盘命令"
+weight: 1
+catalog: true
+date: 2020-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- disk
+catagories:
+- disk
+---
+
 # 1. 判断磁盘是SSD或HDD盘
 
 **1、没有使用raid方案**

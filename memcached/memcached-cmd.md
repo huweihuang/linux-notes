@@ -1,3 +1,16 @@
+---
+title: "Memcached命令"
+weight: 2
+catalog: true
+date: 2018-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Memcached
+catagories:
+- Memcached
+---
+
 # 1. Memcached 命令
 
 ## 1.1. 存储命令

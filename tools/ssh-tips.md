@@ -1,3 +1,15 @@
+---
+title: "ssh tips"
+catalog: true
+date: 2018-5-1 17:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1542285471/header/building.jpg"
+tags:
+- Linux
+catagories:
+- Linux
+---
+
 # 1. ssh/scp免密码
 
 A服务器地址：10.8.216.25，下面简称A 

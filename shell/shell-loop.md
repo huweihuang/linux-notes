@@ -1,3 +1,16 @@
+---
+title: "Shell 循环语句"
+weight: 7
+catalog: true
+date: 2019-4-17 20:26:24
+subtitle:
+header-img: "https://res.cloudinary.com/dqxtn0ick/image/upload/v1508253812/header/cow.jpg"
+tags:
+- Shell
+catagories:
+- Shell
+---
+
 # 1. for
 
 for循环一般格式为：

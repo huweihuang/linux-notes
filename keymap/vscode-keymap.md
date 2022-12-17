@@ -1,3 +1,17 @@
+---
+title: "vscode快捷键"
+weight: 1
+catalog: true
+date: 2019-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- 快捷键
+catagories:
+- 快捷键
+---
+
+
 # vscode快捷键
 
 # 1. 基本快捷键
@@ -24,7 +38,8 @@
 - `@:`根据分类跳转symbol，查找属性或函数，也可以`Ctrl+Shift+O`后输入`:`进入
 - `#` 根据名字查找symbol，也可以`Ctrl+T`
 
-------
+
+---
 
 # 2. 快捷键分类
 

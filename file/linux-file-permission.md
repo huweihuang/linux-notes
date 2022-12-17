@@ -1,3 +1,16 @@
+---
+title: "Linux文件权限"
+weight: 4
+catalog: true
+date: 2020-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- Linux
+catagories:
+- Linux
+---
+
 # 1. Linux文件管理
 
 Linux中的所有数据都被保存在文件中，所有的文件被分配到不同的目录。目录是一种类似于树的结构，称为文件系统。

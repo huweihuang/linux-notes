@@ -1,3 +1,16 @@
+---
+title: "IP协议"
+weight: 2
+catalog: true
+date: 2018-09-20 10:50:57
+subtitle:
+header-img:
+tags:
+- TCPIP
+catagories:
+- TCPIP
+---
+
 # 1. IP基础
 
 TCP/IP的心脏是互联网层，这一层主要有IP和ICMP两个协议组成，在OSI参考模型中为第三层（网络层）。网络层的主要作用是实现终端节点之间的通信（点对点通信）。
