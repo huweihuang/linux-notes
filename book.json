@@ -35,7 +35,8 @@
         "disqus",
         "donate",
         "expandable-chapters",
-        "readmore"
+        "readmore",
+        "google-ads"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -112,6 +113,13 @@
             "name": "容器云架构",
             "qrcode": "https://res.cloudinary.com/dqxtn0ick/image/upload/v1551600382/blog/wechat-public-acconut.jpg",
             "keyword": "linux"
+        },
+        "google-ads": {
+            "ads": [
+                {
+                    "client": "ca-pub-8205636531078391"
+                }
+            ]
         }
     }
 }
