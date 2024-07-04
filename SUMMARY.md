@@ -20,6 +20,7 @@
 * [磁盘]()
   * [LVM的使用](disk/lvm-usage.md)
   * [磁盘命令](disk/disk-command.md)
+  * [Raid介绍](disk/disk-raid.md)
 
 ## 网络
 
@@ -32,14 +33,16 @@
   * [Http报文](tcpip/http-message.md) 
   * [Http状态码](tcpip/http-code.md)  
 * [网络命令]()    
-  * [iptables](network/iptables.md)    
+  * [iptables介绍](network/iptables.md)    
+  * [iptables命令](network/iptables-command.md)    
+  * [tcpdump命令](network/tcpdump.md)    
+  * [wrk压测命令](network/wrk-usage.md)      
 
 ## 程序
 
 * [进程]()
 
 * [Shell 脚本]()
-  
   * [Shell简介](shell/shell-introduction.md) 
   * [Shell变量](shell/shell-var.md) 
   * [Shell运算符](shell/shell-char.md) 
@@ -91,11 +94,14 @@
   * [Nginx安装与配置](nginx/install-nginx.md) 
   * [Nginx作为反向代理](nginx/nginx-proxy.md) 
   * [Nginx http服务器](nginx/nginx-http.md) 
+  * [配置Nginx免费证书](nginx/config-ssl-for-nginx.md) 
 * [Keepalived]()
   * [Keepalived简介](keepalived/keepalived-introduction.md) 
   * [Keepalived的安装与配置](keepalived/install-keepalived.md) 
   * [Keepalived的相关操作](keepalived/keepalived-operation.md) 
   * [Keepalived的配置详解](keepalived/keepalived-conf.md) 
+* [Baremetal]()
+  * [bmc概念](baremetal/bmc.md) 
 
 ## 工具技巧
 
@@ -109,6 +115,6 @@
   * [vscode配置](ide/vscode.md) 
   * [Goland配置](ide/goland.md) 
 * [vim]()
-  * [vim命令](vim/vim-keymap.md) 
-  * [vimrc配置](vim/vimrc-cn.md) 
-  * [basic vimrc](vim/basic-vimrc.md) 
+  * [vim命令](ide/vim/vim-keymap.md) 
+  * [vimrc配置](ide/vim/vimrc-cn.md) 
+  * [basic vimrc](ide/vim/basic-vimrc.md) 
