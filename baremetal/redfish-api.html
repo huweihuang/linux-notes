@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>iptables命令 · Linux 学习笔记</title>
+        <title>Redfish API · Linux 学习笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -83,10 +83,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tcpdump.html" />
     
-    
-    <link rel="prev" href="iptables.html" />
+    <link rel="prev" href="format-disk.html" />
     
 
     
@@ -539,9 +537,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.2.1" data-path="iptables.html">
+        <li class="chapter " data-level="4.2.1" data-path="../network/iptables.html">
             
-                <a href="iptables.html">
+                <a href="../network/iptables.html">
             
                     
                         <b>4.2.1.</b>
@@ -554,9 +552,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.2.2" data-path="iptables-command.html">
+        <li class="chapter " data-level="4.2.2" data-path="../network/iptables-command.html">
             
-                <a href="iptables-command.html">
+                <a href="../network/iptables-command.html">
             
                     
                         <b>4.2.2.</b>
@@ -569,9 +567,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.3" data-path="tcpdump.html">
+        <li class="chapter " data-level="4.2.3" data-path="../network/tcpdump.html">
             
-                <a href="tcpdump.html">
+                <a href="../network/tcpdump.html">
             
                     
                         <b>4.2.3.</b>
@@ -584,9 +582,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.4" data-path="wrk-usage.html">
+        <li class="chapter " data-level="4.2.4" data-path="../network/wrk-usage.html">
             
-                <a href="wrk-usage.html">
+                <a href="../network/wrk-usage.html">
             
                     
                         <b>4.2.4.</b>
@@ -599,9 +597,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.5" data-path="bond.html">
+        <li class="chapter " data-level="4.2.5" data-path="../network/bond.html">
             
-                <a href="bond.html">
+                <a href="../network/bond.html">
             
                     
                         <b>4.2.5.</b>
@@ -614,9 +612,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.6" data-path="netplan.html">
+        <li class="chapter " data-level="4.2.6" data-path="../network/netplan.html">
             
-                <a href="netplan.html">
+                <a href="../network/netplan.html">
             
                     
                         <b>4.2.6.</b>
@@ -629,9 +627,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2.7" data-path="vlan.html">
+        <li class="chapter " data-level="4.2.7" data-path="../network/vlan.html">
             
-                <a href="vlan.html">
+                <a href="../network/vlan.html">
             
                     
                         <b>4.2.7.</b>
@@ -1426,9 +1424,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="9.3.1" data-path="../baremetal/bmc.html">
+        <li class="chapter " data-level="9.3.1" data-path="bmc.html">
             
-                <a href="../baremetal/bmc.html">
+                <a href="bmc.html">
             
                     
                         <b>9.3.1.</b>
@@ -1441,9 +1439,9 @@
             
         </li>
     
-        <li class="chapter " data-level="9.3.2" data-path="../baremetal/format-disk.html">
+        <li class="chapter " data-level="9.3.2" data-path="format-disk.html">
             
-                <a href="../baremetal/format-disk.html">
+                <a href="format-disk.html">
             
                     
                         <b>9.3.2.</b>
@@ -1456,9 +1454,9 @@
             
         </li>
     
-        <li class="chapter " data-level="9.3.3" data-path="../baremetal/redfish-api.html">
+        <li class="chapter active" data-level="9.3.3" data-path="redfish-api.html">
             
-                <a href="../baremetal/redfish-api.html">
+                <a href="redfish-api.html">
             
                     
                         <b>9.3.3.</b>
@@ -1763,7 +1761,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >iptables命令</a>
+        <a href=".." >Redfish API</a>
     </h1>
 </div>
 
@@ -1780,37 +1778,334 @@
                                 
                                 
                 <div id="vip-container">
-                    <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x6DFB;&#x52A0;iptables&#x89C4;&#x5219;"><b></b>&#x6DFB;&#x52A0;iptables&#x89C4;&#x5219;</a></li><li><span class="title-icon "></span><a href="#&#x5220;&#x9664;iptables&#x89C4;&#x5219;"><b></b>&#x5220;&#x9664;iptables&#x89C4;&#x5219;</a></li><li><span class="title-icon "></span><a href="#&#x6301;&#x4E45;&#x5316;iptables&#xFF08;&#x91CD;&#x542F;&#x4ECD;&#x751F;&#x6548;&#xFF09;"><b></b>&#x6301;&#x4E45;&#x5316;iptables&#xFF08;&#x91CD;&#x542F;&#x4ECD;&#x751F;&#x6548;&#xFF09;</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="&#x6DFB;&#x52A0;iptables&#x89C4;&#x5219;"><a name="&#x6DFB;&#x52A0;iptables&#x89C4;&#x5219;" class="anchor-navigation-ex-anchor" href="#&#x6DFB;&#x52A0;iptables&#x89C4;&#x5219;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6DFB;&#x52A0;iptables&#x89C4;&#x5219;</h2>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x5355;&#x4E2A;&#x7AEF;&#x53E3;</span>
-iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-
-<span class="token comment"># &#x591A;&#x4E2A;&#x7AEF;&#x53E3;</span>
-iptables -A INPUT -p tcp -m multiport --dports 6443,8443,2379,2380,10250 -j ACCEPT
+                    <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#1-bmc&#x5E38;&#x7528;&#x529F;&#x80FD;&#x64CD;&#x4F5C;"><b></b>1. BMC&#x5E38;&#x7528;&#x529F;&#x80FD;&#x64CD;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#2-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;"><b></b>2. &#x901A;&#x7528; Redfish API &#x63A5;&#x53E3;&#x683C;&#x5F0F;</a></li><ul><li><span class="title-icon "></span><a href="#21-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;"><b></b>2.1. &#x901A;&#x7528; Redfish API &#x63A5;&#x53E3;&#x683C;&#x5F0F;</a></li><ul><li><span class="title-icon "></span><a href="#211-&#x57FA;&#x7840;&#x8DEF;&#x5F84;&#x7ED3;&#x6784;"><b></b>2.1.1. &#x57FA;&#x7840;&#x8DEF;&#x5F84;&#x7ED3;&#x6784;</a></li><li><span class="title-icon "></span><a href="#212-&#x4E3B;&#x8981;&#x8D44;&#x6E90;&#x7C7B;&#x578B;"><b></b>2.1.2. &#x4E3B;&#x8981;&#x8D44;&#x6E90;&#x7C7B;&#x578B;</a></li></ul></ul><li><span class="title-icon "></span><a href="#3-bios-&#x7BA1;&#x7406;"><b></b>3. BIOS &#x7BA1;&#x7406;</a></li><ul><li><span class="title-icon "></span><a href="#1-&#x901A;&#x7528;-bios-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><b></b>1. &#x901A;&#x7528; BIOS &#x63A5;&#x53E3;&#x8DEF;&#x5F84;</a></li><li><span class="title-icon "></span><a href="#2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;"><b></b>2. &#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;</a></li></ul><li><span class="title-icon "></span><a href="#4-&#x542F;&#x52A8;&#x8BBE;&#x7F6E;&#xFF08;boot-order&#xFF09;"><b></b>4. &#x542F;&#x52A8;&#x8BBE;&#x7F6E;&#xFF08;boot order&#xFF09;</a></li><li><span class="title-icon "></span><a href="#5-virtualmedia-&#x7684;&#x901A;&#x7528;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><b></b>5. VirtualMedia &#x7684;&#x901A;&#x7528;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;</a></li><ul><li><span class="title-icon "></span><a href="#1-&#x901A;&#x7528;-virtualmedia-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><b></b>1. &#x901A;&#x7528; VirtualMedia &#x63A5;&#x53E3;&#x8DEF;&#x5F84;</a></li><li><span class="title-icon "></span><a href="#2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;_1"><b></b>2. &#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;</a></li></ul><li><span class="title-icon "></span><a href="#6-&#x7535;&#x6E90;&#x7BA1;&#x7406;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x5173;&#x673A;&#x3001;&#x91CD;&#x542F;&#xFF09;"><b></b>6. &#x7535;&#x6E90;&#x7BA1;&#x7406;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x5173;&#x673A;&#x3001;&#x91CD;&#x542F;&#xFF09;</a></li><li><span class="title-icon "></span><a href="#7-&#x56FA;&#x4EF6;&#x5347;&#x7EA7;"><b></b>7. &#x56FA;&#x4EF6;&#x5347;&#x7EA7;</a></li></ul></div><a href="#1-bmc&#x5E38;&#x7528;&#x529F;&#x80FD;&#x64CD;&#x4F5C;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><blockquote>
+<p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;redfish api&#x7684;&#x8C03;&#x7528;&#x8DEF;&#x5F84;&#x53CA;&#x683C;&#x5F0F;&#x3002;</p>
+</blockquote>
+<p>Redfish&#x662F;&#x4E00;&#x79CD;&#x57FA;&#x4E8E;HTTPs&#x670D;&#x52A1;&#x7684;&#x7BA1;&#x7406;&#x6807;&#x51C6;&#xFF0C;&#x5229;&#x7528;RESTful&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x8BBE;&#x5907;&#x7BA1;&#x7406;&#x3002;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;redfish api&#x5C31;&#x662F;&#x901A;&#x8FC7;http&#x7684;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x6765;&#x64CD;&#x4F5C;&#x670D;&#x52A1;&#x5668;&#x7684;bmc&#x8BBE;&#x5907;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x5BF9;&#x8BBE;&#x5907;&#x7684;&#x8FDC;&#x7A0B;&#x63A7;&#x5236;&#x3002;</p>
+<h1 id="1-bmc&#x5E38;&#x7528;&#x529F;&#x80FD;&#x64CD;&#x4F5C;"><a name="1-bmc&#x5E38;&#x7528;&#x529F;&#x80FD;&#x64CD;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#1-bmc&#x5E38;&#x7528;&#x529F;&#x80FD;&#x64CD;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>1. BMC&#x5E38;&#x7528;&#x529F;&#x80FD;&#x64CD;&#x4F5C;</h1>
+<ul>
+<li><p>BIOS &#x7BA1;&#x7406;</p>
+</li>
+<li><p>&#x542F;&#x52A8;&#x8BBE;&#x7F6E;&#xFF08;boot order&#xFF09;</p>
+</li>
+<li><p>&#x865A;&#x62DF;&#x5A92;&#x4F53;&#x7BA1;&#x7406;</p>
+</li>
+<li><p>&#x7535;&#x6E90;&#x7BA1;&#x7406;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x5173;&#x673A;&#x3001;&#x91CD;&#x542F;&#xFF09;</p>
+</li>
+<li><p>&#x56FA;&#x4EF6;&#x5347;&#x7EA7;</p>
+</li>
+<li><p>&#x8FDC;&#x7A0B;&#x63A7;&#x5236;&#xFF08;VNC/SOL&#xFF09;</p>
+</li>
+<li><p>&#x76D1;&#x63A7;&#x548C;&#x65E5;&#x5FD7;</p>
+</li>
+</ul>
+<h1 id="2-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;"><a name="2-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#2-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x901A;&#x7528; Redfish API &#x63A5;&#x53E3;&#x683C;&#x5F0F;</h1>
+<h2 id="21-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;"><a name="21-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#21-&#x901A;&#x7528;-redfish-api-&#x63A5;&#x53E3;&#x683C;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>2.1. &#x901A;&#x7528; Redfish API &#x63A5;&#x53E3;&#x683C;&#x5F0F;</h2>
+<h3 id="211-&#x57FA;&#x7840;&#x8DEF;&#x5F84;&#x7ED3;&#x6784;"><a name="211-&#x57FA;&#x7840;&#x8DEF;&#x5F84;&#x7ED3;&#x6784;" class="anchor-navigation-ex-anchor" href="#211-&#x57FA;&#x7840;&#x8DEF;&#x5F84;&#x7ED3;&#x6784;"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.1. &#x57FA;&#x7840;&#x8DEF;&#x5F84;&#x7ED3;&#x6784;</h3>
+<pre class="language-"><code class="lang-bash">/redfish/v1/
 </code></pre>
-<h2 id="&#x5220;&#x9664;iptables&#x89C4;&#x5219;"><a name="&#x5220;&#x9664;iptables&#x89C4;&#x5219;" class="anchor-navigation-ex-anchor" href="#&#x5220;&#x9664;iptables&#x89C4;&#x5219;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5220;&#x9664;iptables&#x89C4;&#x5219;</h2>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x663E;&#x793A;iptables&#x89C4;&#x5219;&#x884C;&#x53F7;</span>
-iptables -nL --line-numbers
-
-<span class="token comment"># &#x5220;&#x9664;&#x67D0;&#x884C;&#x89C4;&#x5219;</span>
-iptables -D INPUT 11
+<h3 id="212-&#x4E3B;&#x8981;&#x8D44;&#x6E90;&#x7C7B;&#x578B;"><a name="212-&#x4E3B;&#x8981;&#x8D44;&#x6E90;&#x7C7B;&#x578B;" class="anchor-navigation-ex-anchor" href="#212-&#x4E3B;&#x8981;&#x8D44;&#x6E90;&#x7C7B;&#x578B;"><i class="fa fa-link" aria-hidden="true"></i></a>2.1.2. &#x4E3B;&#x8981;&#x8D44;&#x6E90;&#x7C7B;&#x578B;</h3>
+<ol>
+<li><strong>&#x7CFB;&#x7EDF;&#x8D44;&#x6E90; (Systems)</strong></li>
+</ol>
+<pre class="language-"><code class="lang-bash">/redfish/v1/Systems/<span class="token punctuation">{</span>systemId<span class="token punctuation">}</span>/
+&#x251C;&#x2500;&#x2500; Bios/                    <span class="token comment"># BIOS&#x8BBE;&#x7F6E;</span>
+&#x251C;&#x2500;&#x2500; Boot/                    <span class="token comment"># &#x542F;&#x52A8;&#x8BBE;&#x7F6E;</span>
+&#x251C;&#x2500;&#x2500; Memory/                  <span class="token comment"># &#x5185;&#x5B58;&#x4FE1;&#x606F;</span>
+&#x251C;&#x2500;&#x2500; Processors/              <span class="token comment"># &#x5904;&#x7406;&#x5668;&#x4FE1;&#x606F;</span>
+&#x251C;&#x2500;&#x2500; Storage/                 <span class="token comment"># &#x5B58;&#x50A8;&#x4FE1;&#x606F;</span>
+&#x251C;&#x2500;&#x2500; EthernetInterfaces/      <span class="token comment"># &#x7F51;&#x7EDC;&#x63A5;&#x53E3;</span>
+&#x2514;&#x2500;&#x2500; Actions/                 <span class="token comment"># &#x7CFB;&#x7EDF;&#x64CD;&#x4F5C;</span>
 </code></pre>
-<h2 id="&#x6301;&#x4E45;&#x5316;iptables&#xFF08;&#x91CD;&#x542F;&#x4ECD;&#x751F;&#x6548;&#xFF09;"><a name="&#x6301;&#x4E45;&#x5316;iptables&#xFF08;&#x91CD;&#x542F;&#x4ECD;&#x751F;&#x6548;&#xFF09;" class="anchor-navigation-ex-anchor" href="#&#x6301;&#x4E45;&#x5316;iptables&#xFF08;&#x91CD;&#x542F;&#x4ECD;&#x751F;&#x6548;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6301;&#x4E45;&#x5316;iptables&#xFF08;&#x91CD;&#x542F;&#x4ECD;&#x751F;&#x6548;&#xFF09;</h2>
-<p>&#x6301;&#x4E45;&#x5316;iptables&#x89C4;&#x5219;&#xFF0C;&#x6DFB;&#x52A0;&#x89C4;&#x5219;&#x5230;&#x6587;&#x4EF6;&#x4E2D;/etc/sysconfig/iptables</p>
-<pre class="language-"><code class="lang-bash"><span class="token comment"># vi /etc/sysconfig/iptables</span>
-
--A INPUT -p vrrp -j ACCEPT
--A OUTPUT -p vrrp -j ACCEPT
+<ol>
+<li><strong>&#x673A;&#x7BB1;&#x8D44;&#x6E90; (Chassis)</strong></li>
+</ol>
+<pre class="language-"><code class="lang-bash">/redfish/v1/Chassis/<span class="token punctuation">{</span>chassisId<span class="token punctuation">}</span>/
+&#x251C;&#x2500;&#x2500; Power/                   <span class="token comment"># &#x7535;&#x6E90;&#x7BA1;&#x7406;</span>
+&#x251C;&#x2500;&#x2500; Thermal/                 <span class="token comment"># &#x6E29;&#x5EA6;&#x7BA1;&#x7406;</span>
+&#x251C;&#x2500;&#x2500; NetworkAdapters/         <span class="token comment"># &#x7F51;&#x7EDC;&#x9002;&#x914D;&#x5668;</span>
+&#x2514;&#x2500;&#x2500; Actions/                 <span class="token comment"># &#x673A;&#x7BB1;&#x64CD;&#x4F5C;</span>
 </code></pre>
-<p>&#x6216;&#x8005;</p>
-<pre class="language-"><code class="lang-bash"><span class="token function">apt-get</span> <span class="token function">install</span> iptables-persistent
-
-netfilter-persistent save
-netfilter-persistent reload
-
-<span class="token comment"># &#x751F;&#x6210;&#x7684;&#x89C4;&#x5219;&#x5B58;&#x50A8;&#x5728;&#x4EE5;&#x4E0B;&#x6587;&#x4EF6;</span>
-/etc/iptables/rules.v4
-/etc/iptables/rules.v6
+<ol>
+<li><strong>&#x7BA1;&#x7406;&#x63A7;&#x5236;&#x5668; (Managers)</strong></li>
+</ol>
+<pre class="language-"><code class="lang-bash">/redfish/v1/Managers/<span class="token punctuation">{</span>managerId<span class="token punctuation">}</span>/
+&#x251C;&#x2500;&#x2500; NetworkProtocol/         <span class="token comment"># &#x7F51;&#x7EDC;&#x534F;&#x8BAE;</span>
+&#x251C;&#x2500;&#x2500; VirtualMedia/            <span class="token comment"># &#x865A;&#x62DF;&#x5A92;&#x4F53;</span>
+&#x251C;&#x2500;&#x2500; LogServices/            <span class="token comment"># &#x65E5;&#x5FD7;&#x670D;&#x52A1;</span>
+&#x2514;&#x2500;&#x2500; Actions/                <span class="token comment"># &#x7BA1;&#x7406;&#x64CD;&#x4F5C;</span>
 </code></pre>
+<ol>
+<li><strong>&#x66F4;&#x65B0;&#x670D;&#x52A1; (UpdateService)</strong></li>
+</ol>
+<pre class="language-"><code class="lang-bash">/redfish/v1/UpdateService/
+&#x251C;&#x2500;&#x2500; FirmwareInventory/      <span class="token comment"># &#x56FA;&#x4EF6;&#x6E05;&#x5355;</span>
+&#x2514;&#x2500;&#x2500; Actions/                <span class="token comment"># &#x66F4;&#x65B0;&#x64CD;&#x4F5C;</span>
+</code></pre>
+<h1 id="3-bios-&#x7BA1;&#x7406;"><a name="3-bios-&#x7BA1;&#x7406;" class="anchor-navigation-ex-anchor" href="#3-bios-&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>3. BIOS &#x7BA1;&#x7406;</h1>
+<h2 id="1-&#x901A;&#x7528;-bios-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><a name="1-&#x901A;&#x7528;-bios-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;" class="anchor-navigation-ex-anchor" href="#1-&#x901A;&#x7528;-bios-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x901A;&#x7528; BIOS &#x63A5;&#x53E3;&#x8DEF;&#x5F84;</h2>
+<pre class="language-"><code class="lang-bash">/redfish/v1/Systems/<span class="token punctuation">{</span>systemId<span class="token punctuation">}</span>/Bios
+</code></pre>
+<p>&#x83B7;&#x53D6; BIOS &#x5C5E;&#x6027;</p>
+<pre class="language-"><code class="lang-bash">GET /redfish/v1/Systems/<span class="token punctuation">{</span>systemId<span class="token punctuation">}</span>/Bios
+</code></pre>
+<p>&#x8BBE;&#x7F6E; BIOS &#x5C5E;&#x6027;</p>
+<pre class="language-"><code class="lang-bash">PATCH /redfish/v1/Systems/<span class="token punctuation">{</span>systemId<span class="token punctuation">}</span>/Bios/Settings
+</code></pre>
+<h2 id="2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;"><a name="2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;" class="anchor-navigation-ex-anchor" href="#2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x5382;&#x5546;</th>
+<th>&#x64CD;&#x4F5C;</th>
+<th>&#x65B9;&#x6CD5;</th>
+<th>&#x8DEF;&#x5F84;</th>
+<th>request</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dell</td>
+<td>&#x83B7;&#x53D6; BIOS &#x5C5E;&#x6027;</td>
+<td>GET</td>
+<td>/redfish/v1/Systems/{systemId}/Bios</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x8BBE;&#x7F6E; BIOS &#x5C5E;&#x6027;</td>
+<td>PATCH</td>
+<td>/redfish/v1/Systems/{systemId}/Bios/Settings</td>
+<td>{&quot;Attributes&quot;:                 attrs,<br> &quot;@Redfish.SettingsApplyTime&quot;: &quot;OnReset&quot;}</td>
+</tr>
+<tr>
+<td>HPE</td>
+<td>&#x83B7;&#x53D6; BIOS &#x5C5E;&#x6027;</td>
+<td>GET</td>
+<td>/redfish/v1/Systems/{systemId}/Bios</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x8BBE;&#x7F6E; BIOS &#x5C5E;&#x6027;</td>
+<td>PATCH</td>
+<td>/redfish/v1/Systems/{systemId}/Bios/Settings</td>
+<td>{&quot;Attributes&quot;:                 attrs,<br> &quot;@Redfish.SettingsApplyTime&quot;: &quot;OnReset&quot;}</td>
+</tr>
+<tr>
+<td>HUAWEI</td>
+<td>&#x83B7;&#x53D6; BIOS &#x5C5E;&#x6027;</td>
+<td>GET</td>
+<td>/redfish/v1/Systems/{systemId}/Bios</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x8BBE;&#x7F6E; BIOS &#x5C5E;&#x6027;</td>
+<td>PATCH</td>
+<td>/redfish/v1/Systems/{systemId}/Bios/Settings</td>
+<td>{ &quot;Attributes&quot;: attrs}</td>
+</tr>
+<tr>
+<td>Inspur</td>
+<td>&#x83B7;&#x53D6; BIOS &#x5C5E;&#x6027;</td>
+<td>GET</td>
+<td>/redfish/v1/Systems/{systemId}/Bios</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x8BBE;&#x7F6E; BIOS &#x5C5E;&#x6027;</td>
+<td>PATCH</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Lenovo</td>
+<td>&#x83B7;&#x53D6; BIOS &#x5C5E;&#x6027;</td>
+<td>GET</td>
+<td>/redfish/v1/Systems/{systemId}/Bios</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x8BBE;&#x7F6E; BIOS &#x5C5E;&#x6027;</td>
+<td>PATCH</td>
+<td>/redfish/v1/Systems/{systemId}/Bios/Settings</td>
+<td>{ &quot;Attributes&quot;: attrs}</td>
+</tr>
+<tr>
+<td>xFusion</td>
+<td>&#x83B7;&#x53D6; BIOS &#x5C5E;&#x6027;</td>
+<td>GET</td>
+<td>/redfish/v1/Systems/{systemId}/Bios</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x8BBE;&#x7F6E; BIOS &#x5C5E;&#x6027;</td>
+<td>PATCH</td>
+<td>/redfish/v1/Systems/{systemId}/Bios/Settings</td>
+<td>{ &quot;Attributes&quot;: attrs}</td>
+</tr>
+</tbody>
+</table>
+<h1 id="4-&#x542F;&#x52A8;&#x8BBE;&#x7F6E;&#xFF08;boot-order&#xFF09;"><a name="4-&#x542F;&#x52A8;&#x8BBE;&#x7F6E;&#xFF08;boot-order&#xFF09;" class="anchor-navigation-ex-anchor" href="#4-&#x542F;&#x52A8;&#x8BBE;&#x7F6E;&#xFF08;boot-order&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x542F;&#x52A8;&#x8BBE;&#x7F6E;&#xFF08;boot order&#xFF09;</h1>
+<h1 id="5-virtualmedia-&#x7684;&#x901A;&#x7528;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><a name="5-virtualmedia-&#x7684;&#x901A;&#x7528;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;" class="anchor-navigation-ex-anchor" href="#5-virtualmedia-&#x7684;&#x901A;&#x7528;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><i class="fa fa-link" aria-hidden="true"></i></a>5. VirtualMedia &#x7684;&#x901A;&#x7528;&#x63A5;&#x53E3;&#x8DEF;&#x5F84;</h1>
+<h2 id="1-&#x901A;&#x7528;-virtualmedia-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><a name="1-&#x901A;&#x7528;-virtualmedia-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;" class="anchor-navigation-ex-anchor" href="#1-&#x901A;&#x7528;-virtualmedia-&#x63A5;&#x53E3;&#x8DEF;&#x5F84;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x901A;&#x7528; VirtualMedia &#x63A5;&#x53E3;&#x8DEF;&#x5F84;</h2>
+<pre class="language-"><code class="lang-bash">/redfish/v1/Managers/<span class="token punctuation">{</span>managerId<span class="token punctuation">}</span>/VirtualMedia/<span class="token punctuation">{</span>mediaId<span class="token punctuation">}</span>/
+</code></pre>
+<p>&#x83B7;&#x53D6;&#x865A;&#x62DF;&#x5A92;&#x4F53;&#x4FE1;&#x606F;</p>
+<pre class="language-"><code class="lang-bash">GET /redfish/v1/Managers/<span class="token punctuation">{</span>managerId<span class="token punctuation">}</span>/VirtualMedia/<span class="token punctuation">{</span>mediaId<span class="token punctuation">}</span>/
+</code></pre>
+<p>&#x63D2;&#x5165;&#x865A;&#x62DF;&#x5A92;&#x4F53;</p>
+<pre class="language-"><code class="lang-bash">POST /redfish/v1/Managers/<span class="token punctuation">{</span>managerId<span class="token punctuation">}</span>/VirtualMedia/<span class="token punctuation">{</span>mediaId<span class="token punctuation">}</span>/Actions/VirtualMedia.InsertMedia
+</code></pre>
+<p>&#x5F39;&#x51FA;&#x865A;&#x62DF;&#x5A92;&#x4F53;</p>
+<pre class="language-"><code class="lang-bash">POST /redfish/v1/Managers/<span class="token punctuation">{</span>managerId<span class="token punctuation">}</span>/VirtualMedia/<span class="token punctuation">{</span>mediaId<span class="token punctuation">}</span>/Actions/VirtualMedia.EjectMedia
+</code></pre>
+<h2 id="2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;_1"><a name="2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;_1" class="anchor-navigation-ex-anchor" href="#2-&#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;_1"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x5404;&#x5382;&#x5546;&#x8DEF;&#x5F84;</h2>
+<table>
+<thead>
+<tr>
+<th>&#x5382;&#x5546;</th>
+<th>&#x64CD;&#x4F5C;</th>
+<th>&#x65B9;&#x6CD5;</th>
+<th>&#x8DEF;&#x5F84;</th>
+<th>request</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dell</td>
+<td>&#x83B7;&#x53D6;VirtualMedia</td>
+<td>GET</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/CD</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x63D2;&#x5165;VirtualMedia</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x5F39;&#x51FA;VirtualMedia</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>HPE</td>
+<td>&#x83B7;&#x53D6;VirtualMedia</td>
+<td>GET</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/{mediaId}</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x63D2;&#x5165;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/{mediaId}/Actions/VirtualMedia.InsertMedia</td>
+<td>{<br> &quot;Image&quot;: &quot;string&quot;,<br> &quot;Inserted&quot;: boolean,<br> &quot;WriteProtected&quot;: boolean<br>}</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x5F39;&#x51FA;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/{mediaId}/Actions/VirtualMedia.EjectMedia</td>
+<td></td>
+</tr>
+<tr>
+<td>HUAWEI</td>
+<td>&#x83B7;&#x53D6;VirtualMedia</td>
+<td>GET</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/CD</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x63D2;&#x5165;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/CD/Oem/Huawei/Actions/VirtualMedia.VmmControl</td>
+<td>{&quot;VmmControlType&quot;: &quot;Connect&quot;,<br> &quot;Image&quot;: imageURL}</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x5F39;&#x51FA;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/CD/Oem/Huawei/Actions/VirtualMedia.VmmControl</td>
+<td>{&quot;VmmControlType&quot;: &quot;Disconnect&quot;}</td>
+</tr>
+<tr>
+<td>Inspur(M6)</td>
+<td>&#x83B7;&#x53D6;VirtualMedia</td>
+<td>GET</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/{mediaId}</td>
+<td>mediaId=CD/CD1</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x63D2;&#x5165;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/{mediaId}/Actions/VirtualMedia.InsertMedia</td>
+<td>{&quot;Image&quot;: image,<br>&quot;TransferProtocolType&quot;: &quot;NFS&quot;}</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x5F39;&#x51FA;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/{mediaId}/Actions/VirtualMedia.EjectMedia</td>
+<td></td>
+</tr>
+<tr>
+<td>Lenovo</td>
+<td>&#x83B7;&#x53D6;VirtualMedia</td>
+<td>GET</td>
+<td>/redfish/v1/Systems/{systemId}/VirtualMedia/EXT1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x63D2;&#x5165;VirtualMedia</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x5F39;&#x51FA;VirtualMedia</td>
+<td>PATCH</td>
+<td>/redfish/v1/Systems/{systemId}/VirtualMedia/EXT1</td>
+<td>{&quot;Inserted&quot;: false}</td>
+</tr>
+<tr>
+<td>xFusion(&#x534E;&#x4E3A;&#x5B50;&#x54C1;&#x724C;)</td>
+<td>&#x83B7;&#x53D6;VirtualMedia</td>
+<td>GET</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/CD</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&#x63D2;&#x5165;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/CD/Oem/xFusion/Actions/VirtualMedia.VmmControl</td>
+<td>{&quot;VmmControlType&quot;: &quot;Connect&quot;,<br> &quot;Image&quot;: imageURL}</td>
+</tr>
+<tr>
+<td></td>
+<td>&#x5F39;&#x51FA;VirtualMedia</td>
+<td>POST</td>
+<td>/redfish/v1/Managers/{managerId}/VirtualMedia/CD/Oem/xFusion/Actions/VirtualMedia.VmmControl</td>
+<td>{&quot;VmmControlType&quot;: &quot;Disconnect&quot;}</td>
+</tr>
+</tbody>
+</table>
+<h1 id="6-&#x7535;&#x6E90;&#x7BA1;&#x7406;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x5173;&#x673A;&#x3001;&#x91CD;&#x542F;&#xFF09;"><a name="6-&#x7535;&#x6E90;&#x7BA1;&#x7406;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x5173;&#x673A;&#x3001;&#x91CD;&#x542F;&#xFF09;" class="anchor-navigation-ex-anchor" href="#6-&#x7535;&#x6E90;&#x7BA1;&#x7406;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x5173;&#x673A;&#x3001;&#x91CD;&#x542F;&#xFF09;"><i class="fa fa-link" aria-hidden="true"></i></a>6. &#x7535;&#x6E90;&#x7BA1;&#x7406;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x5173;&#x673A;&#x3001;&#x91CD;&#x542F;&#xFF09;</h1>
+<h1 id="7-&#x56FA;&#x4EF6;&#x5347;&#x7EA7;"><a name="7-&#x56FA;&#x4EF6;&#x5347;&#x7EA7;" class="anchor-navigation-ex-anchor" href="#7-&#x56FA;&#x4EF6;&#x5347;&#x7EA7;"><i class="fa fa-link" aria-hidden="true"></i></a>7. &#x56FA;&#x4EF6;&#x5347;&#x7EA7;</h1>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; www.huweihuang.com 2017-2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at 
 2025-07-06 09:33:09
 </span></footer>
@@ -1871,14 +2166,10 @@ netfilter-persistent reload
 
             
                 
-                <a href="iptables.html" class="navigation navigation-prev " aria-label="Previous page: iptables介绍">
+                <a href="format-disk.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 格式化磁盘分区">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="tcpdump.html" class="navigation navigation-next " aria-label="Next page: tcpdump命令">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1887,7 +2178,7 @@ netfilter-persistent reload
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"iptables命令","weight":3,"catalog":true,"date":"2020-08-13T10:50:57.000Z","subtitle":null,"tags":["iptables"],"catagories":["iptables"],"level":"4.2.2","depth":2,"next":{"title":"tcpdump命令","level":"4.2.3","depth":2,"path":"network/tcpdump.md","ref":"network/tcpdump.md","articles":[]},"previous":{"title":"iptables介绍","level":"4.2.1","depth":2,"path":"network/iptables.md","ref":"network/iptables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","image-captions","editlink","anchor-navigation-ex","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","donate","expandable-chapters","readmore","google-ads"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"readmore":{"allowDomain":["www.huweihuang.com","localhost"],"blogId":"30679-1666624328262-820","name":"容器云架构","qrcode":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1551600382/blog/wechat-public-acconut.jpg","keyword":"linux"},"donate":{"alipay":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1551599640/blog/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1551599472/blog/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"showLevelIcon":false,"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"multipleH2":false,"associatedWithSummary":true,"multipleH3":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"multipleH4":false},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"google-ads":{"ads":[{"client":"ca-pub-8205636531078391"}]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"expandable-chapters":{},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"file/linux-file-storage.html#fig3.1.3.1","level":"3.1.3","list_caption":"Figure: img","alt":"img","nro":1,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1741317220/article/linux/file-system/linux-storage.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"3.1.3.1"},{"backlink":"tcpip/ip.html#fig4.1.2.1","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.1"},{"backlink":"tcpip/ip.html#fig4.1.2.2","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.2"},{"backlink":"tcpip/ip.html#fig4.1.2.3","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.3"},{"backlink":"tcpip/ip.html#fig4.1.2.4","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":5,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.0.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.4"},{"backlink":"tcpip/ip.html#fig4.1.2.5","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":6,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.5"},{"backlink":"tcpip/ip.html#fig4.1.2.6","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":7,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.6"},{"backlink":"tcpip/ip.html#fig4.1.2.7","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":8,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/2.2.1.png","index":7,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.7"},{"backlink":"tcpip/ip.html#fig4.1.2.8","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":9,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.3.png","index":8,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.8"},{"backlink":"tcpip/ip.html#fig4.1.2.9","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":10,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.4.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.9"},{"backlink":"tcpip/ip.html#fig4.1.2.10","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":11,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/3.1.png","index":10,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.10"},{"backlink":"tcpip/ip.html#fig4.1.2.11","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":12,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/3.2.png","index":11,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.11"},{"backlink":"tcpip/ip.html#fig4.1.2.12","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":13,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.12"},{"backlink":"tcpip/ip.html#fig4.1.2.13","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":14,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.13"},{"backlink":"tcpip/tcp.html#fig4.1.3.1","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":15,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.1"},{"backlink":"tcpip/tcp.html#fig4.1.3.2","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":16,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.2"},{"backlink":"tcpip/tcp.html#fig4.1.3.3","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":17,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.3.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.3"},{"backlink":"tcpip/tcp.html#fig4.1.3.4","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":18,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.4"},{"backlink":"tcpip/tcp.html#fig4.1.3.5","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":19,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.5"},{"backlink":"tcpip/tcp.html#fig4.1.3.6","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":20,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/2.3.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.6"},{"backlink":"tcpip/http.html#fig4.1.5.1","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":21,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.1"},{"backlink":"tcpip/http.html#fig4.1.5.2","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":22,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.2"},{"backlink":"tcpip/http.html#fig4.1.5.3","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":23,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.2.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.3"},{"backlink":"tcpip/http.html#fig4.1.5.4","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":24,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.3.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.4"},{"backlink":"tcpip/http.html#fig4.1.5.5","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":25,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.3.3.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.5"},{"backlink":"tcpip/http.html#fig4.1.5.6","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":26,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.6"},{"backlink":"tcpip/http.html#fig4.1.5.7","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":27,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.2.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.7"},{"backlink":"tcpip/http.html#fig4.1.5.8","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":28,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.png","index":8,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.8"},{"backlink":"tcpip/http.html#fig4.1.5.9","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":29,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.9"},{"backlink":"tcpip/http.html#fig4.1.5.10","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":30,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.2.png","index":10,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.10"},{"backlink":"tcpip/http.html#fig4.1.5.11","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":31,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.3.png","index":11,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.11"},{"backlink":"tcpip/http.html#fig4.1.5.12","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":32,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.12"},{"backlink":"tcpip/http.html#fig4.1.5.13","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":33,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.13"},{"backlink":"tcpip/http.html#fig4.1.5.14","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":34,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.3.png","index":14,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.14"},{"backlink":"tcpip/http.html#fig4.1.5.15","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":35,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.4.png","index":15,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.15"},{"backlink":"tcpip/http.html#fig4.1.5.16","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":36,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.1.png","index":16,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.16"},{"backlink":"tcpip/http.html#fig4.1.5.17","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":37,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.2.png","index":17,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.17"},{"backlink":"tcpip/http.html#fig4.1.5.18","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":38,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.3.png","index":18,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.18"},{"backlink":"tcpip/http.html#fig4.1.5.19","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":39,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.4.png","index":19,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.19"},{"backlink":"tcpip/http.html#fig4.1.5.20","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":40,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.4.1.png","index":20,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.20"},{"backlink":"tcpip/http.html#fig4.1.5.21","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":41,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.4.2.png","index":21,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.21"},{"backlink":"tools/supervisor-usage.html#fig6.2.1","level":"6.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":42,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"6.2.1"},{"backlink":"git/git.html#fig7.1.1","level":"7.1","list_caption":"Figure: git-map","alt":"git-map","nro":43,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"7.1.1"},{"backlink":"git/git-commands.html#fig7.3.1","level":"7.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":44,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"7.3.1"},{"backlink":"nginx/nginx-proxy.html#fig9.1.2.1","level":"9.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":45,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"9.1.2.1"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com","Kubernetes 学习笔记":"https://www.huweihuang.com/kubernetes-notes/","Golang 学习笔记":"https://www.huweihuang.com/golang-notes/","Linux 学习笔记":"https://www.huweihuang.com/linux-notes/","数据结构学习笔记":"https://www.huweihuang.com/data-structure-notes/","Python 学习笔记":"https://www.huweihuang.com/python-notes/","Blockchain 学习笔记":"https://www.huweihuang.com/blockchain-notes/"}},"gitbook":">= 3.2.2","description":"Linux 学习笔记"},"file":{"path":"network/iptables-command.md","mtime":"2025-07-06T01:33:09.620Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-07-06T01:33:10.216Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Redfish API","weight":2,"catalog":true,"date":"2025-05-18T10:50:57.000Z","subtitle":null,"header-img":null,"tags":["裸金属"],"catagories":["裸金属"],"level":"9.3.3","depth":2,"next":{"title":"快捷键","level":"10.1","depth":1,"ref":"","articles":[{"title":"vscode快捷键","level":"10.1.1","depth":2,"path":"keymap/vscode-keymap.md","ref":"keymap/vscode-keymap.md","articles":[]},{"title":"eclipse快捷键","level":"10.1.2","depth":2,"path":"keymap/eclipse-keymap.md","ref":"keymap/eclipse-keymap.md","articles":[]},{"title":"chrome快捷键","level":"10.1.3","depth":2,"path":"keymap/chrome-keymap.md","ref":"keymap/chrome-keymap.md","articles":[]},{"title":"tmux快捷键","level":"10.1.4","depth":2,"path":"keymap/tmux-keymap.md","ref":"keymap/tmux-keymap.md","articles":[]},{"title":"iterm2 rzsz的使用","level":"10.1.5","depth":2,"path":"keymap/iterm2-rzsz.md","ref":"keymap/iterm2-rzsz.md","articles":[]}]},"previous":{"title":"格式化磁盘分区","level":"9.3.2","depth":2,"path":"baremetal/format-disk.md","ref":"baremetal/format-disk.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","codesnippet","splitter","image-captions","editlink","anchor-navigation-ex","-lunr","-search","search-plus","github-buttons@2.1.0","favicon@^0.0.2","tbfed-pagefooter@^0.0.1","3-ba","theme-default","-highlight","prism","prism-themes","sitemap-general","ga","donate","expandable-chapters","readmore","google-ads"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © www.huweihuang.com 2017-2018","modify_label":"Updated at ","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"github":{"url":"https://github.com/huweihuang"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/huweihuang/linux-notes/blob/master/"},"splitter":{},"readmore":{"allowDomain":["www.huweihuang.com","localhost"],"blogId":"30679-1666624328262-820","name":"容器云架构","qrcode":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1551600382/blog/wechat-public-acconut.jpg","keyword":"linux"},"donate":{"alipay":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1551599640/blog/donate/alipay.jpg","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1551599472/blog/donate/wechatpay.jpg","wechatText":"微信打赏"},"codesnippet":{},"sitemap-general":{"prefix":"https://www.huweihuang.com/linux-notes/"},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"showLevelIcon":false,"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"printLog":false,"multipleH1":false,"multipleH2":false,"associatedWithSummary":true,"multipleH3":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"multipleH4":false},"favicon":{"shortcut":"images/favicon.ico","bookmark":"images/favicon.ico","appleTouch":"images/favicon.ico","appleTouchMore":{"120x120":"images/favicon.ico","180x180":"images/favicon.ico"}},"prism-themes":{},"github-buttons":{"repo":"huweihuang/linux-notes","types":["star"],"size":"small"},"3-ba":{"configuration":"auto","token":"e146d71b77957235bba1e709d930f62e"},"ga":{"configuration":"auto","token":"UA-114718458-2"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"google-ads":{"ads":[{"client":"ca-pub-8205636531078391"}]},"theme-default":{"showLevel":true,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"expandable-chapters":{},"search-plus":{},"image-captions":{"caption":"图片 - _CAPTION_","variable_name":"_pictures"}},"theme":"default","author":"胡伟煌","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"file/linux-file-storage.html#fig3.1.3.1","level":"3.1.3","list_caption":"Figure: img","alt":"img","nro":1,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1741317220/article/linux/file-system/linux-storage.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"3.1.3.1"},{"backlink":"tcpip/ip.html#fig4.1.2.1","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":2,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.1"},{"backlink":"tcpip/ip.html#fig4.1.2.2","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":3,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.2"},{"backlink":"tcpip/ip.html#fig4.1.2.3","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":4,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.3"},{"backlink":"tcpip/ip.html#fig4.1.2.4","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":5,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.0.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.4"},{"backlink":"tcpip/ip.html#fig4.1.2.5","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":6,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/1.3.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.5"},{"backlink":"tcpip/ip.html#fig4.1.2.6","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":7,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.2.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.6"},{"backlink":"tcpip/ip.html#fig4.1.2.7","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":8,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579278/article/tcpip/ip/2.2.1.png","index":7,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.7"},{"backlink":"tcpip/ip.html#fig4.1.2.8","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":9,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.3.png","index":8,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.8"},{"backlink":"tcpip/ip.html#fig4.1.2.9","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":10,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/2.4.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.9"},{"backlink":"tcpip/ip.html#fig4.1.2.10","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":11,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579279/article/tcpip/ip/3.1.png","index":10,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.10"},{"backlink":"tcpip/ip.html#fig4.1.2.11","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":12,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/3.2.png","index":11,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.11"},{"backlink":"tcpip/ip.html#fig4.1.2.12","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":13,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.12"},{"backlink":"tcpip/ip.html#fig4.1.2.13","level":"4.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":14,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579280/article/tcpip/ip/4.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.2.13"},{"backlink":"tcpip/tcp.html#fig4.1.3.1","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":15,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.1"},{"backlink":"tcpip/tcp.html#fig4.1.3.2","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":16,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/1.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.2"},{"backlink":"tcpip/tcp.html#fig4.1.3.3","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":17,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/1.3.3.png","index":3,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.3"},{"backlink":"tcpip/tcp.html#fig4.1.3.4","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":18,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.4"},{"backlink":"tcpip/tcp.html#fig4.1.3.5","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":19,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579309/article/tcpip/tcpudp/2.2.1.png","index":5,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.5"},{"backlink":"tcpip/tcp.html#fig4.1.3.6","level":"4.1.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":20,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579310/article/tcpip/tcpudp/2.3.png","index":6,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"4.1.3.6"},{"backlink":"tcpip/http.html#fig4.1.5.1","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":21,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.1.png","index":1,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.1"},{"backlink":"tcpip/http.html#fig4.1.5.2","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":22,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.2.png","index":2,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.2"},{"backlink":"tcpip/http.html#fig4.1.5.3","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":23,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.2.2.png","index":3,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.3"},{"backlink":"tcpip/http.html#fig4.1.5.4","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":24,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580019/article/tcpip/http/codestatus/3.3.2.png","index":4,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.4"},{"backlink":"tcpip/http.html#fig4.1.5.5","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":25,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.3.3.png","index":5,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.5"},{"backlink":"tcpip/http.html#fig4.1.5.6","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":26,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.png","index":6,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.6"},{"backlink":"tcpip/http.html#fig4.1.5.7","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":27,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/3.5.2.png","index":7,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.7"},{"backlink":"tcpip/http.html#fig4.1.5.8","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":28,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.png","index":8,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.8"},{"backlink":"tcpip/http.html#fig4.1.5.9","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":29,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.1.png","index":9,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.9"},{"backlink":"tcpip/http.html#fig4.1.5.10","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":30,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.2.png","index":10,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.10"},{"backlink":"tcpip/http.html#fig4.1.5.11","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":31,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.1.3.png","index":11,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.11"},{"backlink":"tcpip/http.html#fig4.1.5.12","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":32,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.1.png","index":12,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.12"},{"backlink":"tcpip/http.html#fig4.1.5.13","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":33,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.2.png","index":13,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.13"},{"backlink":"tcpip/http.html#fig4.1.5.14","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":34,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580020/article/tcpip/http/codestatus/4.2.3.png","index":14,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.14"},{"backlink":"tcpip/http.html#fig4.1.5.15","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":35,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.2.4.png","index":15,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.15"},{"backlink":"tcpip/http.html#fig4.1.5.16","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":36,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.1.png","index":16,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.16"},{"backlink":"tcpip/http.html#fig4.1.5.17","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":37,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.2.png","index":17,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.17"},{"backlink":"tcpip/http.html#fig4.1.5.18","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":38,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.3.png","index":18,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.18"},{"backlink":"tcpip/http.html#fig4.1.5.19","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":39,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.3.4.png","index":19,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.19"},{"backlink":"tcpip/http.html#fig4.1.5.20","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":40,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580021/article/tcpip/http/codestatus/4.4.1.png","index":20,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.20"},{"backlink":"tcpip/http.html#fig4.1.5.21","level":"4.1.5","list_caption":"Figure: img","alt":"img","nro":41,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510580022/article/tcpip/http/codestatus/4.4.2.png","index":21,"caption_template":"图片 - _CAPTION_","label":"img","attributes":{},"skip":false,"key":"4.1.5.21"},{"backlink":"tools/supervisor-usage.html#fig6.2.1","level":"6.2","list_caption":"Figure: supervisor","alt":"supervisor","nro":42,"url":"http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png","index":1,"caption_template":"图片 - _CAPTION_","label":"supervisor","attributes":{},"skip":false,"key":"6.2.1"},{"backlink":"git/git.html#fig7.1.1","level":"7.1","list_caption":"Figure: git-map","alt":"git-map","nro":43,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-map.png","index":1,"caption_template":"图片 - _CAPTION_","label":"git-map","attributes":{},"skip":false,"key":"7.1.1"},{"backlink":"git/git-commands.html#fig7.3.1","level":"7.3","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":44,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578830/article/git/git-arch.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"7.3.1"},{"backlink":"nginx/nginx-proxy.html#fig9.1.2.1","level":"9.1.2","list_caption":"Figure: 这里写图片描述","alt":"这里写图片描述","nro":45,"url":"https://res.cloudinary.com/dqxtn0ick/image/upload/v1537696859/article/nginx/nginx.png","index":1,"caption_template":"图片 - _CAPTION_","label":"这里写图片描述","attributes":{},"skip":false,"key":"9.1.2.1"}]},"title":"Linux 学习笔记","language":"zh-hans","links":{"sidebar":{"胡伟煌的博客":"https://www.huweihuang.com","Kubernetes 学习笔记":"https://www.huweihuang.com/kubernetes-notes/","Golang 学习笔记":"https://www.huweihuang.com/golang-notes/","Linux 学习笔记":"https://www.huweihuang.com/linux-notes/","数据结构学习笔记":"https://www.huweihuang.com/data-structure-notes/","Python 学习笔记":"https://www.huweihuang.com/python-notes/","Blockchain 学习笔记":"https://www.huweihuang.com/blockchain-notes/"}},"gitbook":">= 3.2.2","description":"Linux 学习笔记"},"file":{"path":"baremetal/redfish-api.md","mtime":"2025-07-06T01:33:09.601Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-07-06T01:33:10.216Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
