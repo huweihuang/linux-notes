@@ -31,7 +31,7 @@ catagories:
 
 ## 1.3. 网络构成
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/network.png" width="80%">
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/network.png" width="70%">
 
 | 构成要素         | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
@@ -46,15 +46,15 @@ catagories:
 
 ## 2.1. OSI与TCP/IP参考模型图
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/TCPIP-OSI.png" width=80%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/TCPIP-OSI.png" width=70%>
 
 ## 2.2. OSI参考模型分层说明
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/osi-function.png" width=80%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/osi-function.png" width=70%>
 
 ## 2.3. OSI参考模型通信过程
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/OSI.png" width=80%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/OSI.png" width=70%>
 
 
 1、打包数据时，每一层在处理上一层传过来的数据时，会在数据上附上当前层的首部信息后传给下一层；
@@ -77,7 +77,7 @@ catagories:
 
 ### 2.4.1. 通信模型
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/TrafficModel.png" width=100%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/TrafficModel.png" width=70%>
 
 ### 2.4.2. 应用层协议说明
 
@@ -93,21 +93,21 @@ catagories:
 
 ## 3.1. 数据包结构
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579691/article/tcpip/basics/data-package.png" width=100%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579691/article/tcpip/basics/data-package.png" width=70%>
 
 ## 3.2. 数据打包和解包过程
 
 ### 3.2.1. 包的封装
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/package.png" width=80%> 
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579692/article/tcpip/basics/package.png" width=60%> 
 
 ### 3.2.2. 发送与接收
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/send-receive.png" width=70%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/send-receive.png" width=60%>
 
 ## 3.3. 数据包传输过程
 
-<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/transmission.png" width=80%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510579693/article/tcpip/basics/transmission.png" width=60%>
 
 
 

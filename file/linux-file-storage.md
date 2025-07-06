@@ -37,8 +37,6 @@ inode包含文件的元信息，具体来说有以下内容：
 - 链接数，即有多少文件名指向这个inode。
 - 文件数据block的位置。
 
-
-
 可以用stat命令，查看某个文件的inode信息：
 
 ```bash
@@ -51,7 +49,7 @@ stat demo.txt
 
 请看文件存储结构示意图：
 
-![img](../img/linux-storage.png)
+![img](https://res.cloudinary.com/dqxtn0ick/image/upload/v1741317220/article/linux/file-system/linux-storage.png)
 
 ### 1.1. inode的大小
 
@@ -66,8 +64,6 @@ inode也会消耗硬盘空间，所以硬盘格式化的时候，操作系统自
 ```bash
 sudo dumpe2fs -h /dev/hda | grep "Inode size"
 ```
-
-
 
 由于每个文件都必须有一个inode，因此有可能发生inode已经用光，但是硬盘还未存满的情况。这时，就无法在硬盘上创建新文件。
 
@@ -113,8 +109,6 @@ ls -l /etc
 
 一般情况下，文件名和inode号码是"一一对应"关系，每个inode号码对应一个文件名。但是，Linux系统允许，多个文件名指向同一个inode号码。这意味着，可以用不同的文件名访问同样的内容；对文件内容进行修改，会影响到所有文件名；但是，删除一个文件名，不影响另一个文件名的访问。这种情况就被称为"硬链接"（hard link）。
 
-
-
 ln命令可以创建硬链接
 
 ```bash
@@ -131,14 +125,11 @@ ln source_file target_file
 
 这意味着，文件A依赖于文件B而存在，如果删除了文件B，打开文件A就会报错："No such file or directory"。这是软链接与硬链接最大的不同：文件A指向文件B的文件名，而不是文件B的inode号码，文件B的inode"链接数"不会因此发生变化。
 
-
 ln -s命令可以创建软链接
 
 ```bash
 ln -s source_file target_file
 ```
-
- 
 
 参考：
 

@@ -58,7 +58,7 @@ c0u1p3  | SSD  | HUAWEI HWE52SS3960L005N3248033GSN10L5002797 | 893.1 Gb | Online
 
 # 2. 解决umount target is busy挂载盘卸载不掉问题
 
-问题描述:
+**问题描述:**
 
 由于有进程占用目录，因此无法umount目录，需要先将占用进程杀死，再umount目录。
 
@@ -95,4 +95,30 @@ fuser命令参数说明
 -m,--mount 　　 show all processes using the named filesystems or block device
 -v,--verbose 　　 verbose output
 ```
+
+# 3. 删除大文件后磁盘空间没减少
+
+**问题描述：**
+
+为了清理磁盘空间，在删除某些大文件后，查看df -h发现磁盘的空间并没减少。
+
+**原因：**
+
+有进程占用了被删除的文件，导致空间没有清理。
+
+**解决方案:**
+
+查看所占用文件的进程，并杀掉该进程。
+
+```bash
+# lsof 查看删除文件对应的进程
+lsof | grep deleted|grep "/data/xxxx"
+
+# 杀掉进程
+kill -9 {pid}
+
+# 查看空间,此时空间已经腾出来
+df -h 
+```
+
 

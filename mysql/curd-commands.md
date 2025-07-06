@@ -1,6 +1,6 @@
 ---
 title: "Mysql常用命令之表内容操作"
-weight: 3
+weight: 4
 catalog: true
 date: 2017-08-13 10:50:57
 subtitle:

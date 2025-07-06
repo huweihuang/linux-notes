@@ -27,7 +27,7 @@ Linux内核版本一般格式为：`x.y.zz-www `，例如：Kernel2.6.15
 
 Linux体系结构如下：
 
-<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1536472043/article/linux/kernel.jpg" width=60%>
+<img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1536472043/article/linux/file-system/kernel.jpg" width=60%>
 
 几个重要概念：
 
@@ -95,14 +95,13 @@ root     pts/2    172.16.20.65     Fri15   43:17m  1.04s  1.04s -bash
 
 关闭系统可以使用以下命令
 
-| 命令     | 说明                                                     |
-| -------- | -------------------------------------------------------- |
-| halt     | 直接关闭系统                                             |
+| 命令       | 说明                           |
+| -------- | ---------------------------- |
+| halt     | 直接关闭系统                       |
 | init 0   | 使用预先定义的脚本关闭系统，关闭前可以清理和更新有关信息 |
-| init 6   | 重新启动系统                                             |
-| poweroff | 通过断电来关闭系统                                       |
-| reboot   | 重新启动系统                                             |
-| shutdown | 安全关闭系统                                             |
+| init 6   | 重新启动系统                       |
+| poweroff | 通过断电来关闭系统                    |
+| reboot   | 重新启动系统                       |
+| shutdown | 安全关闭系统                       |
 
 > 一般只有root有关闭系统的权限，普通用户被赋予相应权限也可以关闭系统。
-
